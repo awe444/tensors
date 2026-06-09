@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  body {
+    background-color: #000000;
+    color: #dfe4dd;
+  }
+  a {
+    color: #94d5a9;
+  }
+  img {
+    filter: grayscale(20%);
+  }
+  </style>
+  
+	<link href="file:///home/awaszczak/Documents/preview//prism.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="file:///home/awaszczak/Documents/preview//katex.min.css">
+
+  <script defer src="file:///home/awaszczak/Documents/preview//katex.min.js"></script>
+
+  <script defer src="file:///home/awaszczak/Documents/preview//mhchem.min.js"></script>
+
+  <script src="file:///home/awaszczak/Documents/preview//asciimath2tex.umd.js" ></script>
+
+
+
+    <!-- KaTeX auto-render extension -->
+    <script defer src="file:///home/awaszczak/Documents/preview//katex.auto-render.min.js"
+        onload="const parser = new AsciiMathParser();renderMathInElement(document.body, 
+        {delimiters:
+        [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+        ],
+        preProcess: (math)=>{
+          return math.trim();
+        }
+        });
+renderMathInElement(document.body, 
+        {delimiters:
+        [
+          {left: '&&', right: '&&', display: true},
+          {left: '&', right: '&', display: false},
+        ],
+        preProcess: (math)=>{
+          return parser.parse(math.trim());
+        }
+        });
+"></script>
+
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid grey;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #404040;}
+
+pre {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+blockquote{
+  padding: 0em 0em 0em .6em;
+  margin-left: .1em;
+  border-left: 0.3em solid grey;
+}
+
+/* Keep KaTeX math on its own fonts (not the page body font). */
+.katex {
+  font: normal 1.21em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.2;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+</style>
+</head>
+<body>
+                      <h1 id="tensors">Tensors</h1>
+<h3 id="scalars">Scalars</h3>
+<p>In physics, a <em>scalar</em> is a quantity that can be fully described by just one measurable number, with associated physical units. Examples include temperature, mass, and volume. We represent scalars with italic-face symbols, like $T$ for temperature, $m$ for mass, and $V$ for volume.</p>
+<p>The &quot;one number&quot; definition is meant to contrast scalars with the higher-order objects we'll discuss next. Scalars can vary with space (scalar <em>fields</em>) and/or time, and the measurement we ascribe to them can depend on scale. Temperature for example is a macroscopic quantity that starts to lose meaning at sufficiently microscopic scales. When we later discuss differential calculus of scalars, approximation to idealized <em>continuous</em> scalar fields will prove convenient.</p>
+<h3 id="vectors">Vectors</h3>
+<p>A <em>vector</em> is a quantity that has direction and magnitude (<em>i.e.</em>, length). We write vectors as roman-face symbols like $\mathrm{r}$ for position, $\mathrm{v}$ for velocity, and $\mathrm{E}$ for an electric field. We can visualize vectors as arrows in our three dimensions.</p>
+<p>The magnitude of a vector does not depend on, or is <em>invariant</em> to, the way we frame the space in which that the vector resides, <em>i.e.</em>, the choice of the spatial coordinates. A vector's magnitude is a scalar and we can write it like</p>
+<p>$$|\mathrm{v}|=v$$</p>
+<p>which says the velocity vector $\mathrm{v}$ has a magnitude equal to a scalar $v$ known as the <em>speed</em>.</p>
+<p>The purely directional part of a vector is the <em>normalized</em> (length of 1) unit vector we denote with double brackets:</p>
+<p>$$\llbracket \mathrm{v} \rrbracket = \frac{\mathrm{v}}{|\mathrm{v}|}$$</p>
+<p>Unlike its magnitude, a vector's measured <em>direction</em> does depend on the choice of spatial coordinates. Having already specified the vector's magnitude, a measurement of direction in our three-dimensional space can consist of up to two numbers, <em>e.g.</em>, the direction of the position vector $\mathrm{r}$ can be measured as angular components $\phi, \theta$ when we use a spherical coordinate system. The actual measured values of $\phi$ and $\theta$ that we'd obtain depend on how the coordinate system is defined and oriented.</p>
+<p>In addition to spherical coordinates, another typical coordinate system of choice is of the $x,y,z$ Cartesian variety. We can write</p>
+<p>$$\mathrm{r}=x\mathrm{i}+y\mathrm{j}+z\mathrm{k}$$</p>
+<p>where $x,y,z$ are scalar components and $\mathrm{i},\mathrm{j},\mathrm{k}$ are orthogonal unit vectors (<em>unit</em> meaning magnitude of 1) comprising the coordinate basis. Instead of these particular symbols we can write</p>
+<p>$$\mathrm{r}=\sum_{i=1}^{3}{x_i\mathrm{e}_i}$$</p>
+<p>or in the more compact shorthand:</p>
+<p>$$\mathrm{r}=x_i\mathrm{e}_i$$</p>
+<p>or the even more compact shorthand:</p>
+<p>$$\mathrm{r}=x_i$$</p>
+<p>The single index $i$ is understood in this more compact notation to run over our three spatial dimensions and include three scalar components each multiplied by a unit basis vector.</p>
+<p>Irrespective of how we use indices in the notation — or indeed, whether we choose to use indices at all — a vector can still be thought of as having an intrinsic direction that exists independent of whatever coordinates we choose to measure it against. A primary motivation of this work is to arrive at, and appreciate, index-free coordinate-free notations. It's also undeniable that simply writing $\mathrm{r}$ is by far the <em>most</em> compact representation out of all of the above (so compact that we really have to pay attention to the roman typeface as the sole notational indication that it's a vector)!</p>
+<p>Addition and subtraction of vectors also has a coordinate-free meaning and can be visualized geometrically without the need for any coordinate frame.</p>
+<h3 id="dyads">Dyads</h3>
+<p>Considering two vectors $\mathrm{v}$ and $\mathrm{w}$ as a pair, they define an <em>outer product</em>
+$$\mathsf{D}=\mathrm{v}\mathrm{w}$$
+where $\mathsf{D}$ is referred to as a <em>second-order tensor</em>, in this case specifically a <em>dyad</em>.</p>
+<p>For now, we'll hold off on discussing what this dyad object actually represents and how we can or should interpret it from a physical standpoint. Instead, for the moment we'll examine the mathematical structure it has, using the same coordinate system scaffolding that applies to vectors.</p>
+<h3 id="dyad-coordinate-bases">Dyad coordinate bases</h3>
+<p>To understand how the dyad $$\mathsf{D}=\mathrm{v}\mathrm{w}$$ is structured, let's look at it in the Cartesian space:</p>
+<p>$$\mathsf{D}=(v_x\mathrm{i}+v_y\mathrm{j}+v_z\mathrm{k})(w_x\mathrm{i}+w_y\mathrm{j}+w_z\mathrm{k})\\=v_x w_x\mathrm{ii}+v_x w_y \mathrm{ij}+v_x w_z\mathrm{ik}+v_y w_x\mathrm{ji}+v_y w_y \mathrm{jj}+...$$</p>
+<p>There are nine total basis dyads (the outer product combinations of $\mathrm{i},\mathrm{j},\mathrm{k}$) accompanied by nine total scalar components. In index form,</p>
+<p>$$D_{ij}=v_i w_j$$</p>
+<p>We can also represent it as a $3\times 3$ matrix:</p>
+<p>$$\mathsf{D}=\left( \begin{array}{ccc} v_x w_x &amp; v_x w_y &amp; v_x w_z \\ v_y w_x &amp; v_y w_y &amp; v_y w_z \\ v_z w_x &amp; v_z w_y &amp; v_z w_z \end{array} \right)$$</p>
+<p>This matrix form is still interpretable as the sum of nine basis matrices, related to the above basis dyads according to:</p>
+<p>$$
+\begin{aligned}
+\mathrm{ii} &amp;=
+\begin{pmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0
+\end{pmatrix}\quad
+\mathrm{ij} =
+\begin{pmatrix}
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0
+\end{pmatrix}
+\end{aligned}
+$$</p>
+<p>and so on for the others.</p>
+<p>Given a general matrix</p>
+<p>$$\mathsf{A}=\begin{pmatrix}
+a &amp; b &amp; c\\
+d &amp; e &amp; f\\
+g &amp; h &amp; i
+\end{pmatrix},$$</p>
+<p>its <em>transpose</em> is defined as the matrix whose elements are &quot;reflected&quot; about the diagonal:</p>
+<p>$$\mathsf{A}^\mathsf{T}=\begin{pmatrix}
+a &amp; d &amp; g\\
+b &amp; e &amp; h\\
+c &amp; f &amp; i
+\end{pmatrix}.$$</p>
+<p>The <em>symmetric part</em> of the matrix is:</p>
+<p>$$\mathsf{A}_{\mathrm{symm}}=\frac{1}{2}(\mathsf{A}+\mathsf{A}^\mathsf{T})$$
+$$=\begin{pmatrix}
+a &amp; \frac{1}{2}(b+d) &amp; \frac{1}{2}(c+g)\\
+\frac{1}{2}(d+b) &amp; e &amp; \frac{1}{2}(f+h)\\
+\frac{1}{2}(g+c)&amp; \frac{1}{2}(h+f) &amp; i
+\end{pmatrix}$$</p>
+<p>which has 6 unique components, while the <em>antisymmetric part</em> is:</p>
+<p>$$\mathsf{A}_{\mathrm{anti}}=\frac{1}{2}(\mathsf{A}-\mathsf{A}^\mathsf{T})$$
+$$=\begin{pmatrix}
+0 &amp; \frac{1}{2}(b-d) &amp; \frac{1}{2}(c-g)\\
+\frac{1}{2}(d-b) &amp; 0 &amp; \frac{1}{2}(f-h)\\
+\frac{1}{2}(g-c)&amp; \frac{1}{2}(h-f) &amp; 0
+\end{pmatrix}$$</p>
+<p>which has 3 unique components, not counting the sign differences on other side of the diagonal.</p>
+<p>Lastly, note that $\mathsf{A}$ is the sum of the symmetric and antisymmetric parts (which is why we're calling them &quot;parts&quot; in the first place).</p>
+<p>For the specific case of our dyad $\mathsf{D}=\mathrm{vw}$, the transpose is such that $\mathsf{D}^\mathsf{T}=\mathrm{wv}$, and</p>
+<p>$$\mathsf{D}_\mathrm{symm}=\frac{1}{2}(\mathrm{vw}+\mathrm{wv})$$</p>
+<p>$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})$$</p>
+<p>All of this guides us to a particular set of basis dyads that cleanly separate six symmetric components from three antisymmetric components. The choice of symmetric basis dyads, based on the matrix representation, is</p>
+<p>$$\begin{array}{ccc} \mathrm{ii}, &amp; \mathrm{jj}, &amp; \mathrm{kk}, \\ \frac{1}{\sqrt{2}}(\mathrm{ij} +\mathrm{ji}), &amp; \frac{1}{\sqrt{2}}(\mathrm{jk} + \mathrm{kj}), &amp; \frac{1}{\sqrt{2}}(\mathrm{ki} +\mathrm{ik}). \end{array}$$</p>
+<p>The remaining three basis dyads, for the antisymmetric part, are</p>
+<p>$$\begin{array}{ccc} \frac{1}{\sqrt{2}}(\mathrm{ij} -\mathrm{ji}), &amp; \frac{1}{\sqrt{2}}(\mathrm{jk} - \mathrm{kj}), &amp; \frac{1}{\sqrt{2}}(\mathrm{ki} - \mathrm{ik}). \end{array}$$</p>
+<p>The six components of $\mathsf{D}$ for the symmetric part are</p>
+<p>$$\begin{array}{cc} v_x w_x, &amp; \frac{1}{\sqrt{2}}(v_x w_y + v_y w_x), \\ v_y w_y, &amp; \frac{1}{\sqrt{2}}(v_y w_z + v_z w_y), \\ v_z w_z, &amp; \frac{1}{\sqrt{2}}(v_z w_x +v_x w_z) \end{array}$$</p>
+<p>and the antisymmetric components are</p>
+<p>$$\begin{array}{c} \frac{1}{\sqrt{2}}(v_x w_y - v_y w_x), \\ \frac{1}{\sqrt{2}}(v_y w_z - v_z w_y), \\ \frac{1}{\sqrt{2}}(v_z w_x - v_x w_z). \end{array}$$</p>
+<p>With some creative manipulation of terms, we can replace the contribution from the first three basis elements:</p>
+<p>$$v_x w_x \mathrm{ii}+v_y w_y \mathrm{jj}+v_z w_z\mathrm{kk},$$</p>
+<p>with the equivalent expression</p>
+<p>$$\frac{1}{3}(v_x w_x+v_y w_y+v_z w_z)(\mathrm{ii}+\mathrm{jj}+\mathrm{kk})+$$
+$$\frac{1}{2}(v_x w_x-v_y w_y)(\mathrm{ii}-\mathrm{jj})+$$
+$$\frac{1}{6}(v_x w_x+v_y w_y-2v_z w_z)(\mathrm{ii}+\mathrm{jj}-2\mathrm{kk}).$$</p>
+<p>To summarize, we've arrived at the following nine basis dyads:</p>
+<p>$$\begin{array}{l} \mathsf{e}_1=(\mathrm{ii}+\mathrm{jj}+\mathrm{kk})/\sqrt{3} \\ \mathsf{e}_2=(\mathrm{ii}-\mathrm{jj})/\sqrt{2} \\ \mathsf{e}_3=(\mathrm{ii}+\mathrm{jj}-2\mathrm{kk})/\sqrt{6} \\ \mathsf{e}_4=(\mathrm{ij} +\mathrm{ji})/\sqrt{2} \\ \mathsf{e}_5=(\mathrm{jk} + \mathrm{kj})/\sqrt{2} \\ \mathsf{e}_6=(\mathrm{ki} +\mathrm{ik})/\sqrt{2} \\ \mathsf{e}_7=(\mathrm{ij} -\mathrm{ji})/\sqrt{2} \\ \mathsf{e}_8=(\mathrm{jk} - \mathrm{kj})/\sqrt{2} \\ \mathsf{e}_9=(\mathrm{ki} -\mathrm{ik})/\sqrt{2} \end{array} $$</p>
+<p>In this basis, $\mathsf{D}=\mathrm{v}\mathrm{w}=D_i \mathsf{e}_i$ has the following components:</p>
+<p>$$\begin{array}{l} D_1=(v_x w_x+v_y w_x+v_z w_z)/\sqrt{3} \\ D_2=(v_x w_x-v_y w_y)/\sqrt{2} \\ D_3=(v_x w_x+v_y w_y-2v_z w_z)/\sqrt{6} \\ D_4=(v_x w_y +v_y w_x)/\sqrt{2} \\ D_5=(v_y w_z + v_z w_y)/\sqrt{2} \\ D_6=(v_z w_x +v_x w_z)/\sqrt{2} \\ D_7=(v_x w_y -v_y w_x)/\sqrt{2} \\ D_8=(v_y w_z - v_z w_y)/\sqrt{2} \\ D_9=(v_z w_x -v_x w_z)/\sqrt{2}  \end{array} $$</p>
+<p>As we will soon see, using this particular coordinate basis will greatly help us understand some of the fundamental, coordinate-independent properties of dyads.</p>
+<h3 id="operators">Operators</h3>
+<p>Unlike vectors, which have a straightforward physical interpretation as &quot;arrows in space&quot;, dyads require some deeper context to understand what they are, and — perhaps more importantly — what they <em>do</em>.</p>
+<p>Dyads are often regarded as <em>operators</em>. In fact, all tensors can be interpreted as operators. An operator is something that <em>does something</em> to another tensor. For example, an operator acting on a physical vector can change that vector's magnitude, change its direction, or both.</p>
+<p>Consider the case of changing a vector's magnitude. That can happen if we multiply the vector by a scalar:</p>
+<p>$$\mathrm{v}\to m \mathrm{v}$$</p>
+<p>In this example, the scalar ($m$) is acting as an operator. It's literally &quot;scaling&quot; the vector's magnitude by the factor $m$ — which explains the motivation behind the term &quot;scalar&quot; in the first place! Now, if $m$ has physical units, note that we necessarily end up with different physical units on the resulting vector compared to the one we started with. If $m$ is mass and $\mathrm{v}$ is a velocity vector, then the result $m\mathrm{v}$ is a momentum vector, usually labeled $\mathrm{p}$.</p>
+<p>Vectors too can act as operators. The vector $\mathrm{v}$ can operate on the vector $\mathrm{w}$ to produce a scalar product, the value of which is defined as the product of the two vector magnitudes with an additional factor being the cosine of the angle $\alpha$ between the two vectors:</p>
+<p>$$\mathrm{w}\to \mathrm{v}\cdot\mathrm{w}=|\mathrm{v}||\mathrm{w}| \cos \alpha$$</p>
+<p>Note that the result of this &quot;dot product&quot; or &quot;inner product&quot; is coordinate independent.</p>
+<p>Instead of a physical vector, we can use a basis vector as the operator in the dot product. Due to the orthonormal nature of these basis vectors, they have the following dot products when operating amongst themselves:</p>
+<p>$$\mathrm{i}\cdot\mathrm{i}=\mathrm{j}\cdot\mathrm{j}=\mathrm{k}\cdot\mathrm{k}=1$$
+$$\mathrm{i}\cdot\mathrm{j}=\mathrm{j}\cdot\mathrm{i}=\mathrm{i}\cdot\mathrm{k}=\mathrm{k}\cdot\mathrm{i}=\mathrm{j}\cdot\mathrm{k}=\mathrm{k}\cdot\mathrm{j}=0$$</p>
+<p>From the above, we can show that</p>
+<p>$$\begin{array}{ccc}\mathrm{i}\cdot\mathrm{v}=v_x &amp; \mathrm{j}\cdot\mathrm{v}=v_y &amp; \mathrm{k}\cdot\mathrm{v}=v_z \end{array}$$</p>
+<p>These results <em>are</em> coordinate-dependent, which is not surprising given that the operators are themselves related to the coordinate basis. Relatedly, $\mathrm{v}\cdot\mathrm{w}$ can also be expressed as</p>
+<p>$$\mathrm{v}\cdot\mathrm{w}=v_x w_x + v_y w_y + v_z w_z,$$</p>
+<p>which, although still coordinate-independent, lacks the clear geometric interpretability that comes with the alternate expression $\mathrm{v}\cdot\mathrm{w}=|\mathrm{v}||\mathrm{w}| \cos \alpha$ we saw earlier.</p>
+<p>The outer product we used to introduce dyads is another example of using a vector as an operator on another vector, in that case producing a dyad.</p>
+<p>There are more ways vectors can behave as operators on other vectors, as we'll see later.</p>
+<h3 id="dyads-as-operators">Dyads as operators</h3>
+<p>Earlier we remarked how, in general, a dyad can be representated as a <em>matrix</em>. In linear algebra, we learn that a fundamental use of matrices is to <em>transform</em> vectors. The vector $\mathrm{x}$ can be transformed into the vector $\mathrm{y}$ using the matrix $\mathsf{A}$:</p>
+<p>$$\mathrm{y}=\mathsf{A}\cdot \mathrm{x}$$</p>
+<p>The details of how one calculates the product of $\mathsf{A}$ and $\mathrm{x}$ is generally presented as &quot;matrix multiplication&quot;, an operation between arrays of coordinate-dependent components. The matrix would be a $3\times 3$ square array, while the vectors $\mathrm{x}$ and $\mathrm{y}$ would be &quot;column&quot; arrays of shape $3\times 1$.</p>
+<p>If we instead represent $\mathsf{A}$ and $\mathrm{x}$ in terms of the basis vectors $\mathrm{i},\mathrm{j},\mathrm{k}$, and take the dot product operator to have the same meaning as before, the single dot product distributes out to a large number of dot products of basis elements, some of which survive and some of which vanish:</p>
+<p>$$\mathsf{A}\cdot \mathrm{x}=$$
+$$(A_1\mathrm{ii}+A_2\mathrm{ij}+...+A_9\mathrm{kk})\cdot(x_1\mathrm{i}+x_2\mathrm{j}+x_3\mathrm{k})=$$
+$$A_1 x_1\mathrm{i}(\mathrm{i}\cdot\mathrm{i})+A_2 x_1\mathrm{i}(\mathrm{j}\cdot\mathrm{i})+...+A_9 x_3\mathrm{k}(\mathrm{k}\cdot\mathrm{k})=$$
+$$(A_1 x_1+A_4 x_2+A_7 x_3)\mathrm{i}+$$
+$$(A_2x_1+A_5 x_2+A_8 x_3)\mathrm{j}+$$
+$$(A_3 x_1+A_6x_2+A_9 x_3)\mathrm{k}.$$</p>
+<p>The result is a vector, equivalent to that given by &quot;matrix multiplication&quot;, but here derived by applying the dot product distributed out onto all of the basis components.</p>
+<p>But again, the above result applies to the highly specific context of using a particular coordinate basis.</p>
+<h3 id="geometric-interpretation-of-dyad-operators">Geometric interpretation of dyad operators</h3>
+<p>We were able to interpret $\mathrm{v}\cdot\mathrm{w}$ in a purely geometric, coordinate-free way, so can we likewise develop a geometric, coordinate-free interpretation of $\mathsf{A}\cdot\mathrm{x}$?</p>
+<p>In the previous section we saw how a dot product can &quot;carve into&quot; an outer product of vectors. Specifically, we can <em>associate</em> the dot product operation in such a way that breaks the outer product up:</p>
+<p>$$\mathsf{D}\cdot \mathrm{u}=\mathrm{vw}\cdot\mathrm{u}=\mathrm{v}(\mathrm{w}\cdot\mathrm{u})$$</p>
+<p>In words, this is saying that the effect of applying the dyad $\mathsf{D}=\mathrm{vw}$ as an operator is a two-step process: first take the dot product with $\mathrm{w}$, then secondly scale $\mathrm{v}$ by the scalar result of the first step. This is a purely geometric, coordinate-free interpretation.</p>
+<p>The two-step process of taking a dot product and then scaling a vector is by no means the only operation we can apply to vectors using dyad operators. The caveat is that, in order to access these additional operations, we either need to sum together more than one outer-product dyad (such sums of dyads are referred to as <em>dyadics</em>), or, we can decompose a single dyad into components that embody these more pure operations. By &quot;decompose into components&quot; we specifically mean coordinate-free components, since we've already seen how to decompose a dyad into coordinate-dependent (basis) components like $\mathrm{ii}$, $\mathrm{ij}$, etc., as well as the $\mathsf{e}_i$ basis set we derived earlier.</p>
+<p>In fact, the set of nine $\mathsf{e}_i$ basis elements from earlier is the key to framing the &quot;pure&quot; dyad operations. These pure operations are:</p>
+<ol>
+<li>
+<p>Isotropic scaling: the vector gets scaled by a value irrespective of its direction</p>
+</li>
+<li>
+<p>Asymmetric rotation: the vector changes its direction about an axis of rotation, with scaling in the plane perpendicular to that axis as it rotates</p>
+</li>
+<li>
+<p>Deviatoric scaling: relative to an orthonormal frame of three directions, vector components in up to two axes can scale independently and the third component scales in a compensating fashion</p>
+</li>
+</ol>
+<p>Let's now examine each of these in greater detail.</p>
+<h3 id="isotropic-scaling">Isotropic scaling</h3>
+<p>This operation is fully embodied by the first basis dyad (and its component) that we derived:</p>
+<p>$$D_1\mathsf{e}_1=$$
+$$\frac{1}{3}(v_x w_x+v_y w_y+v_z w_z)(\mathrm{ii}+\mathrm{jj}+\mathrm{kk})=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$$</p>
+<p>There are two simplifications we've made here.</p>
+<p>First, the scalar component is literally just $1/3$ times the dot product $\mathrm{v}\cdot\mathrm{w}$. This shows that the dot (inner) product of two vectors is in fact just a subcomponent of the outer product of those vectors.</p>
+<p>The second simplification we made was in defining the <em>identity</em> dyadic:</p>
+<p>$$\mathsf{i}=\mathrm{ii}+\mathrm{jj}+\mathrm{kk}$$</p>
+<p>which has the special property of mapping any vector onto itself:</p>
+<p>$$\mathsf{i}\cdot\mathrm{v}=\mathrm{v}$$</p>
+<p>The identity dyadic is often represented with an uppercase &quot;I&quot;, but we've chosen lowercase here to help differentiate it with the moment of interia dyadic discussed later.</p>
+<p>This is also a good place to introduce the shorthand notation $\mathrm{v}^2=\mathrm{vv}$ which denotes the outer product of a vector with itself. Using this notation the identity dyadic is written:</p>
+<p>$$\mathsf{i}=\mathrm{i}^2+\mathrm{j}^2+\mathrm{k}^2$$</p>
+<p><em>Isotropic</em> means &quot;the same in all directions&quot;. This so-called <em>isotropic component</em> of the dyad $\mathsf{D}=\mathrm{vw}$ represents an operator that (via dot producting) scales a vector $\mathrm{u}$ by the constant value $\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})$ irrespective of its direction:</p>
+<p>$$\mathsf{D}_{\mathrm{iso}}\cdot\mathrm{u}=D_1\mathsf{e}_1\cdot\mathrm{u}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}\cdot\mathrm{u}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathrm{u}$$</p>
+<h3 id="vector-cross-product">Vector cross product</h3>
+<p>Besides the dot product and outer product, another way a vector $\mathrm{v}$ can operate on a vector $\mathrm{w}$ is the <em>cross product</em>. In Cartesian coordinates, the cross product is represented as:</p>
+<p>$$\mathrm{v}\times\mathrm{w}=$$
+$$(v_y w_z - v_z w_y)\mathrm{i}+(v_z w_x -v_x w_z)\mathrm{j}+(v_x w_y -v_y w_x)\mathrm{k}$$</p>
+<p>which can be derived from the outer products of the Cartesian basis vectors:</p>
+<p>$$\mathrm{i}\times\mathrm{i}=\mathrm{j}\times\mathrm{j}=\mathrm{k}\times\mathrm{k}=0$$
+$$\mathrm{i}\times\mathrm{j}=\mathrm{k}\quad\mathrm{j}\times\mathrm{i}=-\mathrm{k}$$
+$$\mathrm{j}\times\mathrm{k}=\mathrm{i}\quad\mathrm{k}\times\mathrm{j}=-\mathrm{i}$$
+$$\mathrm{k}\times\mathrm{i}=\mathrm{j}\quad\mathrm{i}\times\mathrm{k}=-\mathrm{j}$$</p>
+<p>Geometrically, the cross product $\mathrm{v}\times\mathrm{w}$ is a vector orthogonal to the plane spanned by $\mathrm{v}$ and $\mathrm{w}$, whose direction is determined by the &quot;right hand rule&quot; and whose magnitude is</p>
+<p>$$|\mathrm{v}\times\mathrm{w}|=|\mathrm{v}||\mathrm{w}| \sin \alpha$$</p>
+<p>where $\alpha$ is the angle between $\mathrm{v}$ and $\mathrm{w}$.</p>
+<h3 id="asymmetric-rotation">Asymmetric rotation</h3>
+<p>Now, the astute reader will have noticed that the components of $\mathrm{v}\times\mathrm{w}$ are the same as the $D_7,D_8,D_9$ dyad components we derived earlier. Specifically, one can see that:</p>
+<p>$$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{\sqrt{2}}(\mathsf{e}_7\mathrm{k}+\mathsf{e}_8\mathrm{i}+\mathsf{e}_9\mathrm{j})\cdot(\mathrm{v}\times\mathrm{w})$$</p>
+<p>This quantity is referred to as the <em>asymmetric component</em> of the dyad $\mathsf{D}=\mathrm{vw}$. Indeed, we had already associated $D_7,D_8,D_9$ with the asymmetric part of the dyad in our initial discussion of the $D_i\mathsf{e}_i$ basis decomposition.</p>
+<p>The terms $\mathsf{e}_7\mathrm{k}$, $\mathsf{e}_8\mathrm{i}$, and $\mathsf{e}_9\mathrm{j}$ (and their sum) are our first encounter with <em>third-order tensors</em>, meaning tensors that have three indices. If we expand it out in terms of the basis vectors:</p>
+<p>$$\frac{1}{\sqrt{2}}(\mathsf{e}_7\mathrm{k}+\mathsf{e}_8\mathrm{i}+\mathsf{e}_9\mathrm{j})=$$
+$$\frac{1}{2}[(\mathrm{ij} -\mathrm{ji})\mathrm{k}+(\mathrm{jk} - \mathrm{kj})\mathrm{i}+(\mathrm{ki} -\mathrm{ik})\mathrm{j}]$$</p>
+<p>The third-order tensor above in square brackets is known as the <em>Levi-Civita tensor</em>, represented as $\mathcal{E}$. We use caligraphic typeface for representing third-order tensors in an index-free manner.</p>
+<p>To summarize:</p>
+<p>$$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{2} \mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})$$</p>
+<p>As an important aside: if we instead start with $\mathcal{E}$ and dot product it with two vectors  $\mathrm{a}$ and $\mathrm{b}$ in sequence, we find:</p>
+<p>$$(\mathcal{E}\cdot\mathrm{a})\cdot\mathrm{b}=$$
+$$(a_y b_z - a_z b_y)\mathrm{i}+(a_z b_x -a_x b_z)\mathrm{j}+(a_x b_y -a_y b_x)\mathrm{k}$$
+$$=\mathrm{a}\times\mathrm{b}$$</p>
+<p>Taken together with the earlier equations, this reveals that dot-producting the antisymmetric component of a dyad $\mathsf{D}=\mathrm{vw}$ with a vector $\mathrm{u}$ is equivalent to:</p>
+<p>$$\mathsf{D}_{\mathrm{anti}}\cdot\mathrm{u}=\frac{1}{2}(\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}))\cdot\mathrm{u}=\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$</p>
+<p>This operation <em>rotates</em> the vector $\mathrm{u}$ by 90 degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$.</p>
+<h3 id="deviatoric-scaling-and-eigenspaces">Deviatoric scaling and eigenspaces</h3>
+<p>So far, we've decomposed the outer product $\mathrm{vw}$ into two geometrically meaningful components,</p>
+<p>$$\mathsf{D}=\mathrm{vw}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} + \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})+...$$</p>
+<p>namely, an isotropic scaling component and an antisymmetric rotation component.</p>
+<p>The final component in our purely geometric decomposition, known as the <em>deviatoric scaling</em> component, encapsulates the remaining five dyad basis elements $D_2$, $D_3$, $D_4$, $D_5$, and $D_6$.</p>
+<p>Let's return to the $3\times 3$ matrix representation, noting that</p>
+<p>$$
+\begin{aligned}
+\mathsf e_2 &amp;= \frac{1}{\sqrt2}
+\begin{pmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp;-1 &amp; 0\\
+0 &amp; 0 &amp; 0
+\end{pmatrix}\quad
+\mathsf e_3 = \frac{1}{\sqrt6}
+\begin{pmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp;-2
+\end{pmatrix}\\[6pt]
+\mathsf e_4 &amp;= \frac{1}{\sqrt2}
+\begin{pmatrix}
+0 &amp; 1 &amp; 0\\
+1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0
+\end{pmatrix}\quad
+\mathsf e_5 = \frac{1}{\sqrt2}
+\begin{pmatrix}
+0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0
+\end{pmatrix}\\[6pt]
+\mathsf e_6 &amp;= \frac{1}{\sqrt2}
+\begin{pmatrix}
+0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; 0
+\end{pmatrix}
+\end{aligned}$$</p>
+<p>From these, we can see that</p>
+<p>$$
+\mathsf{D}_{\mathrm{dev}}=D_2\mathsf{e}_2+D_3\mathsf{e}_3+D_4\mathsf{e}_4+D_5\mathsf{e}_5+D_6\mathsf{e}_6
+$$
+$$
+=\frac{1}{\sqrt2}
+\begin{pmatrix}
+\dfrac{D_3}{\sqrt3}+ D_2 &amp; D_4 &amp; D_6\\[6pt]
+D_4 &amp;  \dfrac{D_3}{\sqrt3}-D_2 &amp; D_5\\[6pt]
+D_6 &amp; D_5 &amp; -\dfrac{2D_3}{\sqrt3}
+\end{pmatrix}
+$$</p>
+<p>This is a <em>traceless symmetric</em> matrix. Traceless means the diagonal components sum to zero. Even though it's represented as a 9-component matrix, there are still only 5 independent values that specify it.</p>
+<p>But what does the deviatoric component actually do from a geometric operator standpoint? The key lies in the concept of an <em>eigenspace</em>. Specifically, any traceless symmetric $3\times3$ matrix can be decomposed into three orthonormal <em>eigenvectors</em>, and there are two independent <em>eigenvalues</em>.</p>
+<p>Eigenvectors and eigenvalues carry a native geometric meaning in terms of their transformation of some vector $\mathrm{u}$. Each eigenvector specifies a direction along which the component of $\mathrm{u}$ is scaled by a constant value, namely the eigenvalue associated with that eigenvector. If the eigenvectors are denoted by $\mathrm{E}_1$, $\mathrm{E}_2$, $\mathrm{E}_3$ and the eigenvalues by $\lambda_1$, $\lambda_2$, $\lambda_3$, then this is expressed as:</p>
+<p>$$\mathsf{D}_\mathrm{dev}\cdot\mathrm{u}=(\lambda_1\mathrm{E}_1\mathrm{E}_1+\lambda_2\mathrm{E}_2\mathrm{E}_2+\lambda_3\mathrm{E}_3\mathrm{E}_3)\cdot\mathrm{u}$$
+$$=\lambda_1\mathrm{E}_1(\mathrm{E}_1\cdot\mathrm{u})+\lambda_2\mathrm{E}_2(\mathrm{E}_2\cdot\mathrm{u})+\lambda_3\mathrm{E}_3(\mathrm{E}_3\cdot\mathrm{u})$$</p>
+<p>Note that the set of orthonormal eigenvectors completely span our three dimensions and therefore can construct the identity tensor:</p>
+<p>$$\mathsf{i}=\mathrm{E}_1^2+\mathrm{E}_2^2+\mathrm{E}_3^2$$</p>
+<p>The tracelessness property,</p>
+<p>$$\lambda_1+\lambda_2+\lambda_3=0$$</p>
+<p>is important because, geometrically, it means that the deviatoric operator can scale only up to two dimensions independently, the third dimension must be scaled in such a way to preserve the tracelessness. If we were to apply the deviatoric to a set of three or more vectors defining a <em>volume</em>, we'd find that the operator is <em>volume-preserving</em>. There is more to come on vector-derived volumes later in this text.</p>
+<p>Unlike coordinate basis vectors, which are an arbitrarily defined external frame for our three dimensions, the eigenvectors are an orthonormal frame <em>intrinsic</em> to the dyad $\mathsf{D}$. The eigenspace is just as intrinsic to the dyad as a magnitude is to a vector.</p>
+<p>We <em>could</em> technically compute the eigenspace for the $3\times 3$ matrix specified above, in terms of the $D_i$ components, using a particular algorithm for this purpose from linear algebra. However, that general closed form solution is very complicated and would not be easy to interpret or work with. Instead, we can reason what the eigenspace is from some key observations.</p>
+<p>To begin, recall that the symmetric part of the dyad is</p>
+<p>$$\mathsf{D}_\mathrm{symm}=\frac{1}{2}(\mathrm{vw}+\mathrm{wv})$$</p>
+<p>Now, since the deviatoric is the symmetric part minus the $D_1\mathsf{e}_1$ (isotropic scaling) component,</p>
+<p>$$\mathsf{D}_\mathrm{dev}=\frac{1}{2}(\mathrm{vw}+\mathrm{wv})-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$$</p>
+<p>From here we can discover our first eigenvector, $\mathrm{E}_1$. <em>If</em> $\mathrm{E}_1$ were orthogonal to both $\mathrm{v}$ and $\mathrm{w}$, <em>then</em> $\mathrm{v}\cdot\mathrm{E}_1=\mathrm{w}\cdot\mathrm{E}_1=0$, and:</p>
+<p>$$
+\begin{aligned}
+\mathsf{D}_\mathrm{dev}\cdot\mathrm{E}_1&amp;=\frac{1}{2}(\mathrm{v}(\mathrm{w}\cdot\mathrm{E}_1)+\mathrm{w}(\mathrm{v}\cdot\mathrm{E}_1))-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})(\mathsf{i}\cdot\mathrm{E}_1)\\
+&amp;=\frac{1}{2}(\mathrm{v}(0)+\mathrm{w}(0))-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})(\mathrm{E}_1)\\
+&amp;=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathrm{E}_1
+\end{aligned}
+$$</p>
+<p>This says that $\mathsf{D}_\mathrm{dev}$ as an operator scales $\mathrm{E}_1$ by the constant $-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})$. Therefore, $\mathrm{E}_1$ is <em>by definition</em> an eigenvector of the deviatoric component of $\mathsf{D}$. Since this was based on the assumption that $\mathrm{E}_1$ is orthogonal to both $\mathrm{v}$ and $\mathrm{w}$, a natural choice (with normalization) is their cross product:</p>
+<p>$$\mathrm{E}_1=\llbracket \mathrm{v}\times\mathrm{w} \rrbracket,$$</p>
+<p>(though this doesn't work in the special case of $\mathrm v$ and $\mathrm w$ being collinear or antiparallel-- we'll address that later). We've also determined that the associated eigenvector is</p>
+<p>$$\lambda_1=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w}).$$</p>
+<p>The other two eigenvectors must be orthogonal to $\mathrm{E}_1$ and therefore reside in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. This means they must be linear combinations of $\mathrm{v}$ and $\mathrm{w}$, i.e.,</p>
+<p>$$
+\mathrm{E}_2=a_2 \mathrm{v}+b_2 \mathrm{w} \\
+\mathrm{E}_3=a_3 \mathrm{v}+b_3 \mathrm{w}
+$$</p>
+<p>and we want to solve for the coefficients $a_2,b_2,a_3,b_3$. Let's apply the deviatoric operator to a generic vector $\mathrm{x}=a \mathrm{v}+b\mathrm{w}$ in this plane space:</p>
+<p>$$\mathsf{D}_\mathrm{dev}\cdot\mathrm{x}=\left(\frac{1}{2}(\mathrm{vw}+\mathrm{wv})-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}\right)\cdot(a \mathrm{v}+b \mathrm{w})$$</p>
+<p>Distributing out the dot product across all the terms eventually gives</p>
+<p>$$\mathsf{D}_\mathrm{dev}\cdot\mathrm{x}=$$
+$$\left(\frac{a (\mathrm{v}\cdot\mathrm{w})}{6}+\frac{b |\mathrm{w}|^2}{2}\right)\mathrm{v}+\left(\frac{b (\mathrm{v}\cdot\mathrm{w})}{6}+\frac{a |\mathrm{v}|^2}{2}\right)\mathrm{w}$$</p>
+<p>For the special case where $\mathrm{x}$ is an eigenvector with eigenvalue $\lambda$, we know that</p>
+<p>$$\mathsf{D}_\mathrm{dev}\cdot\mathrm{x}=\lambda \mathrm{x}= \lambda (a \mathrm{v}+b \mathrm{w})$$</p>
+<p>When combined with the previous vector equation, we obtain a system of two scalar equations (the components of $\mathrm{v}$ and $\mathrm{w}$):</p>
+<p>$$
+\lambda a =\frac{a (\mathrm{v}\cdot\mathrm{w})}{6}+\frac{b |\mathrm{w}|^2}{2}
+$$
+$$
+\lambda b =\frac{b (\mathrm{v}\cdot\mathrm{w})}{6}+\frac{a |\mathrm{v}|^2}{2}
+$$</p>
+<p>Combining these by eliminating $\lambda$ and simplifying gives</p>
+<p>$$
+\left(\frac{a}{b}\right)^2=\left(\frac{|\mathrm{w}|}{|\mathrm{v}|}\right)^2
+$$</p>
+<p>Taking the square root of both sides,</p>
+<p>$$\frac{a}{b}=\pm\frac{|\mathrm{w}|}{|\mathrm{v}|}$$</p>
+<p>At this point we recognize the two possible values indicated by the &quot;$\pm$&quot; correspond to the two eigenvectors $\mathrm{E}_2$ and $\mathrm{E}_3$, i.e.,</p>
+<p>$$\frac{a_2}{b_2}=\frac{|\mathrm{w}|}{|\mathrm{v}|} \quad\quad \frac{a_3}{b_3}=-\frac{|\mathrm{w}|}{|\mathrm{v}|}$$</p>
+<p>Inserting these into the above equation with $\lambda$ yields the eigenvalues:</p>
+<p>$$\lambda_2=\frac{\mathrm{v}\cdot\mathrm{w}}{6}+\frac{|\mathrm{v}||\mathrm{w}|}{2}\quad\quad \lambda_3=\frac{\mathrm{v}\cdot\mathrm{w}}{6}-\frac{|\mathrm{v}||\mathrm{w}|}{2}$$</p>
+<p>Notice that $\lambda_1+\lambda_2+\lambda_3=0$, as expected since the deviatoric is <em>traceless</em>.</p>
+<p>Using the component-wise set of equations, we can solve to find</p>
+<p>$$\begin{array}{cc} a_2=|\mathrm{w}| &amp;&amp; b_2=\mathrm{v} \\ a_3=|\mathrm{w}| &amp;&amp; b_3=-|\mathrm{v}| \end{array}$$</p>
+<p>With normalization, the eigenvectors are therefore</p>
+<p>$$\mathrm{E}_2=\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket \quad\quad \mathrm{E}_3=\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket $$</p>
+<p>Bringing it all together, we can now fully expand the dyad into the isotropic scaling, antisymmetric rotational, and deviatoric symmetric components:</p>
+<p>$$\begin{aligned}\mathsf{D}&amp;=\mathrm{vw}\\ &amp;=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} + \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})\\ &amp;\quad -\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\times\mathrm{w}\rrbracket ^2 \\ &amp;\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}+\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket ^2 \\ &amp;\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}-\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket ^2\end{aligned}$$</p>
+<h3 id="special-case-of-collinear-vectors">Special case of collinear vectors</h3>
+<p>Recall that when we were deriving the eigenvectors of the deviatoric symmetric part, we made an assumption that $\mathrm v$ and $\mathrm w$ have a defined cross-product, which is only true if they are neither collinear (pointing in the same direction) nor antiparallel (pointing in opposite directions). In the special cases of them being collinear or antiparallel, the deviatoric's eigenspace has a different structure and this will affect how we write the decomposition.</p>
+<p>If they are collinear or antiparallel, then we can actually find <em>two</em> eigenvectors $\mathrm{E}'_1$ and $\mathrm{E}'_2$ which are orthogonal to both $\mathrm v$ and $\mathrm w$, using the same reasoning that led us to characterize $\mathrm{E}_1$ previously. As with our original $\mathrm{E}_1$, these two eigenvectors must have an eigenvalue of</p>
+<p>$$\lambda'_1=\lambda'_2=-\frac{1}{3}(\mathrm{v}\cdot \mathrm{w})$$</p>
+<p>The third eigenvector in this special case, $\mathrm{E}'_3$, is orthogonal to the first two eigenvectors and therefore collinear or antiparallel with $\mathrm v$ and $\mathrm w$. The normalization makes it straightforward to just use</p>
+<p>$$\mathrm{E}'_3=\llbracket \mathrm{v} \rrbracket$$</p>
+<p>and the eigenvalue is constrainted by the tracelessness property to be</p>
+<p>$$\lambda'_3=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})$$</p>
+<p>We don't actually have to define the $\mathrm{E}'_1$ and $\mathrm{E}'_2$ eigenvectors explicitly, because we can project onto the plane in which they reside via the operator</p>
+<p>$$\mathsf{i}-\llbracket \mathrm{v} \rrbracket^2$$</p>
+<p>and then scale by their common eigenvalue. Putting it all together, the deviatoric symmetric part for the case of collinear or antiparallel $\mathrm v$ and $\mathrm w$ is</p>
+<p>$$\mathsf{D}_\mathrm{dev}=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v} \rrbracket^2-\frac{1}{3}(\mathrm{v}\cdot \mathrm{w})(\mathsf{i}-\llbracket \mathrm{v} \rrbracket^2)$$</p>
+<p>However, notice that when we add in $\mathsf{D}_\mathrm{iso}=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$ (also note the antisymmetric part is zero in this special case), we reduce to</p>
+<p>$$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbracket^2$$</p>
+<p>Although keeping the isotropic and deviatoric parts separated is still instructive.</p>
+<h3 id="double-dot-product">Double dot product</h3>
+<p>So far we've taken the approach of trying to understand the nature of the dyad $\mathsf{D}=\mathrm{vw}$ in terms of geometrically meaningful components and with regard to how it behaves as an operator. A different perspective is to instead examine what happens when we operate on the dyad itself with a different operator.</p>
+<p>Before doing this however, we must introduce the <em>double dot product</em>. Just as the regular dot product denotes contraction of a single index between two tensors, the double dot product &quot;$:$&quot; denotes a contraction between two indices:</p>
+<p>$$\mathrm{v}\cdot\mathrm{w}=v_i w_i$$
+$$\mathsf{A}:\mathsf{B}=A_{ij}B_{ji}$$</p>
+<p>The index order is important. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation. Then continue working outward until all the &quot;dots&quot; have been accounted for.</p>
+<p>Taking the identity tensor $\mathsf{i}$ and the Levi-Civita tensor $\mathcal{E}$ as operators, the double dot product provides some important relationships:</p>
+<p>$$\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$$
+$$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
+<p>We already had discovered previously that the dot product $\mathrm{v}\cdot\mathrm{w}$ and the cross product $\mathrm{v}\times\mathrm{w}$ are intrinsic to the isotropic and antisymmetric components of the dyad, so it shouldn't be too surprising that we can pull these entities out. It is striking however that they emerge with such simple operations.</p>
+<p>A few more interesting relationships produced by the double dot product are:</p>
+<p>$$\mathcal{E}:\mathsf{i}=\mathsf{i}:\mathcal{E}=0$$</p>
+<p>$$\mathcal{E}:\mathcal{E}=-2\mathsf{i}$$</p>
+<p>Lastly, the <em>trace</em> of a matrix $\mathsf{A}$, a notable subject in linear algebra, is also expressable with the double dot product:</p>
+<p>$$\mathrm{trace}(\mathsf{A})=\mathsf{i}:\mathsf{A}.$$</p>
+<h3 id="antisymmetrizer-and-related-four-index-tensors">Antisymmetrizer and related four-index tensors</h3>
+<p>Earlier we saw that the antisymmetric part of the dyad $\mathsf{D}=\mathrm{vw}$ can be written</p>
+<p>$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$</p>
+<p>By substituting the equivalent expression involving the double dot product, this takes the form:</p>
+<p>$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}\mathcal{E}\cdot(\mathcal{E}:\mathrm{v}\mathrm{w})=\left(\frac{\mathcal{E}\cdot\mathcal{E}}{2}\right):\mathrm{v}\mathrm{w}=\mathfrak{A}:\mathrm{v}\mathrm{w},$$</p>
+<p>where we have defined a four-index tensor $\mathfrak{A}=\mathcal{E}\cdot\mathcal{E}/2$. This is known as the <em>antisymmetrizer</em> tensor. We use Fraktur typeface to represent four-index tensors in the index-free manner.</p>
+<p>The antisymmetrizer tensor gives the antisymmetric part of <em>any</em> general dyadic $\mathsf{A}$, not just pure dyads:</p>
+<p>$$\mathsf{A}_\mathrm{anti}=\mathfrak{A}:\mathsf{A}.$$</p>
+<p>There are a few other four-index tensors that relate to the antisymmetrizer. The first is the <em>symmetrizer</em> $\mathfrak{S}$, whose function can be directly inferred based on the earlier statement that any dyadic is the sum of its symmetric and antisymmetric parts:</p>
+<p>$$\mathsf{A}_\mathrm{symm}=\mathfrak{S}:\mathsf{A}=\mathsf{A}-\mathfrak{A}:\mathsf{A}.$$</p>
+<p>We can &quot;factor out&quot; the $\mathsf{A}$ in the right side of the above equation by introducing an four-index identity tensor $\mathfrak{I}$ which satisfies $\mathfrak{I}:\mathsf{A}=\mathsf{A}$ for any $\mathsf{A}$:</p>
+<p>$$\mathfrak{S}:\mathsf{A}=\mathsf{A}-\mathfrak{A}:\mathsf{A}=(\mathfrak{I}-\mathfrak{A}):\mathsf{A},$$</p>
+<p>or more succinctly:</p>
+<p>$$\mathfrak{S}=\mathfrak{I}-\mathfrak{A}.$$</p>
+<p>Note that $\mathfrak{I}$ is an identity operator only when used with the double dot product, analogous to how $\mathsf{i}$ is an identity operator only when used with the single dot product.</p>
+<p>The last four-index tensor in this set pertains to the fact that the symmetric part minus the antisymmetric part is equal to the transpose:</p>
+<p>$$\mathsf{A}^{\mathsf{T}}=\mathfrak{S}:\mathsf{A}-\mathfrak{A}:\mathsf{A}=(\mathfrak{S}-\mathfrak{A}):\mathsf{A}=\mathfrak{T}:\mathsf{A},$$</p>
+<p>or equivalently,</p>
+<p>$$\mathfrak{T}=\mathfrak{S}-\mathfrak{A},$$</p>
+<p>which is the <em>transposer</em> tensor.</p>
+<p>Among these four-index tensors, we've thus far only expressed $\mathfrak{A}$ in terms of lower-index tensors (namely, in terms of the three-index $\mathcal{E}$). But all of them can be written in terms of unit-basis-vector outer products in the following manner:</p>
+<p>$$\mathfrak{A}=\frac{1}{2}[\mathrm{ij}(\mathrm{ji}-\mathrm{ij})+\mathrm{jk}(\mathrm{kj}-\mathrm{jk})+\mathrm{ki}(\mathrm{ik}-\mathrm{ki})+\cdots]$$</p>
+<p>$$\mathfrak{S}=\mathrm{iiii}+\mathrm{jjjj}+\mathrm{kkkk}+\frac{1}{2}[\mathrm{ij}(\mathrm{ji}+\mathrm{ij})+\cdots)]$$</p>
+<p>$$\mathfrak{I}=\mathrm{iiii}+\mathrm{ijji}+\mathrm{ikki}+\cdots$$</p>
+<p>$$\mathfrak{T}=\mathrm{iiii}+\mathrm{ijij}+\mathrm{ikik}+\cdots$$</p>
+<h3 id="dyad-operations-revisited-with-four-index-tensors">Dyad operations revisited with four-index tensors</h3>
+<p>Previously we showed that a dyad expands out into three distinct, pure operations with physical interpretation: isotropic scaling, asymmetric rotation, and deviatoric scaling. The double dot product along with four-index tensors are a convenient way of specializing or filtering the original dyad operator into one or more of these pure operations. We already noted this for the antisymmetric operation:</p>
+<p>$$\mathsf{D}_\mathrm{anti}=\mathfrak{A}:\mathsf{D}=\mathfrak{A}:\mathrm{vw}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$</p>
+<p>Expanding upon the earlier interpretation that $\mathsf{D}$ is an operator which can operate on the vector $\mathrm{u}$, this operation being written as $\mathsf{D}\cdot\mathrm{u}$, then we can similarly write</p>
+<p>$$(\mathfrak{A}:\mathsf{D})\cdot\mathrm{u}=\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$</p>
+<p>where $(\mathfrak{A}:\mathsf{D})$ is the effective operator formed by altering the original operator $\mathsf{D}$.</p>
+<p>For the symmetric part, we can separate out the isotropic (non-zero trace) part from the deviatoric (traceless) part:</p>
+<p>$$\mathsf{D}_{\mathrm{symm}}=\mathfrak{S}:\mathsf{D}=\frac{1}{3}\mathsf{i}\mathsf{i}:\mathsf{D}+\left(\mathfrak{S}-\frac{1}{3}\mathsf{i}\mathsf{i}\right):\mathsf{D}$$</p>
+<p>$$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
+<p>$$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
+<p>Here we used the earlier-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$.</p>
+<script src="file:///home/awaszczak/Documents/preview//mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
+
+
+<script src="file:///home/awaszczak/Documents/preview//prism.js"></script>
+
+      
+  <script>
+  document.querySelectorAll(".language-mermaid").forEach(function(entry) {
+      entry.className="mermaid"
+});
+  mermaid.initialize({startOnLoad:true}, ".language-mermaid");
+  </script>
+
+<script>
+ window.addEventListener('load', function () {
+        flutternotable.postMessage('');
+});
+</script>
+
+  </body>
+  </html>
