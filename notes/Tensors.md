@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-05T15:34:42.679745"
+modified: "2026-06-10T19:49:30.132200"
 title: "Tensors"
 ---
 
@@ -634,4 +634,4 @@ $$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$
 
 $$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$
 
-Here we used the earlier-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$.
+Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$.
