@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-11T16:13:50.008660"
+modified: "2026-06-11T16:31:47.861021"
 title: "Tensors"
 ---
 
@@ -531,21 +531,37 @@ $$\mathsf{D}_\mathrm{dev}=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \math
 
 However, notice that when we add in $\mathsf{D}_\mathrm{iso}=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$ (also note the antisymmetric part is zero in this special case), we reduce to
 
-$$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbracket^2$$
+$$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbracket^2,$$
 
-Although keeping the isotropic and deviatoric parts separated is still instructive.
+although keeping the isotropic and deviatoric parts separated is still instructive.
 
 ### Special case of orthogonal vectors
 
 For the case where $\mathrm{v}$ and $\mathrm{w}$ are orthogonal, all terms that include $\mathrm{v}\cdot\mathrm{w}$ go to zero, and the expansion specializes to:
 
-$$\mathsf{D}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right)$$
+$$\mathsf{D}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$
 
-Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:
+Note that the isotropic term in particular has disappeared entrely. Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:
 
-$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right)$$
+$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$
 
-All three of the terms serve to project any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is _always_ true for the dyad $\mathrm{vw}$, its net effect is to project specifically along the direction of $\llbracket\mathrm{v}\rrbracket$ (despite the above form not making this very obvious).
+Collectively the three terms serve to map (project and scale) any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is always true for the dyad $\mathrm{vw}$, the final result is always parallel to v, since
+
+$$\mathsf{D}\cdot \mathrm{u}=\mathrm{vw}\cdot\mathrm{u}=\mathrm{v}(\mathrm{w}\cdot\mathrm{u}),$$
+
+even though the above decomposition obscures this.
+
+Moreover, the following three unit vectors form an orthonormal basis:
+
+$$\mathrm{e}_1=\llbracket\mathrm{v}\times \mathrm{w}\rrbracket$$
+$$\mathrm{e}_2=\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket$$
+$$\mathrm{e}_3=\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket,$$
+
+in terms of which the decomposition becomes the rather compact:
+
+$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\mathrm{e}_1 + \mathrm{e}_2^2-\mathrm{e}_3^2\right).$$
+
+
 
 ### Double dot product
 
