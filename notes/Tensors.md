@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-10T19:49:30.132200"
+modified: "2026-06-11T09:55:55.958227"
 title: "Tensors"
 ---
 
@@ -323,7 +323,7 @@ To summarize:
 
 $$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{2} \mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})$$
 
-As an important aside: if we instead start with $\mathcal{E}$ and dot product it with two vectors  $\mathrm{a}$ and $\mathrm{b}$ in sequence, we find:
+As an important aside: if we instead start with $\mathcal{E}$ and dot product it with two vectors $\mathrm{a}$ and $\mathrm{b}$ in sequence, we find:
 
 $$(\mathcal{E}\cdot\mathrm{a})\cdot\mathrm{b}=$$
 $$(a_y b_z - a_z b_y)\mathrm{i}+(a_z b_x -a_x b_z)\mathrm{j}+(a_x b_y -a_y b_x)\mathrm{k}$$
@@ -333,7 +333,7 @@ Taken together with the earlier equations, this reveals that dot-producting the 
 
 $$\mathsf{D}_{\mathrm{anti}}\cdot\mathrm{u}=\frac{1}{2}(\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}))\cdot\mathrm{u}=\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$
 
-This operation _rotates_ the vector $\mathrm{u}$ by 90 degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$.
+This operation _rotates_ the vector $\mathrm{u}$ by 90 degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$. The scaling is isolated to the component of $\mathrm{u}$ which lies in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$.
 
 ### Deviatoric scaling and eigenspaces
 

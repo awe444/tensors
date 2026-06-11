@@ -278,13 +278,13 @@ $$\frac{1}{2}[(\mathrm{ij} -\mathrm{ji})\mathrm{k}+(\mathrm{jk} - \mathrm{kj})\m
 <p>The third-order tensor above in square brackets is known as the <em>Levi-Civita tensor</em>, represented as $\mathcal{E}$. We use caligraphic typeface for representing third-order tensors in an index-free manner.</p>
 <p>To summarize:</p>
 <p>$$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{2} \mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})$$</p>
-<p>As an important aside: if we instead start with $\mathcal{E}$ and dot product it with two vectors  $\mathrm{a}$ and $\mathrm{b}$ in sequence, we find:</p>
+<p>As an important aside: if we instead start with $\mathcal{E}$ and dot product it with two vectors $\mathrm{a}$ and $\mathrm{b}$ in sequence, we find:</p>
 <p>$$(\mathcal{E}\cdot\mathrm{a})\cdot\mathrm{b}=$$
 $$(a_y b_z - a_z b_y)\mathrm{i}+(a_z b_x -a_x b_z)\mathrm{j}+(a_x b_y -a_y b_x)\mathrm{k}$$
 $$=\mathrm{a}\times\mathrm{b}$$</p>
 <p>Taken together with the earlier equations, this reveals that dot-producting the antisymmetric component of a dyad $\mathsf{D}=\mathrm{vw}$ with a vector $\mathrm{u}$ is equivalent to:</p>
 <p>$$\mathsf{D}_{\mathrm{anti}}\cdot\mathrm{u}=\frac{1}{2}(\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}))\cdot\mathrm{u}=\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$</p>
-<p>This operation <em>rotates</em> the vector $\mathrm{u}$ by 90 degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$.</p>
+<p>This operation <em>rotates</em> the vector $\mathrm{u}$ by 90 degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$. The scaling is isolated to the component of $\mathrm{u}$ which lies in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$.</p>
 <h3 id="deviatoric-scaling-and-eigenspaces">Deviatoric scaling and eigenspaces</h3>
 <p>So far, we've decomposed the outer product $\mathrm{vw}$ into two geometrically meaningful components,</p>
 <p>$$\mathsf{D}=\mathrm{vw}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} + \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})+...$$</p>
