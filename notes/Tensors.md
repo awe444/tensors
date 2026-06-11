@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-11T09:55:55.958227"
+modified: "2026-06-11T16:13:50.008660"
 title: "Tensors"
 ---
 
@@ -535,6 +535,18 @@ $$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbrac
 
 Although keeping the isotropic and deviatoric parts separated is still instructive.
 
+### Special case of orthogonal vectors
+
+For the case where $\mathrm{v}$ and $\mathrm{w}$ are orthogonal, all terms that include $\mathrm{v}\cdot\mathrm{w}$ go to zero, and the expansion specializes to:
+
+$$\mathsf{D}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right)$$
+
+Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:
+
+$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right)$$
+
+All three of the terms serve to project any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is _always_ true for the dyad $\mathrm{vw}$, its net effect is to project specifically along the direction of $\llbracket\mathrm{v}\rrbracket$ (despite the above form not making this very obvious).
+
 ### Double dot product
 
 So far we've taken the approach of trying to understand the nature of the dyad $\mathsf{D}=\mathrm{vw}$ in terms of geometrically meaningful components and with regard to how it behaves as an operator. A different perspective is to instead examine what happens when we operate on the dyad itself with a different operator.
@@ -562,7 +574,6 @@ $$\mathcal{E}:\mathcal{E}=-2\mathsf{i}$$
 Lastly, the _trace_ of a matrix $\mathsf{A}$, a notable subject in linear algebra, is also expressable with the double dot product:
 
 $$\mathrm{trace}(\mathsf{A})=\mathsf{i}:\mathsf{A}.$$
-
 
 ### Antisymmetrizer and related four-index tensors
 

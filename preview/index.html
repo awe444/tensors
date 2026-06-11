@@ -415,6 +415,12 @@ $$</p>
 <p>However, notice that when we add in $\mathsf{D}_\mathrm{iso}=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$ (also note the antisymmetric part is zero in this special case), we reduce to</p>
 <p>$$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbracket^2$$</p>
 <p>Although keeping the isotropic and deviatoric parts separated is still instructive.</p>
+<h3 id="special-case-of-orthogonal-vectors">Special case of orthogonal vectors</h3>
+<p>For the case where $\mathrm{v}$ and $\mathrm{w}$ are orthogonal, all terms that include $\mathrm{v}\cdot\mathrm{w}$ go to zero, and the expansion specializes to:</p>
+<p>$$\mathsf{D}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right)$$</p>
+<p>Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:</p>
+<p>$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right)$$</p>
+<p>All three of the terms serve to project any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is <em>always</em> true for the dyad $\mathrm{vw}$, its net effect is to project specifically along the direction of $\llbracket\mathrm{v}\rrbracket$ (despite the above form not making this very obvious).</p>
 <h3 id="double-dot-product">Double dot product</h3>
 <p>So far we've taken the approach of trying to understand the nature of the dyad $\mathsf{D}=\mathrm{vw}$ in terms of geometrically meaningful components and with regard to how it behaves as an operator. A different perspective is to instead examine what happens when we operate on the dyad itself with a different operator.</p>
 <p>Before doing this however, we must introduce the <em>double dot product</em>. Just as the regular dot product denotes contraction of a single index between two tensors, the double dot product &quot;$:$&quot; denotes a contraction between two indices:</p>
