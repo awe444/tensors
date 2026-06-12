@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-12T14:08:04.041519"
+modified: "2026-06-12T15:38:34.701366"
 title: "Tensors"
 ---
 
@@ -663,7 +663,7 @@ $$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\ma
 
 Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. Note that $\mathsf{i}^2$ is another four-index tensor, we simply aren't giving it a dedicated label like the others.
 
-### Triple dot product and determinant
+### Determinant as a geometric concept
 
 Consider the _triad_ $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:
 
@@ -682,3 +682,25 @@ $$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1$$
 Now if we take some general dyadic operator $\mathsf{M}$ and apply it to all the unit vectors, such that they are transformed and form a new transformed volume, the measure of that transformed volume is defined as the _determinant_ of $\mathsf{M}$:
 
 $$\mathrm{det}(\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})$$
+
+Though well-defined, this is _not_ a coordinate-independent definition for the determinant. In the same sense that we can, for instance, write the trace as $\mathrm{trace}(\mathsf{M})=\mathsf{i}:\mathsf{M}$, we'd like to be able to write
+
+$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$
+
+where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for "D", as we will use Cyrillic characters to represent six-index tensors).
+
+### Construction of the determinant operator
+
+In the traditional index-based notation and formalism, the determinant can be written:
+
+$$\mathrm{det}(\mathsf{M})=\mathcal{E}\_{ijk}\mathcal{E}\_{lmn}M\_{il}M\_{jm}M\_{kn}$$
+
+However, though it might be tempting to jump to such a conclusion,
+
+$$\mathrm{det}(\mathsf{M})\ne\mathcal{E}^2\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$
+
+The reason is that our "inside-outward" contraction policy for the $n$-dot operators (in this case, six-dot operator) is distinctly different than the _interleaved_ index contraction shown immediately above. The inside-outward contraction policy, when written in traditional explicit index format, has a strictly reflected index ordering across the operator. So the previous sections definition in this notation is:
+
+$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}\_{ijklmn}M\_{nm}M\_{lk}M\_{ji}$$
+
+Notice the reflected index orderings on either side of the contraction.

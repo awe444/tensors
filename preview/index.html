@@ -480,7 +480,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
 <p>$$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
 <p>Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. Note that $\mathsf{i}^2$ is another four-index tensor, we simply aren't giving it a dedicated label like the others.</p>
-<h3 id="triple-dot-product-and-determinant">Triple dot product and determinant</h3>
+<h3 id="determinant-as-a-geometric-concept">Determinant as a geometric concept</h3>
 <p>Consider the <em>triad</em> $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:</p>
 <p>$$\mathcal{V}=\mathrm{vwu}$$</p>
 <p>Provided none of the three vectors are collinear, they span a volume $V$ given by:</p>
@@ -490,6 +490,17 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1$$</p>
 <p>Now if we take some general dyadic operator $\mathsf{M}$ and apply it to all the unit vectors, such that they are transformed and form a new transformed volume, the measure of that transformed volume is defined as the <em>determinant</em> of $\mathsf{M}$:</p>
 <p>$$\mathrm{det}(\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})$$</p>
+<p>Though well-defined, this is <em>not</em> a coordinate-independent definition for the determinant. In the same sense that we can, for instance, write the trace as $\mathrm{trace}(\mathsf{M})=\mathsf{i}:\mathsf{M}$, we'd like to be able to write</p>
+<p>$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$</p>
+<p>where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for &quot;D&quot;, as we will use Cyrillic characters to represent six-index tensors).</p>
+<h3 id="construction-of-the-determinant-operator">Construction of the determinant operator</h3>
+<p>In the traditional index-based notation and formalism, the determinant can be written:</p>
+<p>$$\mathrm{det}(\mathsf{M})=\mathcal{E}_{ijk}\mathcal{E}_{lmn}M_{il}M_{jm}M_{kn}$$</p>
+<p>However, though it might be tempting to jump to such a conclusion,</p>
+<p>$$\mathrm{det}(\mathsf{M})\ne\mathcal{E}^2\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$</p>
+<p>The reason is that our &quot;inside-outward&quot; contraction policy for the $n$-dot operators (in this case, six-dot operator) is distinctly different than the <em>interleaved</em> index contraction shown immediately above. The inside-outward contraction policy, when written in traditional explicit index format, has a strictly reflected index ordering across the operator. So the previous sections definition in this notation is:</p>
+<p>$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}_{ijklmn}M_{nm}M_{lk}M_{ji}$$</p>
+<p>Notice the reflected index orderings on either side of the contraction.</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 
