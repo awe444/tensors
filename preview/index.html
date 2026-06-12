@@ -454,7 +454,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathsf{A}_\mathrm{anti}=\mathfrak{A}:\mathsf{A}.$$</p>
 <p>There are a few other four-index tensors that relate to the antisymmetrizer. The first is the <em>symmetrizer</em> $\mathfrak{S}$, whose function can be directly inferred based on the earlier statement that any dyadic is the sum of its symmetric and antisymmetric parts:</p>
 <p>$$\mathsf{A}_\mathrm{symm}=\mathfrak{S}:\mathsf{A}=\mathsf{A}-\mathfrak{A}:\mathsf{A}.$$</p>
-<p>We can &quot;factor out&quot; the $\mathsf{A}$ in the right side of the above equation by introducing an four-index identity tensor $\mathfrak{I}$ which satisfies $\mathfrak{I}:\mathsf{A}=\mathsf{A}$ for any $\mathsf{A}$:</p>
+<p>We can &quot;factor out&quot; the $\mathsf{A}$ in the right side of the above equation by introducing a four-index identity tensor $\mathfrak{I}$ which satisfies $\mathfrak{I}:\mathsf{A}=\mathsf{A}$ for any $\mathsf{A}$:</p>
 <p>$$\mathfrak{S}:\mathsf{A}=\mathsf{A}-\mathfrak{A}:\mathsf{A}=(\mathfrak{I}-\mathfrak{A}):\mathsf{A},$$</p>
 <p>or more succinctly:</p>
 <p>$$\mathfrak{S}=\mathfrak{I}-\mathfrak{A}.$$</p>
@@ -479,7 +479,17 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathsf{D}_{\mathrm{symm}}=\mathfrak{S}:\mathsf{D}=\frac{1}{3}\mathsf{i}\mathsf{i}:\mathsf{D}+\left(\mathfrak{S}-\frac{1}{3}\mathsf{i}\mathsf{i}\right):\mathsf{D}$$</p>
 <p>$$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
 <p>$$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
-<p>Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$.</p>
+<p>Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. Note that $\mathsf{i}^2$ is another four-index tensor, we simply aren't giving it a dedicated label like the others.</p>
+<h3 id="triple-dot-product-and-determinant">Triple dot product and determinant</h3>
+<p>Consider the <em>triad</em> $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:</p>
+<p>$$\mathcal{V}=\mathrm{vwu}$$</p>
+<p>Provided none of the three vectors are collinear, they span a volume $V$ given by:</p>
+<p>$$V=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$$</p>
+<p>where we have introducted the triple dot product &quot;$\hspace{0.2em}\vdots\hspace{0.2em}$&quot;, which conveys the same inside-outward index contraction policy that we saw for the double and single dot products.</p>
+<p>For an orthonormal basis, such as the usual $\mathrm{i,j,k}$, the volume is unity:</p>
+<p>$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1$$</p>
+<p>Now if we take some general dyadic operator $\mathsf{M}$ and apply it to all the unit vectors, such that they are transformed and form a new transformed volume, the measure of that transformed volume is defined as the <em>determinant</em> of $\mathsf{M}$:</p>
+<p>$$\mathrm{det}(\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})$$</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 

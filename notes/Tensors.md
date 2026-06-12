@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-11T16:31:47.861021"
+modified: "2026-06-12T14:08:04.041519"
 title: "Tensors"
 ---
 
@@ -611,7 +611,7 @@ There are a few other four-index tensors that relate to the antisymmetrizer. The
 
 $$\mathsf{A}_\mathrm{symm}=\mathfrak{S}:\mathsf{A}=\mathsf{A}-\mathfrak{A}:\mathsf{A}.$$
 
-We can "factor out" the $\mathsf{A}$ in the right side of the above equation by introducing an four-index identity tensor $\mathfrak{I}$ which satisfies $\mathfrak{I}:\mathsf{A}=\mathsf{A}$ for any $\mathsf{A}$:
+We can "factor out" the $\mathsf{A}$ in the right side of the above equation by introducing a four-index identity tensor $\mathfrak{I}$ which satisfies $\mathfrak{I}:\mathsf{A}=\mathsf{A}$ for any $\mathsf{A}$:
 
 $$\mathfrak{S}:\mathsf{A}=\mathsf{A}-\mathfrak{A}:\mathsf{A}=(\mathfrak{I}-\mathfrak{A}):\mathsf{A},$$
 
@@ -661,4 +661,24 @@ $$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$
 
 $$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$
 
-Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$.
+Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. Note that $\mathsf{i}^2$ is another four-index tensor, we simply aren't giving it a dedicated label like the others.
+
+### Triple dot product and determinant
+
+Consider the _triad_ $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:
+
+$$\mathcal{V}=\mathrm{vwu}$$
+
+Provided none of the three vectors are collinear, they span a volume $V$ given by:
+
+$$V=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$$
+
+where we have introducted the triple dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the double and single dot products.
+
+For an orthonormal basis, such as the usual $\mathrm{i,j,k}$, the volume is unity:
+
+$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1$$
+
+Now if we take some general dyadic operator $\mathsf{M}$ and apply it to all the unit vectors, such that they are transformed and form a new transformed volume, the measure of that transformed volume is defined as the _determinant_ of $\mathsf{M}$:
+
+$$\mathrm{det}(\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})$$
