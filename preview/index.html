@@ -494,13 +494,24 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$</p>
 <p>where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for &quot;D&quot;, as we will use Cyrillic characters to represent six-index tensors).</p>
 <h3 id="construction-of-the-determinant-operator">Construction of the determinant operator</h3>
-<p>In the traditional index-based notation and formalism, the determinant can be written:</p>
+<p>In the traditional index-based notation and formalism, the determinant is readily referenced to be:</p>
 <p>$$\mathrm{det}(\mathsf{M})=\mathcal{E}_{ijk}\mathcal{E}_{lmn}M_{il}M_{jm}M_{kn}$$</p>
-<p>However, though it might be tempting to jump to such a conclusion,</p>
+<p>And while it might be tempting to jump to such a conclusion,</p>
 <p>$$\mathrm{det}(\mathsf{M})\ne\mathcal{E}^2\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$</p>
 <p>The reason is that our &quot;inside-outward&quot; contraction policy for the $n$-dot operators (in this case, six-dot operator) is distinctly different than the <em>interleaved</em> index contraction shown immediately above. The inside-outward contraction policy, when written in traditional explicit index format, has a strictly reflected index ordering across the operator. So the previous sections definition in this notation is:</p>
 <p>$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}_{ijklmn}M_{nm}M_{lk}M_{ji}$$</p>
 <p>Notice the reflected index orderings on either side of the contraction.</p>
+<p>For a matrix with elements</p>
+<p>$$\mathsf{A}=\begin{pmatrix}
+a &amp; d &amp; g\\
+b &amp; e &amp; h\\
+c &amp; f &amp; i
+\end{pmatrix}$$</p>
+<p>the formula for the determinant (given by, e.g., the &quot;rule of Sarrus&quot;) is</p>
+<p>$$\text{det}(\mathsf{A})=aei+dhc+gbf-ceg-fha-ibd$$</p>
+<p>Mapping these terms and their factors into the dyad basis elements, we can write out Д directly. The dyad basis element for $a$ is $\mathrm{ii}$, $b$ is $\mathrm{ji}$, and so on:</p>
+<p>$$\text{Д}=\mathrm{iijjkk}+\mathrm{jikjik}+\mathrm{kiijjk}-\mathrm{ikjjki}-\mathrm{jkkjii}-\mathrm{kkijji}$$</p>
+<p>In fact, within each term we are free to rearrage the dyad basis elements because the result will be the same.</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 

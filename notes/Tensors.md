@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-12T15:38:34.701366"
+modified: "2026-06-12T20:59:57.202981"
 title: "Tensors"
 ---
 
@@ -691,11 +691,11 @@ where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic charac
 
 ### Construction of the determinant operator
 
-In the traditional index-based notation and formalism, the determinant can be written:
+In the traditional index-based notation and formalism, the determinant is readily referenced to be:
 
 $$\mathrm{det}(\mathsf{M})=\mathcal{E}\_{ijk}\mathcal{E}\_{lmn}M\_{il}M\_{jm}M\_{kn}$$
 
-However, though it might be tempting to jump to such a conclusion,
+And while it might be tempting to jump to such a conclusion,
 
 $$\mathrm{det}(\mathsf{M})\ne\mathcal{E}^2\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$
 
@@ -704,3 +704,21 @@ The reason is that our "inside-outward" contraction policy for the $n$-dot opera
 $$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}\_{ijklmn}M\_{nm}M\_{lk}M\_{ji}$$
 
 Notice the reflected index orderings on either side of the contraction.
+
+For a matrix with elements
+
+$$\mathsf{A}=\begin{pmatrix}
+ a & d & g\\
+ b & e & h\\
+ c & f & i
+\end{pmatrix}$$
+
+the formula for the determinant (given by, e.g., the "rule of Sarrus") is
+
+$$\text{det}(\mathsf{A})=aei+dhc+gbf-ceg-fha-ibd$$
+
+Mapping these terms and their factors into the dyad basis elements, we can write out Д directly. The dyad basis element for $a$ is $\mathrm{ii}$, $b$ is $\mathrm{ji}$, and so on:
+
+$$\text{Д}=\mathrm{iijjkk}+\mathrm{jikjik}+\mathrm{kiijjk}-\mathrm{ikjjki}-\mathrm{jkkjii}-\mathrm{kkijji}$$
+
+In fact, within each term we are free to rearrage the dyad basis elements because the result will be the same.
