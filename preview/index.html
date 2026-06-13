@@ -434,7 +434,7 @@ $$\mathrm{e}_3=\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracke
 <p>Before doing this however, we must introduce the <em>double dot product</em>. Just as the regular dot product denotes contraction of a single index between two tensors, the double dot product &quot;$:$&quot; denotes a contraction between two indices:</p>
 <p>$$\mathrm{v}\cdot\mathrm{w}=v_i w_i$$
 $$\mathsf{A}:\mathsf{B}=A_{ij}B_{ji}$$</p>
-<p>The index order is important. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation. Then continue working outward until all the &quot;dots&quot; have been accounted for.</p>
+<p>The index order is important. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation. Then continue working outward until all the &quot;dots&quot; have been accounted for. We'll refer to this as &quot;inside-outward&quot; contraction.</p>
 <p>Taking the identity tensor $\mathsf{i}$ and the Levi-Civita tensor $\mathcal{E}$ as operators, the double dot product provides some important relationships:</p>
 <p>$$\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$$
 $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
@@ -469,6 +469,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathfrak{S}=\mathrm{iiii}+\mathrm{jjjj}+\mathrm{kkkk}+\frac{1}{2}[\mathrm{ij}(\mathrm{ji}+\mathrm{ij})+\cdots)]$$</p>
 <p>$$\mathfrak{I}=\mathrm{iiii}+\mathrm{ijji}+\mathrm{ikki}+\cdots$$</p>
 <p>$$\mathfrak{T}=\mathrm{iiii}+\mathrm{ijij}+\mathrm{ikik}+\cdots$$</p>
+<p>One can show that $\mathfrak{A}$ has 12 terms, $\mathfrak{S}$ has 15 terms, $\mathfrak{I}$ and $\mathfrak{T}$ have 9 terms.</p>
 <h3 id="dyad-operations-revisited-with-four-index-tensors">Dyad operations revisited with four-index tensors</h3>
 <p>Previously we showed that a dyad expands out into three distinct, pure operations with physical interpretation: isotropic scaling, asymmetric rotation, and deviatoric scaling. The double dot product along with four-index tensors are a convenient way of specializing or filtering the original dyad operator into one or more of these pure operations. We already noted this for the antisymmetric operation:</p>
 <p>$$\mathsf{D}_\mathrm{anti}=\mathfrak{A}:\mathsf{D}=\mathfrak{A}:\mathrm{vw}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$</p>
@@ -478,9 +479,11 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>For the symmetric part, we can separate out the isotropic (non-zero trace) part from the deviatoric (traceless) part:</p>
 <p>$$\mathsf{D}_{\mathrm{symm}}=\mathfrak{S}:\mathsf{D}=\frac{1}{3}\mathsf{i}\mathsf{i}:\mathsf{D}+\left(\mathfrak{S}-\frac{1}{3}\mathsf{i}\mathsf{i}\right):\mathsf{D}$$</p>
 <p>$$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
-<p>$$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$</p>
-<p>Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. Note that $\mathsf{i}^2$ is another four-index tensor, we simply aren't giving it a dedicated label like the others.</p>
-<h3 id="determinant-as-a-geometric-concept">Determinant as a geometric concept</h3>
+<p>$$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}=\mathfrak{D}:\mathsf{D}$$</p>
+<p>Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. We also defined another four-index tensor</p>
+<p>$$\mathfrak{D}=\mathfrak{S}-\frac{\mathsf{i}^2}{3}$$</p>
+<p>which produces the deviatoric part of the dyadic it operates on (and happens to have 21 terms). Note that $\mathsf{i}^2$ is another four-index tensor (having 9 terms), we simply aren't giving it a dedicated label like the others.</p>
+<h3 id="determinant-geometric-concept">Determinant: geometric concept</h3>
 <p>Consider the <em>triad</em> $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:</p>
 <p>$$\mathcal{V}=\mathrm{vwu}$$</p>
 <p>Provided none of the three vectors are collinear, they span a volume $V$ given by:</p>
@@ -490,7 +493,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1$$</p>
 <p>Now if we take some general dyadic operator $\mathsf{M}$ and apply it to all the unit vectors, such that they are transformed and form a new transformed volume, the measure of that transformed volume is defined as the <em>determinant</em> of $\mathsf{M}$:</p>
 <p>$$\mathrm{det}(\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})$$</p>
-<p>Though well-defined, this is <em>not</em> a coordinate-independent definition for the determinant. In the same sense that we can, for instance, write the trace as $\mathrm{trace}(\mathsf{M})=\mathsf{i}:\mathsf{M}$, we'd like to be able to write</p>
+<p>Though well-defined, this is <em>not</em> a coordinate-independent definition for the determinant, because it requires explicitly including the $\mathrm{i,j,k}$ basis vectors. In the same sense that we can write $\mathrm{trace}(\mathsf{M})=\mathsf{i}:\mathsf{M}$, we'd like to be able to write</p>
 <p>$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$</p>
 <p>where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for &quot;D&quot;, as we will use Cyrillic characters to represent six-index tensors).</p>
 <h3 id="construction-of-the-determinant-operator">Construction of the determinant operator</h3>
@@ -498,7 +501,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathrm{det}(\mathsf{M})=\mathcal{E}_{ijk}\mathcal{E}_{lmn}M_{il}M_{jm}M_{kn}$$</p>
 <p>And while it might be tempting to jump to such a conclusion,</p>
 <p>$$\mathrm{det}(\mathsf{M})\ne\mathcal{E}^2\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$</p>
-<p>The reason is that our &quot;inside-outward&quot; contraction policy for the $n$-dot operators (in this case, six-dot operator) is distinctly different than the <em>interleaved</em> index contraction shown immediately above. The inside-outward contraction policy, when written in traditional explicit index format, has a strictly reflected index ordering across the operator. So the previous sections definition in this notation is:</p>
+<p>The reason is that our &quot;inside-outward&quot; contraction policy for the $n$-dot operators (in this case, six-dot operator) is distinctly different than the <em>interleaved</em> index contraction shown immediately above. The inside-outward contraction policy, when written in traditional explicit index format, has a strictly reflected index ordering across the operator. The previous section's definition in this notation is:</p>
 <p>$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}_{ijklmn}M_{nm}M_{lk}M_{ji}$$</p>
 <p>Notice the reflected index orderings on either side of the contraction.</p>
 <p>For a matrix with elements</p>
@@ -509,9 +512,10 @@ c &amp; f &amp; i
 \end{pmatrix}$$</p>
 <p>the formula for the determinant (given by, e.g., the &quot;rule of Sarrus&quot;) is</p>
 <p>$$\text{det}(\mathsf{A})=aei+dhc+gbf-ceg-fha-ibd$$</p>
-<p>Mapping these terms and their factors into the dyad basis elements, we can write out Д directly. The dyad basis element for $a$ is $\mathrm{ii}$, $b$ is $\mathrm{ji}$, and so on:</p>
+<p>Mapping these terms and their factors into the dyad basis elements, we can write out Д directly in such a way that is consistent with the inside-outward contraction. The dyad basis element for $a$ is $\mathrm{ii}$, $b$ is $\mathrm{ji}$, and so on:</p>
 <p>$$\text{Д}=\mathrm{iijjkk}+\mathrm{jikjik}+\mathrm{kiijjk}-\mathrm{ikjjki}-\mathrm{jkkjii}-\mathrm{kkijji}$$</p>
-<p>In fact, within each term we are free to rearrage the dyad basis elements because the result will be the same.</p>
+<p>In fact, within each term, we are free to rearrange the dyad basis elements, because the resulting product of that term's three factors will be the same.</p>
+<p>The first term, $\mathrm{iijjkk}$, is one of the 27 terms that appear in $\mathsf{i}^3$. The three negatively-signed terms, allowing for the free dyad re-ordering within them, all are terms that appear in the 27 terms of $\mathfrak{I}\mathcal{i}$. The last two terms (with dyad reordering on the second) both follow a 123123 cyclic pattern (there being 6 such possible terms).</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 
