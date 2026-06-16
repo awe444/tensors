@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-12T23:50:20.004132"
+modified: "2026-06-15T21:38:48.884134"
 title: "Tensors"
 ---
 
@@ -312,7 +312,7 @@ $$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{\sqrt{2}}(\mathsf{e}_
 
 This quantity is referred to as the _asymmetric component_ of the dyad $\mathsf{D}=\mathrm{vw}$. Indeed, we had already associated $D_7,D_8,D_9$ with the asymmetric part of the dyad in our initial discussion of the $D_i\mathsf{e}_i$ basis decomposition.
 
-The terms $\mathsf{e}_7\mathrm{k}$, $\mathsf{e}_8\mathrm{i}$, and $\mathsf{e}_9\mathrm{j}$ (and their sum) are our first encounter with _third-order tensors_, meaning tensors that have three indices. If we expand it out in terms of the basis vectors:
+The terms $\mathsf{e}_7\mathrm{k}$, $\mathsf{e}_8\mathrm{i}$, and $\mathsf{e}_9\mathrm{j}$ (and their sum) are our first encounter with _third-order tensors_, meaning tensors that have three indices. We also refer to these as _triadics_ (sums of triads), analogous to dyadics (sums of dyads). If we expand it out in terms of the basis vectors:
 
 $$\frac{1}{\sqrt{2}}(\mathsf{e}_7\mathrm{k}+\mathsf{e}_8\mathrm{i}+\mathsf{e}_9\mathrm{j})=$$
 $$\frac{1}{2}[(\mathrm{ij} -\mathrm{ji})\mathrm{k}+(\mathrm{jk} - \mathrm{kj})\mathrm{i}+(\mathrm{ki} -\mathrm{ik})\mathrm{j}]$$
@@ -572,7 +572,7 @@ Before doing this however, we must introduce the _double dot product_. Just as t
 $$\mathrm{v}\cdot\mathrm{w}=v_i w_i$$
 $$\mathsf{A}:\mathsf{B}=A_{ij}B_{ji}$$
 
-The index order is important. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation. Then continue working outward until all the "dots" have been accounted for. We'll refer to this as "inside-outward" contraction.
+The index order is important. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation. Then continue working outward until all the "dots" have been accounted for. We'll refer to this as "inside-outward" contraction, and it has a characteristic reflected ordering of the contracted indices on either side of the contraction operator (observe this in $A_{ij}B_{ji}$)
 
 Taking the identity tensor $\mathsf{i}$ and the Levi-Civita tensor $\mathcal{E}$ as operators, the double dot product provides some important relationships:
 
@@ -590,6 +590,8 @@ $$\mathcal{E}:\mathcal{E}=-2\mathsf{i}$$
 Lastly, the _trace_ of a matrix $\mathsf{A}$, a notable subject in linear algebra, is also expressable with the double dot product:
 
 $$\mathrm{trace}(\mathsf{A})=\mathsf{i}:\mathsf{A}.$$
+
+Recall the concept of trace arose earlier in the context of the _traceless_ symmetric deviatoric operator.
 
 ### Antisymmetrizer and related four-index tensors
 
@@ -680,7 +682,11 @@ Provided none of the three vectors are collinear, they span a volume $V$ given b
 
 $$V=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$$
 
-where we have introducted the triple dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the double and single dot products.
+where we have introducted the triple dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the double and single dot products. In traditional index notation:
+
+$$V=\mathcal{E}\_{ijk}v\_k w\_j u\_i$$
+
+which shows the characteristic reflected ordering of contracted indices on either side of the operator.
 
 For an orthonormal basis, such as the usual $\mathrm{i,j,k}$, the volume is unity:
 
@@ -694,23 +700,13 @@ Though well-defined, this is _not_ a coordinate-independent definition for the d
 
 $$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$
 
-where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for "D", as we will use Cyrillic characters to represent six-index tensors).
+where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for "D", as we will use Cyrillic characters to represent six-index tensors). Here we also have introduced the six-dot product "$\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}$", which just as the other $n$-dot products, follows the inside-outward contraction, represented in traditional index form as
+
+$$\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}\_{ijklmn}M\_{nm}M\_{lk}M\_{ji}$$
+
+again having the reflected ordering of contracted indices on either side of the dot operator. 
 
 ### Construction of the determinant operator
-
-In the traditional index-based notation and formalism, the determinant is readily referenced to be:
-
-$$\mathrm{det}(\mathsf{M})=\mathcal{E}\_{ijk}\mathcal{E}\_{lmn}M\_{il}M\_{jm}M\_{kn}$$
-
-And while it might be tempting to jump to such a conclusion,
-
-$$\mathrm{det}(\mathsf{M})\ne\mathcal{E}^2\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$
-
-The reason is that our "inside-outward" contraction policy for the $n$-dot operators (in this case, six-dot operator) is distinctly different than the _interleaved_ index contraction shown immediately above. The inside-outward contraction policy, when written in traditional explicit index format, has a strictly reflected index ordering across the operator. The previous section's definition in this notation is:
-
-$$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}\_{ijklmn}M\_{nm}M\_{lk}M\_{ji}$$
-
-Notice the reflected index orderings on either side of the contraction.
 
 For a matrix with elements
 
@@ -720,14 +716,33 @@ $$\mathsf{A}=\begin{pmatrix}
  c & f & i
 \end{pmatrix}$$
 
-the formula for the determinant (given by, e.g., the "rule of Sarrus") is
+the formula for the determinant (given by, _e.g._, the "rule of Sarrus" in linear algebra) is
 
 $$\text{det}(\mathsf{A})=aei+dhc+gbf-ceg-fha-ibd$$
 
-Mapping these terms and their factors into the dyad basis elements, we can write out Д directly in such a way that is consistent with the inside-outward contraction. The dyad basis element for $a$ is $\mathrm{ii}$, $b$ is $\mathrm{ji}$, and so on:
+Mapping these terms and their factors into the dyad basis elements, we can write out a possible form for Д directly in such a way that is consistent with the inside-outward contraction. The dyad basis element for $a$ is $\mathrm{ii}$, $b$ is $\mathrm{ji}$, and so on, yielding in its entirety:
 
-$$\text{Д}=\mathrm{iijjkk}+\mathrm{jikjik}+\mathrm{kiijjk}-\mathrm{ikjjki}-\mathrm{jkkjii}-\mathrm{kkijji}$$
+$$\text{Д}\stackrel{?}{=}\mathrm{iijjkk}+\mathrm{jikjik}+\mathrm{kiijjk}-\mathrm{ikjjki}-\mathrm{jkkjii}-\mathrm{kkijji}$$
 
-In fact, within each term, we are free to rearrange the dyad basis elements, because the resulting product of that term's three factors will be the same.
+The reason we used "$\stackrel{?}{=}$" instead of "$=$" is that, within each term, we are free to rearrange the dyad basis elements, because the resulting six-dot product of that term's three dyad factors with $\mathsf{M}^3$ will be the same irrespective of their ordering. These reorderings however are not strictly equal to one another prior to any contraction, so they cannot all equal Д.
 
-The first term, $\mathrm{iijjkk}$, is one of the 27 terms that appear in $\mathsf{i}^3$. The three negatively-signed terms, allowing for the free dyad re-ordering within them, all are terms that appear in the 27 terms of $\mathfrak{I}\mathcal{i}$. The last two terms (with dyad reordering on the second) both follow a 123123 cyclic pattern (there being 6 such possible terms).
+Examining the terms in our above proposed form for Д, we see a few patterns:
+
+1. The first term, $\mathrm{iijjkk}$, is one of the 27 terms that appear in $\mathsf{i}^3$.
+
+2. The three negatively-signed terms --- after allowing for the arbitrary dyad reordering within them --- can be interpreted as either $\mathfrak{I}\mathsf{i}$ or $\mathsf{i}\mathfrak{I}$ depending on the reordering. Furthermore, these terms can also be reordered into some of the terms belonging the six-tensor/triple-dot-product equivalent of the identity tensor (analogous to $\mathfrak{I}$ for double dot product and $\mathsf{i}$ for single dot product). Call this six-tensor identity Б, which for any three-index tensor $\mathcal{F}$ has the behavior
+
+$$Б\hspace{0.2em}\vdots\hspace{0.2em}\mathcal{F}=\mathcal{F}$$
+
+<p style="margin-left: 2.5em">The first three unit vectors in each of the basis elements of Б are reflected in the second three units vectors, i.e., it has terms like $\mathrm{ijkkji}$, $\mathrm{ikjjki}$, $\mathrm{kjiijk}$ and so on.</p>
+
+3. The remaining terms $\mathrm{jikjik}$ and $\mathrm{kiijjk}$ --- with dyad reordering on the second to turn it into $\mathrm{ijkijk}$ --- both follow a _cyclic_ pattern wherein the first three factors are verbatim repeated as the second set of three factors. Define the six-index tensor Ш as the 27-term sum of all such possible cyclic combinations:
+
+$$\text{Ш}=\mathrm{ijkijk}+\mathrm{jikjik}+\mathrm{kijkij}+\mathrm{kjikji}+\mathrm{ikjikj}+\mathrm{jkijki}+\cdots$$
+
+<p style="margin-left: 2.5em">Just as Б is analogous to $\mathfrak{I}$, note that Ш is similar to $\mathfrak{T}$. Whereas $\mathfrak{T}$ swaps the two indices of a dyadic, Ш swaps the first and third indices on a triadic (without changing the middle second index). Also note that both of these have a similar sign-changing effect on $\mathcal{E}$:
+
+$$\mathfrak{T}:\mathcal{E}=-\mathcal{E}\qquad Ш\hspace{0.2em}\vdots\hspace{0.2em}\mathcal{E}=-\mathcal{E}$$
+</p>
+
+Given the above three observations, we might expect to be able to write Д as some linear combination of $\mathsf{i}^3$, $\mathfrak{I}\mathsf{i}$, $\mathsf{i}\mathfrak{I}$, Б and Ш.
