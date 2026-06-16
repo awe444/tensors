@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-15T21:38:48.884134"
+modified: "2026-06-15T22:10:08.529184"
 title: "Tensors"
 ---
 
@@ -746,3 +746,7 @@ $$\mathfrak{T}:\mathcal{E}=-\mathcal{E}\qquad Ш\hspace{0.2em}\vdots\hspace{0.2e
 </p>
 
 Given the above three observations, we might expect to be able to write Д as some linear combination of $\mathsf{i}^3$, $\mathfrak{I}\mathsf{i}$, $\mathsf{i}\mathfrak{I}$, Б and Ш.
+
+The coefficients can be discovered --- through an exhaustive bookkeeping exercise --- to be as follows:
+
+$$Д=\frac{\mathsf{i}^3}{6}-\frac{1}{6}\left(\mathfrak{I}\mathsf{i}+\mathsf{i}\mathfrak{I}+Б\right)+\frac{Ш}{3}$$
