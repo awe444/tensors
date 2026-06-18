@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-15T22:10:08.529184"
+modified: "2026-06-17T21:57:22.295582"
 title: "Tensors"
 ---
 
@@ -747,6 +747,9 @@ $$\mathfrak{T}:\mathcal{E}=-\mathcal{E}\qquad Ш\hspace{0.2em}\vdots\hspace{0.2e
 
 Given the above three observations, we might expect to be able to write Д as some linear combination of $\mathsf{i}^3$, $\mathfrak{I}\mathsf{i}$, $\mathsf{i}\mathfrak{I}$, Б and Ш.
 
-The coefficients can be discovered --- through an exhaustive bookkeeping exercise --- to be as follows:
+The coefficients can be discovered, though an exhaustive enumeration and comparison of the terms, to be:
 
-$$Д=\frac{\mathsf{i}^3}{6}-\frac{1}{6}\left(\mathfrak{I}\mathsf{i}+\mathsf{i}\mathfrak{I}+Б\right)+\frac{Ш}{3}$$
+$$Д=\frac{1}{6}(\mathsf{i}^3-\mathfrak{I}\mathsf{i}-\mathsf{i}\mathfrak{I}-Б+2Ш)$$
+
+The earlier form of Д we proposed above, based on the Sarrus rule, is a special case of this result obtained by combining terms that are equivalent through the dyad reordering.
+
