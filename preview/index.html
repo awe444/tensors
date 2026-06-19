@@ -113,7 +113,7 @@ blockquote{
 <h3 id="dyads">Dyads</h3>
 <p>Considering two vectors $\mathrm{v}$ and $\mathrm{w}$ as a pair, they define an <em>outer product</em>
 $$\mathsf{D}=\mathrm{v}\mathrm{w}$$
-where $\mathsf{D}$ is referred to as a <em>second-order tensor</em>, in this case specifically a <em>dyad</em>.</p>
+where $\mathsf{D}$ is referred to as a <em>second-order tensor</em>, in this case specifically a <em>dyad</em>. We use san-serif typeface to represent second-order tensors in an index-free manner.</p>
 <p>For now, we'll hold off on discussing what this dyad object actually represents and how we can or should interpret it from a physical standpoint. Instead, for the moment we'll examine the mathematical structure it has, using the same coordinate system scaffolding that applies to vectors.</p>
 <h3 id="dyad-coordinate-bases">Dyad coordinate bases</h3>
 <p>To understand how the dyad $$\mathsf{D}=\mathrm{v}\mathrm{w}$$ is structured, let's look at it in the Cartesian space:</p>
@@ -429,12 +429,19 @@ $$\mathrm{e}_2=\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracke
 $$\mathrm{e}_3=\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket,$$</p>
 <p>in terms of which the decomposition becomes the rather compact:</p>
 <p>$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\mathrm{e}_1 + \mathrm{e}_2^2-\mathrm{e}_3^2\right).$$</p>
+<h3 id="matrix-multiplication">Matrix multiplication</h3>
+<p>So far we've taken the approach of trying to understand the dyad $\mathsf{D}=\mathrm{vw}$ in terms of geometrically meaningful components and with regard to how it behaves as an operator. A different perspective is to instead examine what happens when we operate on the dyad itself with a different operator.</p>
+<p>Consider the operator $\mathsf{D}=\mathrm{vw}$ transforming the vector $\mathrm{u}$ into the vector $\mathrm{y}=\mathsf{D}\cdot\mathrm{u}$. If we simply append (via outer product) another vector $\mathrm{x}$ to the right side, this additional vector doesn't participate in the dot product contraction, only the vectors directly adjacent to the dot operator are affected:</p>
+<p>$$(\mathsf{D}\cdot\mathrm{u})\mathrm{x}=\mathrm{vw}\cdot\mathrm{ux}=\mathrm{v}(\mathrm{w}\cdot\mathrm{u})\mathrm{x}=(\mathrm{v}\mathrm{w}\cdot\mathrm{u})\mathrm{x}=\mathrm{yx}.$$</p>
+<p>Defining $\mathsf{F}=\mathrm{ux}$, and $\mathsf{G}=\mathrm{yx}$, this becomes</p>
+<p>$$\mathsf{D}\cdot\mathsf{F}=\mathsf{G}.$$</p>
+<p>This is another example of the &quot;matrix multiplication&quot; concept we discussed earlier, except this time between two dyads. In traditional index notation:</p>
+<p>$$D_{ij}F_{jk}=G_{ik}$$</p>
+<p>The key takeaway is that the dot operator contracts the <em>left tensor's right index with the right tensor's left index</em>. Simply writing $\mathsf{D}\cdot\mathsf{F}$ doesn't make this obvious. For instance, one might incorrectly assume they contract on both left ($D_{ji}F_{jk}$), both right ($D_{ij}F_{kj}$), or on their outside indices ($D_{ji}F_{kj}$). Those other contractions produce different results in general, hence the meaning of the dot product is important.</p>
 <h3 id="double-dot-product">Double dot product</h3>
-<p>So far we've taken the approach of trying to understand the nature of the dyad $\mathsf{D}=\mathrm{vw}$ in terms of geometrically meaningful components and with regard to how it behaves as an operator. A different perspective is to instead examine what happens when we operate on the dyad itself with a different operator.</p>
-<p>Before doing this however, we must introduce the <em>double dot product</em>. Just as the regular dot product denotes contraction of a single index between two tensors, the double dot product &quot;$:$&quot; denotes a contraction between two indices:</p>
-<p>$$\mathrm{v}\cdot\mathrm{w}=v_i w_i$$
-$$\mathsf{A}:\mathsf{B}=A_{ij}B_{ji}$$</p>
-<p>The index order is important. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation. Then continue working outward until all the &quot;dots&quot; have been accounted for. We'll refer to this as &quot;inside-outward&quot; contraction, and it has a characteristic reflected ordering of the contracted indices on either side of the contraction operator (observe this in $A_{ij}B_{ji}$)</p>
+<p>Just as the regular dot product denotes contraction of a single index between two tensors, the double dot product &quot;$:$&quot; denotes a contraction between two indices:</p>
+<p>$$\mathsf{A}:\mathsf{B}=A_{ij}B_{ji}$$</p>
+<p>In exactly the same sense that the implied index contraction was important to acknowledge for $\mathsf{D}\cdot\mathsf{F}$, here we again require a specific contraction order. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation, then continue working outward until all the &quot;dots&quot; have been accounted for. We'll refer to this as &quot;inside-outward&quot; contraction, and it has a characteristic reflected ordering of the contracted indices on either side of the contraction operator (observe this in $A_{ij}B_{ji}$)</p>
 <p>Taking the identity tensor $\mathsf{i}$ and the Levi-Civita tensor $\mathcal{E}$ as operators, the double dot product provides some important relationships:</p>
 <p>$$\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$$
 $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
@@ -450,7 +457,10 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$</p>
 <p>By substituting the equivalent expression involving the double dot product, this takes the form:</p>
 <p>$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}\mathcal{E}\cdot(\mathcal{E}:\mathrm{v}\mathrm{w})=\left(\frac{\mathcal{E}\cdot\mathcal{E}}{2}\right):\mathrm{v}\mathrm{w}=\mathfrak{A}:\mathrm{v}\mathrm{w},$$</p>
-<p>where we have defined a four-index tensor $\mathfrak{A}=\mathcal{E}\cdot\mathcal{E}/2$. This is known as the <em>antisymmetrizer</em> tensor. We use Fraktur typeface to represent four-index tensors in the index-free manner.</p>
+<p>where we have defined a four-index tensor</p>
+<p>$$\mathfrak{A}=\frac{1}{2}\mathcal{E}\cdot\mathcal{E}.$$</p>
+<p>This is known as the <em>antisymmetrizer</em> tensor. We use Fraktur typeface to represent four-index tensors in the index-free manner. Just to make the implied contraction policy extra clear, in traditional index form this is:</p>
+<p>$$\mathfrak{A}_{ijkl}=\frac{1}{2}\mathcal{E}_{ijm}\mathcal{E}_{mkl}.$$</p>
 <p>The antisymmetrizer tensor gives the antisymmetric part of <em>any</em> general dyadic $\mathsf{A}$, not just pure dyads:</p>
 <p>$$\mathsf{A}_\mathrm{anti}=\mathfrak{A}:\mathsf{A}.$$</p>
 <p>There are a few other four-index tensors that relate to the antisymmetrizer. The first is the <em>symmetrizer</em> $\mathfrak{S}$, whose function can be directly inferred based on the earlier statement that any dyadic is the sum of its symmetric and antisymmetric parts:</p>
@@ -535,6 +545,11 @@ c &amp; f &amp; i
 <p>The coefficients can be discovered, though an exhaustive enumeration and comparison of the terms, to be:</p>
 <p>$$Д=\frac{1}{6}(\mathsf{i}^3-\mathfrak{I}\mathsf{i}-\mathsf{i}\mathfrak{I}-Б+2Ш)$$</p>
 <p>The earlier form of Д we proposed above, based on the Sarrus rule, is a special case of this result obtained by combining terms that are equivalent through the dyad reordering.</p>
+<h3 id="relationship-between-determinant-and-isotropic-scaling">Relationship between determinant and isotropic scaling</h3>
+<p>We covered previously how any dyadic $M$ can be decomposed into three parts, namely isotropic scaling, antisymmetric rotation, and deviatoric scaling:</p>
+<p>$$\mathsf{M}=\mathsf{M}_\text{iso}+\mathsf{M}_\text{anti}+\mathsf{M}_\text{dev}$$</p>
+<p>wherein</p>
+<p>$$\mathsf{M}_\text{iso}=\left(\frac{\mathsf{i}^3}{3}\right):\mathsf{M} \qquad \mathsf{M}_\text{anti}+\mathsf{M}_\text{dev}=\left(\mathfrak{I}-\frac{\mathsf{i}^3}{3}\right):\mathsf{M}$$</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 
