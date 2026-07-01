@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-18T23:01:11.662322"
+modified: "2026-06-30T22:10:05.657811"
 title: "Tensors"
 ---
 
@@ -585,7 +585,7 @@ Just as the regular dot product denotes contraction of a single index between tw
 
 $$\mathsf{A}:\mathsf{B}=A_{ij}B_{ji}$$
 
-In exactly the same sense that the implied index contraction was important to acknowledge for $\mathsf{D}\cdot\mathsf{F}$, here we again require a specific contraction order. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation, then continue working outward until all the "dots" have been accounted for. We'll refer to this as "inside-outward" contraction, and it has a characteristic reflected ordering of the contracted indices on either side of the contraction operator (observe this in $A_{ij}B_{ji}$)
+In exactly the same sense that the implied index contraction was important to acknowledge for $\mathsf{D}\cdot\mathsf{F}$, here we again require a specific contraction order. The rule is to contract the furthest right index belonging to the tensor on the left of the dot operation with the furthest left index belonging to the tensor on the right of the dot operation, then continue working outward until all the "dots" have been accounted for. We'll refer to this as "inside-outward" contraction, and it has a characteristic reflected ordering of the contracted indices on either side of the contraction operator (observe this in $A_{ij}B_{ji}$).
 
 Taking the identity tensor $\mathsf{i}$ and the Levi-Civita tensor $\mathcal{E}$ as operators, the double dot product provides some important relationships:
 
@@ -691,6 +691,18 @@ $$\mathfrak{D}=\mathfrak{S}-\frac{\mathsf{i}^2}{3}$$
 which produces the deviatoric part of the dyadic it operates on (and happens to have 21 terms). Note that $\mathsf{i}^2$ is another four-index tensor (having 9 terms), we simply aren't giving it a dedicated label like the others.
 
 
+### Four-dot product and trace of the matrix product
+
+The outer product of two dyadics, $\mathsf{M}$ and $\mathsf{N}$, is written $\mathsf{MN}$. This outer product is a four-index tensor. Defining the four-dot product "$:\hspace{0.2em}:$" as the inside-outward contraction on four indices, there is an interesting relationship between the four-tensor $\mathfrak{I}$ and the matrix multiplication product ($\mathsf{M}\cdot\mathsf{N}$): 
+
+$$\mathfrak{I}:\hspace{0.2em}:\mathsf{MN}=\mathsf{i}:(\mathsf{M}\cdot\mathsf{N})=\mathrm{trace}(\mathsf{M}\cdot\mathsf{N})=M\_{ij}N\_{ji}.$$
+
+The fact that the unit basis terms in $\mathfrak{I}$ have the same $abba$ pattern seen in the contracted indices of $M_{ij}N_{ji}$ is an intuitive confirmation of this relationship. 
+
+Note this is similar to the earlier-observed relationship between $\mathsf{i}$ and the vector inner product $\mathsf{v}\cdot\mathsf{w}$:
+
+$$\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$$
+
 ### Determinant: geometric concept
 
 Consider the _triad_ $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:
@@ -725,6 +737,40 @@ $$\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\t
 
 again having the reflected ordering of contracted indices on either side of the dot operator. 
 
+### Matrix multiplication from a six tensor
+
+Whenever a operator tensor operates on an input tensor to produce an output tensor, the following relationship must hold: The number of indices on the output tensor is equal to the number of indices on the input tensor plus the number of indices on the operator tensor, minus twice the number of contraction dots involved in the operation.
+
+From this, we can surmise that there ought to exist a six tensor, Ж, which, when operating via four-dot product on the outer product of two dyadics, $\mathsf{MN}$, produces their two-index matrix product, $\mathsf{M}\cdot \mathsf{N}$:
+
+$$Ж:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}.$$
+
+This somewhat resembles a relation we saw earlier,
+
+$$\mathfrak{I}:\hspace{0.2em}:\mathsf{MN}=\mathrm{trace}(\mathsf{M}\cdot\mathsf{N}),$$
+
+except for the fact that now we have two free (uncontracted) indices on the output instead of them all having been contracted.
+
+Thinking in terms of the basis element patterns in these inside-outward contractions: Uncontracted indices (and corresponding constituent basis vectors) on the left side of the operator can correspond to contracted indices on the right side of the operator. Consider the following cases we've already seen:
+
+$$\mathfrak{I}:\mathsf{M}=\underbrace{(ab}\_{\text{free}}\underbrace{ba)}\_{\text{contracted}}:\mathsf{M}=\mathsf{M}$$
+
+$$\mathfrak{T}:\mathsf{M}=\underbrace{(ab}\_{\text{free}}\underbrace{ab)}\_{\text{contracted}}:\mathsf{M}=\mathsf{M}^\mathsf{T}$$
+
+We can reason that this latest case adds a third freely-varying index, $c$, but only in the contracted portion of the operator, and in such a way that produces the _nested_ contraction in the required position:
+
+$$Ж:\hspace{0.2em}:\mathsf{MN}=\underbrace{(ab}\_{\text{free}}\underbrace{bcca)}\_{\text{contracted}}:\hspace{0.2em}:\mathsf{MN}=\mathsf{M}\cdot\mathsf{N}$$
+
+Just as $abba$ and $abab$ are the patterns for $\mathfrak{I}$ and $\mathfrak{T}$, the pattern for Ж is $abbcca$, meaning it has terms like:
+
+$$Ж=\mathrm{ijjkki}+\mathrm{jkkiij}+\mathrm{kiijjk}+\cdots$$
+
+Note that the example terms shown here exemplify the $abbcca$ pattern in cases where $a\ne b\ne c$. But Ж also contains terms for which $a=b\ne c$, for which $a\ne b= c$, for which $a=c\nenb$, and for which $a=b=c$. So we can equally write
+
+$$Ж=\mathrm{ijjiii}+\mathrm{jjjkkj}+\mathrm{iiiiii}+\cdots$$
+
+and the full expression for Ж has 27 total terms.
+
 ### Construction of the determinant operator
 
 For a matrix with elements
@@ -745,30 +791,34 @@ $$\text{Д}\stackrel{?}{=}\mathrm{iijjkk}+\mathrm{jikjik}+\mathrm{kiijjk}-\mathr
 
 The reason we used "$\stackrel{?}{=}$" instead of "$=$" is that, within each term, we are free to rearrange the dyad basis elements, because the resulting six-dot product of that term's three dyad factors with $\mathsf{M}^3$ will be the same irrespective of their ordering. These reorderings however are not strictly equal to one another prior to any contraction, so they cannot all equal Д.
 
-Examining the terms in our above proposed form for Д, we see a few patterns:
+Examining the terms in our above proposed form for Д, we identify some key patterns:
 
 1. The first term, $\mathrm{iijjkk}$, is one of the 27 terms that appear in $\mathsf{i}^3$.
 
-2. The three negatively-signed terms --- after allowing for the arbitrary dyad reordering within them --- can be interpreted as either $\mathfrak{I}\mathsf{i}$ or $\mathsf{i}\mathfrak{I}$ depending on the reordering. Furthermore, these terms can also be reordered into some of the terms belonging the six-tensor/triple-dot-product equivalent of the identity tensor (analogous to $\mathfrak{I}$ for double dot product and $\mathsf{i}$ for single dot product). Call this six-tensor identity Б, which for any three-index tensor $\mathcal{F}$ has the behavior
-
-$$Б\hspace{0.2em}\vdots\hspace{0.2em}\mathcal{F}=\mathcal{F}$$
-
-<p style="margin-left: 2.5em">The first three unit vectors in each of the basis elements of Б are reflected in the second three units vectors, i.e., it has terms like $\mathrm{ijkkji}$, $\mathrm{ikjjki}$, $\mathrm{kjiijk}$ and so on.</p>
-
-3. The remaining terms $\mathrm{jikjik}$ and $\mathrm{kiijjk}$ --- with dyad reordering on the second to turn it into $\mathrm{ijkijk}$ --- both follow a _cyclic_ pattern wherein the first three factors are verbatim repeated as the second set of three factors. Define the six-index tensor Ш as the 27-term sum of all such possible cyclic combinations:
+2. The second term, $\mathrm{jikjik}$, is characterized by a _cyclic_ pattern $abcabc$ wherein the first three factors are verbatim repeated as the second set of three factors. Define the six-index tensor Ш as the 27-term sum of all such possible $abcabc$ combinations:
 
 $$\text{Ш}=\mathrm{ijkijk}+\mathrm{jikjik}+\mathrm{kijkij}+\mathrm{kjikji}+\mathrm{ikjikj}+\mathrm{jkijki}+\cdots$$
 
-<p style="margin-left: 2.5em">Just as Б is analogous to $\mathfrak{I}$, note that Ш is similar to $\mathfrak{T}$. Whereas $\mathfrak{T}$ swaps the two indices of a dyadic, Ш swaps the first and third indices on a triadic (without changing the middle second index). Also note that both of these have a similar sign-changing effect on $\mathcal{E}$:
+3. The third term, $\mathrm{kiijjk}$, is one of the 27 terms found in the six tensor Ж we explored in the previous section which gives matrix multiplication.
+
+4. The fourth term, $\mathrm{ikjjki}$, is one belonging to the "reflected" $abccba$ pattern, making it a member of the six-tensor/triple-dot-product equivalent of the identity tensor (analogous to $\mathfrak{I}$ for double dot product and $\mathsf{i}$ for single dot product). Call this six-tensor identity Б, which for any three-index tensor $\mathcal{F}$ has the behavior
+
+$$Б\hspace{0.2em}\vdots\hspace{0.2em}\mathcal{F}=\mathcal{F}$$
+
+<p style="margin-left: 2.5em">Just as Б is analogous to $\mathfrak{I}$, note that the Ш we defined earlier is analogous to $\mathfrak{T}$. Whereas $\mathfrak{T}$ swaps the two indices of a dyadic, Ш swaps the first and third indices on a triadic (without changing the middle second index). Also note that both of these have a similar sign-changing effect on $\mathcal{E}$:
 
 $$\mathfrak{T}:\mathcal{E}=-\mathcal{E}\qquad Ш\hspace{0.2em}\vdots\hspace{0.2em}\mathcal{E}=-\mathcal{E}$$
 </p>
 
-Given the above three observations, we might expect to be able to write Д as some linear combination of $\mathsf{i}^3$, $\mathfrak{I}\mathsf{i}$, $\mathsf{i}\mathfrak{I}$, Б and Ш.
+5. The fifth term is a member of $\mathfrak{I}\mathsf{i}$.
 
-The coefficients can be discovered, though an exhaustive enumeration and comparison of the terms, to be:
+6. The sixth term is a member of $\mathsf{i}\mathfrak{I}$.
 
-$$Д=\frac{1}{6}(\mathsf{i}^3-\mathfrak{I}\mathsf{i}-\mathsf{i}\mathfrak{I}-Б+2Ш)$$
+Given the above observations, we might expect to be able to write Д as some linear combination of $\mathsf{i}^3$, Ш, Ж, Б, $\mathfrak{I}\mathsf{i}$, and $\mathsf{i}\mathfrak{I}$.
+
+Though an exhaustive enumeration and comparison of the terms, many of which cancel out or stack up as multiples, we ultimately find:
+
+$$Д=\frac{1}{6}(\mathsf{i}^3+Ш+Ж-Б-\mathfrak{I}\mathsf{i}-\mathsf{i}\mathfrak{I})$$
 
 The earlier form of Д we proposed above, based on the Sarrus rule, is a special case of this result obtained by combining terms that are equivalent through the dyad reordering.
 
@@ -780,5 +830,5 @@ $$\mathsf{M}=\mathsf{M}\_\text{iso}+\mathsf{M}\_\text{anti}+\mathsf{M}\_\text{de
 
 wherein
 
-$$\mathsf{M}\_\text{iso}=\left(\frac{\mathsf{i}^3}{3}\right):\mathsf{M} \qquad \mathsf{M}\_\text{anti}+\mathsf{M}\_\text{dev}=\left(\mathfrak{I}-\frac{\mathsf{i}^3}{3}\right):\mathsf{M}$$
+$$\mathsf{M}\_\text{iso}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{M} \qquad \mathsf{M}\_\text{anti}+\mathsf{M}\_\text{dev}=\left(\mathfrak{I}-\frac{\mathsf{i}^2}{3}\right):\mathsf{M}$$
 
