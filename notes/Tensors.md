@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-06-30T22:10:05.657811"
+modified: "2026-07-07T22:58:14.345555"
 title: "Tensors"
 ---
 
@@ -44,7 +44,7 @@ or the even more compact shorthand:
 
 $$\mathrm{r}=x_i$$
 
-The single index $i$ is understood in this more compact notation to run over our three spatial dimensions and include three scalar components each multiplied by a unit basis vector.
+The single index $i$ is understood in this more compact notation to run over our three spatial dimensions and include three scalar components each multiplied by a unit basis vector. This last notational format was established by Albert Einstein in 1916 and is therefore known as "Einstein notation".
 
 Irrespective of how we use indices in the notation &mdash; or indeed, whether we choose to use indices at all &mdash; a vector can still be thought of as having an intrinsic direction that exists independent of whatever coordinates we choose to measure it against. A primary motivation of this work is to arrive at, and appreciate, index-free coordinate-free notations. It's also undeniable that simply writing $\mathrm{r}$ is by far the _most_ compact representation out of all of the above (so compact that we really have to pay attention to the roman typeface as the sole notational indication that it's a vector)!
 
@@ -169,7 +169,7 @@ $$\begin{array}{l} \mathsf{e}_1=(\mathrm{ii}+\mathrm{jj}+\mathrm{kk})/\sqrt{3} \
 
 In this basis, $\mathsf{D}=\mathrm{v}\mathrm{w}=D_i \mathsf{e}_i$ has the following components:
 
-$$\begin{array}{l} D_1=(v_x w_x+v_y w_x+v_z w_z)/\sqrt{3} \\ D_2=(v_x w_x-v_y w_y)/\sqrt{2} \\ D_3=(v_x w_x+v_y w_y-2v_z w_z)/\sqrt{6} \\ D_4=(v_x w_y +v_y w_x)/\sqrt{2} \\ D_5=(v_y w_z + v_z w_y)/\sqrt{2} \\ D_6=(v_z w_x +v_x w_z)/\sqrt{2} \\ D_7=(v_x w_y -v_y w_x)/\sqrt{2} \\ D_8=(v_y w_z - v_z w_y)/\sqrt{2} \\ D_9=(v_z w_x -v_x w_z)/\sqrt{2}  \end{array} $$
+$$\begin{array}{l} D_1=(v_x w_x+v_y w_y+v_z w_z)/\sqrt{3} \\ D_2=(v_x w_x-v_y w_y)/\sqrt{2} \\ D_3=(v_x w_x+v_y w_y-2v_z w_z)/\sqrt{6} \\ D_4=(v_x w_y +v_y w_x)/\sqrt{2} \\ D_5=(v_y w_z + v_z w_y)/\sqrt{2} \\ D_6=(v_z w_x +v_x w_z)/\sqrt{2} \\ D_7=(v_x w_y -v_y w_x)/\sqrt{2} \\ D_8=(v_y w_z - v_z w_y)/\sqrt{2} \\ D_9=(v_z w_x -v_x w_z)/\sqrt{2}  \end{array} $$
 
 As we will soon see, using this particular coordinate basis will greatly help us understand some of the fundamental, coordinate-independent properties of dyads.
 
@@ -178,7 +178,7 @@ As we will soon see, using this particular coordinate basis will greatly help us
 
 Unlike vectors, which have a straightforward physical interpretation as "arrows in space", dyads require some deeper context to understand what they are, and &mdash; perhaps more importantly &mdash; what they _do_.
 
-Dyads are often regarded as _operators_. In fact, all tensors can be interpreted as operators. An operator is something that _does something_ to another tensor. For example, an operator acting on a physical vector can change that vector's magnitude, change its direction, or both.
+Dyads can be regarded as _operators_. In fact, all tensors can be interpreted as operators. An operator is something that _does something_ to another tensor. For example, an operator acting on a physical vector can change that vector's magnitude, change its direction, or both.
 
 Consider the case of changing a vector's magnitude. That can happen if we multiply the vector by a scalar:
 
@@ -191,6 +191,8 @@ Vectors too can act as operators. The vector $\mathrm{v}$ can operate on the vec
 $$\mathrm{w}\to \mathrm{v}\cdot\mathrm{w}=|\mathrm{v}||\mathrm{w}| \cos \alpha$$ 
 
 Note that the result of this "dot product" or "inner product" is coordinate independent.
+
+Geometrically, the dot product between two vectors is one of vector's _projection_ onto the other vector multiplied by the length of that other vector. The result is the same regardless of which vector we project onto the other.
 
 Instead of a physical vector, we can use a basis vector as the operator in the dot product. Due to the orthonormal nature of these basis vectors, they have the following dot products when operating amongst themselves:
 
@@ -303,6 +305,16 @@ Geometrically, the cross product $\mathrm{v}\times\mathrm{w}$ is a vector orthog
 $$|\mathrm{v}\times\mathrm{w}|=|\mathrm{v}||\mathrm{w}| \sin \alpha$$ 
 
 where $\alpha$ is the angle between $\mathrm{v}$ and $\mathrm{w}$.
+
+As it turns out, $|\mathrm{v}||\mathrm{w}| \sin \alpha$ is the _area_ of the 2-dimensional parallelogram bounded by the vectors $\mathrm{v}$ and $\mathrm{w}$. That being said, the vector product does _not_ contain all the detailed shape information of that parallelogram---that detailed shape information requires knowledge of _six_ elements, whereas the vector product has only three components (as do all vectors in three dimensions). Possible six-element sets include:
+
+- the three components of each the two input vectors taken together,
+- the cross-product's three components plus the three dot products $\mathrm{v}\cdot \mathrm{v}$, $\mathrm{v}\cdot\mathrm{w}$ and $\mathrm{w}\cdot\mathrm{w}$,
+
+and there are more possible combinations.
+
+In any event, the cross product can be interpreted geometrically as an oriented area element residing in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$, the shape of that area not being encoded. In fact, _any_ vector can be interpreted in this manner, i.e., a directed area element instead of the usual directed line element.
+
 
 ### Asymmetric rotation
 
@@ -440,7 +452,7 @@ This says that $\mathsf{D}_\mathrm{dev}$ as an operator scales $\mathrm{E}_1$ by
 
 $$\mathrm{E}_1=\llbracket \mathrm{v}\times\mathrm{w} \rrbracket,$$
 
-(though this doesn't work in the special case of $\mathrm v$ and $\mathrm w$ being collinear or antiparallel-- we'll address that later). We've also determined that the associated eigenvector is
+(though this doesn't work in the special case of $\mathrm v$ and $\mathrm w$ being collinear or antiparallel-- we'll address that later). We've also determined that the associated eigenvalue is
 
 $$\lambda_1=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w}).$$
 
@@ -495,7 +507,7 @@ Notice that $\lambda_1+\lambda_2+\lambda_3=0$, as expected since the deviatoric 
 
 Using the component-wise set of equations, we can solve to find
 
-$$\begin{array}{cc} a_2=|\mathrm{w}| && b_2=\mathrm{v} \\ a_3=|\mathrm{w}| && b_3=-|\mathrm{v}| \end{array}$$
+$$\begin{array}{cc} a_2=|\mathrm{w}| && b_2=|\mathrm{v}| \\ a_3=|\mathrm{w}| && b_3=-|\mathrm{v}| \end{array}$$
 
 With normalization, the eigenvectors are therefore
 
@@ -529,7 +541,7 @@ and then scale by their common eigenvalue. Putting it all together, the deviator
 
 $$\mathsf{D}_\mathrm{dev}=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v} \rrbracket^2-\frac{1}{3}(\mathrm{v}\cdot \mathrm{w})(\mathsf{i}-\llbracket \mathrm{v} \rrbracket^2)$$
 
-However, notice that when we add in $\mathsf{D}_\mathrm{iso}=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$ (also note the antisymmetric part is zero in this special case), we reduce to
+However, notice that when we add in $\mathsf{D}_\mathrm{iso}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$ (also note the antisymmetric part is zero in this special case), we reduce to
 
 $$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbracket^2,$$
 
@@ -573,7 +585,7 @@ Defining $\mathsf{F}=\mathrm{ux}$, and $\mathsf{G}=\mathrm{yx}$, this becomes
 
 $$\mathsf{D}\cdot\mathsf{F}=\mathsf{G}.$$
 
-This is another example of the "matrix multiplication" concept we discussed earlier, except this time between two dyads. In traditional index notation:
+This is another example of the "matrix multiplication" concept we discussed earlier, except this time between two dyads. In Einstein notation:
 
 $$D_{ij}F_{jk}=G_{ik}$$
 
@@ -620,7 +632,7 @@ where we have defined a four-index tensor
 
 $$\mathfrak{A}=\frac{1}{2}\mathcal{E}\cdot\mathcal{E}.$$
 
-This is known as the _antisymmetrizer_ tensor. We use Fraktur typeface to represent four-index tensors in the index-free manner. Just to make the implied contraction policy extra clear, in traditional index form this is:
+This is known as the _antisymmetrizer_ tensor. We use Fraktur typeface to represent four-index tensors in the index-free manner. Just to make the implied contraction policy extra clear, in Einstein notation this is:
 
 $$\mathfrak{A}\_{ijkl}=\frac{1}{2}\mathcal{E}\_{ijm}\mathcal{E}\_{mkl}.$$
 
@@ -705,7 +717,7 @@ $$\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$$
 
 ### Determinant: geometric concept
 
-Consider the _triad_ $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:
+Consider the triad $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:
 
 $$\mathcal{V}=\mathrm{vwu}$$
 
@@ -713,7 +725,7 @@ Provided none of the three vectors are collinear, they span a volume $V$ given b
 
 $$V=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$$
 
-where we have introducted the triple dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the double and single dot products. In traditional index notation:
+where we have introducted the triple dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the double and single dot products. In Einstein notation:
 
 $$V=\mathcal{E}\_{ijk}v\_k w\_j u\_i$$
 
@@ -731,7 +743,7 @@ Though well-defined, this is _not_ a coordinate-independent definition for the d
 
 $$\mathrm{det}(\mathsf{M})=\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$$
 
-where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for "D", as we will use Cyrillic characters to represent six-index tensors). Here we also have introduced the six-dot product "$\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}$", which just as the other $n$-dot products, follows the inside-outward contraction, represented in traditional index form as
+where Д is some yet-to-be-constructed six-index tensor (and the Cyrillic character for "D", as we will use Cyrillic characters to represent six-index tensors). Here we also have introduced the six-dot product "$\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}$", which just as the other $n$-dot products, follows the inside-outward contraction, represented in Einstein notation as
 
 $$\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}\_{ijklmn}M\_{nm}M\_{lk}M\_{ji}$$
 
@@ -765,7 +777,7 @@ Just as $abba$ and $abab$ are the patterns for $\mathfrak{I}$ and $\mathfrak{T}$
 
 $$Ж=\mathrm{ijjkki}+\mathrm{jkkiij}+\mathrm{kiijjk}+\cdots$$
 
-Note that the example terms shown here exemplify the $abbcca$ pattern in cases where $a\ne b\ne c$. But Ж also contains terms for which $a=b\ne c$, for which $a\ne b= c$, for which $a=c\nenb$, and for which $a=b=c$. So we can equally write
+Note that the example terms shown here exemplify the $abbcca$ pattern in cases where $a\ne b\ne c$. But Ж also contains terms for which $a=b\ne c$, for which $a\ne b= c$, for which $a=c\ne b$, and for which $a=b=c$. So we can equally write
 
 $$Ж=\mathrm{ijjiii}+\mathrm{jjjkkj}+\mathrm{iiiiii}+\cdots$$
 
@@ -822,13 +834,13 @@ $$Д=\frac{1}{6}(\mathsf{i}^3+Ш+Ж-Б-\mathfrak{I}\mathsf{i}-\mathsf{i}\mathfra
 
 The earlier form of Д we proposed above, based on the Sarrus rule, is a special case of this result obtained by combining terms that are equivalent through the dyad reordering.
 
-### Relationship between determinant and isotropic scaling
+### Contributing terms in the determinant
 
-We covered previously how any dyadic $M$ can be decomposed into three parts, namely isotropic scaling, antisymmetric rotation, and deviatoric scaling:
+Now that we have a suitable form for Д, we can evaluate the terms contributing to the determinant in their coordinate-free index-free form. Distribuing out the six-dot operator:
 
-$$\mathsf{M}=\mathsf{M}\_\text{iso}+\mathsf{M}\_\text{anti}+\mathsf{M}\_\text{dev}$$
+$$\begin{aligned}\text{det}(\mathsf{M})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\frac{1}{6}(&\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3 \\
+&-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3})\end{aligned}$$
 
-wherein
+Let's look at each term:
 
-$$\mathsf{M}\_\text{iso}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{M} \qquad \mathsf{M}\_\text{anti}+\mathsf{M}\_\text{dev}=\left(\mathfrak{I}-\frac{\mathsf{i}^2}{3}\right):\mathsf{M}$$
-
+1. $\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ --- Each of the three $\mathsf{i}$ instances cleanly annihilates with one of the three $\mathsf{M}$ instances to produce a factor $\mathsf{i}:\mathsf{M}=\text{trace}(\mathsf{M})$. So this term overall is $\text{trace}(\mathsf{M})^3$.
