@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-07-07T22:58:14.345555"
+modified: "2026-07-08T22:20:23.399085"
 title: "Tensors"
 ---
 
@@ -306,7 +306,7 @@ $$|\mathrm{v}\times\mathrm{w}|=|\mathrm{v}||\mathrm{w}| \sin \alpha$$
 
 where $\alpha$ is the angle between $\mathrm{v}$ and $\mathrm{w}$.
 
-As it turns out, $|\mathrm{v}||\mathrm{w}| \sin \alpha$ is the _area_ of the 2-dimensional parallelogram bounded by the vectors $\mathrm{v}$ and $\mathrm{w}$. That being said, the vector product does _not_ contain all the detailed shape information of that parallelogram---that detailed shape information requires knowledge of _six_ elements, whereas the vector product has only three components (as do all vectors in three dimensions). Possible six-element sets include:
+As it turns out, $|\mathrm{v}||\mathrm{w}| \sin \alpha$ is the _area_ of the 2-dimensional parallelogram bounded by the vectors $\mathrm{v}$ and $\mathrm{w}$. That being said, the vector product does _not_ contain all the detailed shape information of that parallelogram &mdash; that detailed shape information requires knowledge of _six_ elements, whereas the vector product has only three components (as do all vectors in three dimensions). Possible six-element sets include:
 
 - the three components of each the two input vectors taken together,
 - the cross-product's three components plus the three dot products $\mathrm{v}\cdot \mathrm{v}$, $\mathrm{v}\cdot\mathrm{w}$ and $\mathrm{w}\cdot\mathrm{w}$,
@@ -705,9 +705,9 @@ which produces the deviatoric part of the dyadic it operates on (and happens to 
 
 ### Four-dot product and trace of the matrix product
 
-The outer product of two dyadics, $\mathsf{M}$ and $\mathsf{N}$, is written $\mathsf{MN}$. This outer product is a four-index tensor. Defining the four-dot product "$:\hspace{0.2em}:$" as the inside-outward contraction on four indices, there is an interesting relationship between the four-tensor $\mathfrak{I}$ and the matrix multiplication product ($\mathsf{M}\cdot\mathsf{N}$): 
+The outer product of two dyadics, $\mathsf{M}$ and $\mathsf{N}$, is written $\mathsf{MN}$. This outer product is a four-index tensor. Defining the four-dot product "$:\hspace{0.2em}:$" as the inside-outward contraction on four indices, there is an interesting relationship between the four-tensor $\mathfrak{I}$, the double dot product, and the matrix multiplication product ($\mathsf{M}\cdot\mathsf{N}$): 
 
-$$\mathfrak{I}:\hspace{0.2em}:\mathsf{MN}=\mathsf{i}:(\mathsf{M}\cdot\mathsf{N})=\mathrm{trace}(\mathsf{M}\cdot\mathsf{N})=M\_{ij}N\_{ji}.$$
+$$\mathfrak{I}:\hspace{0.2em}:\mathsf{MN}=\mathsf{i}:(\mathsf{M}\cdot\mathsf{N})=\mathsf{M}:\mathsf{N}=\mathrm{trace}(\mathsf{M}\cdot\mathsf{N})=M\_{ij}N\_{ji}.$$
 
 The fact that the unit basis terms in $\mathfrak{I}$ have the same $abba$ pattern seen in the contracted indices of $M_{ij}N_{ji}$ is an intuitive confirmation of this relationship. 
 
@@ -793,7 +793,7 @@ $$\mathsf{A}=\begin{pmatrix}
  c & f & i
 \end{pmatrix}$$
 
-the formula for the determinant (given by, _e.g._, the "rule of Sarrus" in linear algebra) is
+the formula for the determinant given by the "rule of Sarrus" in linear algebra is
 
 $$\text{det}(\mathsf{A})=aei+dhc+gbf-ceg-fha-ibd$$
 
@@ -836,11 +836,26 @@ The earlier form of Д we proposed above, based on the Sarrus rule, is a special
 
 ### Contributing terms in the determinant
 
-Now that we have a suitable form for Д, we can evaluate the terms contributing to the determinant in their coordinate-free index-free form. Distribuing out the six-dot operator:
+Now that we have a suitable form for Д, we can evaluate the terms contributing to the determinant in their coordinate-free index-free form. Distributing out the six-dot operator:
 
-$$\begin{aligned}\text{det}(\mathsf{M})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\frac{1}{6}(&\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3 \\
-&-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3})\end{aligned}$$
+$$\begin{aligned}\text{det}(\mathsf{M})&=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
+&=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3})\end{aligned}$$
 
 Let's look at each term:
 
-1. $\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ --- Each of the three $\mathsf{i}$ instances cleanly annihilates with one of the three $\mathsf{M}$ instances to produce a factor $\mathsf{i}:\mathsf{M}=\text{trace}(\mathsf{M})$. So this term overall is $\text{trace}(\mathsf{M})^3$.
+1. $\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Each of the three $\mathsf{i}$ instances cleanly annihilates with one of the three $\mathsf{M}$ instances to produce a factor $\mathsf{i}:\mathsf{M}=\text{trace}(\mathsf{M})$. So this term overall is $\text{trace}(\mathsf{M})^3$.
+
+2. $Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; This is the most complicated of the lot. What does it equal?
+
+3. $Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Here, the first four of the six contraction dots result in the matrix product $\mathsf{M}\cdot\mathsf{M}$, per the earlier discussion on Ж. The remaining two contraction dots first produce another chained matrix product ($\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M}$), then finally result in taking the trace of the whole thing, making this term $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.
+
+4. $Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; The $abccba$ pattern of Б results in the middle $\mathsf{M}$ factor producing a factor of $\text{trace}(\mathsf{M})$. Then removing the inner $cc$ slots, we have $abba$ contracting on two instances of $\mathsf{M}$, which is equivalent to the $\mathfrak{I}::\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})$ relationship we saw prior. Hence this term is $\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M})$.
+
+5. $\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Cleanly evaluates to $\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M})$, exactly as the previous Б term.
+
+6. $\mathsf{i}\mathfrak{I}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Also evaluates to $\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M})$, exactly as the two previous terms.
+
+Putting it all together,
+
+$$\begin{aligned}\text{det}(\mathsf{M})&=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
+&=\frac{1}{6}(\text{trace}(\mathsf{M})^3+?+\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$
