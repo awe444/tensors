@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-07-08T22:20:23.399085"
+modified: "2026-07-11T08:53:59.023785"
 title: "Tensors"
 ---
 
@@ -811,6 +811,8 @@ Examining the terms in our above proposed form for Д, we identify some key patt
 
 $$\text{Ш}=\mathrm{ijkijk}+\mathrm{jikjik}+\mathrm{kijkij}+\mathrm{kjikji}+\mathrm{ikjikj}+\mathrm{jkijki}+\cdots$$
 
+<p style="margin-left: 2.5em">Later we will discover that, just as Ж gives matrix multiplication, Ш in fact gives <em>reversed</em> matrix multiplication. 
+
 3. The third term, $\mathrm{kiijjk}$, is one of the 27 terms found in the six tensor Ж we explored in the previous section which gives matrix multiplication.
 
 4. The fourth term, $\mathrm{ikjjki}$, is one belonging to the "reflected" $abccba$ pattern, making it a member of the six-tensor/triple-dot-product equivalent of the identity tensor (analogous to $\mathfrak{I}$ for double dot product and $\mathsf{i}$ for single dot product). Call this six-tensor identity Б, which for any three-index tensor $\mathcal{F}$ has the behavior
@@ -845,9 +847,23 @@ Let's look at each term:
 
 1. $\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Each of the three $\mathsf{i}$ instances cleanly annihilates with one of the three $\mathsf{M}$ instances to produce a factor $\mathsf{i}:\mathsf{M}=\text{trace}(\mathsf{M})$. So this term overall is $\text{trace}(\mathsf{M})^3$.
 
-2. $Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; This is the most complicated of the lot. What does it equal?
+2. $Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Consider initially just contracting the first four dots (first two copies of $\mathsf{M}$):
 
-3. $Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Here, the first four of the six contraction dots result in the matrix product $\mathsf{M}\cdot\mathsf{M}$, per the earlier discussion on Ж. The remaining two contraction dots first produce another chained matrix product ($\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M}$), then finally result in taking the trace of the whole thing, making this term $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.
+$$Ш:\hspace{0.2em}:\mathsf{M}^2=\underbrace{(ab}\_{\text{free}}\underbrace{cabc)}\_{\text{contracted}}:\hspace{0.2em}:\mathsf{M}^2$$
+
+<p style="margin-left: 2.5em">Unlike matrix multiplication, which is a contraction on the <em>inner</em> indices of $\mathsf{M}^2$, the $cabc$ pattern is a contraction on the <em>outer</em> indices of $\mathsf{M}^2$. Using Einstein notation we can see that outer-index contraction is equivalent to inner index contraction of the transposes, but from linear algebra we know that this in turn is equal to the transpose of the product of the original (untransposed) matrices:
+
+$$M\_{ki}M\_{jk}=(\mathsf{M}^\mathsf{T})\_{ik}(\mathsf{M}^\mathsf{T})\_{kj}=(\mathsf{M}^\mathsf{T}\cdot \mathsf{M}^\mathsf{T})\_{ij}=[(\mathsf{M}\cdot\mathsf{M})^\mathsf{T}]\_{ij}.$$
+
+<p style="margin-left: 2.5em">Now, because the sequence $ab$ on the left/free indices of Ш are <em>not</em> reflected with the $ab$ sequence inside of $caba$ on the right/contracted side, it means we have an extra transpose operation, serving to undo the above one, and the net result is:
+
+$$Ш:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$$
+
+<p style="margin-left: 2.5em">This is the same result that we'd obtain from the matrix multiplication operator, $Ж:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$, but only because the two input dyadics were the same. If we'd instead looked at $Ш:\hspace{0.2em}:\mathsf{M}\mathsf{N}$, we'd find it evaluates to $\mathsf{N}\cdot\mathsf{M}$ &mdash; <em>reversed</em> matrix multiplication!
+
+<p style="margin-left: 2.5em">The remaining two contraction dots first produce another chained matrix product ($\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M}$), then finally result in taking the trace of the whole thing, making this term $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.
+
+3. $Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; Here, as with the Ш term, the first four of the six contraction dots result in the matrix product $\mathsf{M}\cdot\mathsf{M}$, and the term overall is again $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.
 
 4. $Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ &mdash; The $abccba$ pattern of Б results in the middle $\mathsf{M}$ factor producing a factor of $\text{trace}(\mathsf{M})$. Then removing the inner $cc$ slots, we have $abba$ contracting on two instances of $\mathsf{M}$, which is equivalent to the $\mathfrak{I}::\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})$ relationship we saw prior. Hence this term is $\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M})$.
 
@@ -858,4 +874,4 @@ Let's look at each term:
 Putting it all together,
 
 $$\begin{aligned}\text{det}(\mathsf{M})&=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
-&=\frac{1}{6}(\text{trace}(\mathsf{M})^3+?+\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$
+&=\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$
