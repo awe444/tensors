@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-07-15T23:33:12.907925"
+modified: "2026-07-16T17:31:59.660677"
 title: "Tensors"
 ---
 
@@ -327,13 +327,13 @@ This quantity is referred to as the _asymmetric component_ of the dyad $\mathsf{
 The terms $\mathsf{e}_7\mathrm{k}$, $\mathsf{e}_8\mathrm{i}$, and $\mathsf{e}_9\mathrm{j}$ (and their sum) are our first encounter with _third-order tensors_, meaning tensors that have three indices. We also refer to these as _triadics_ (sums of triads), analogous to dyadics (sums of dyads). If we expand it out in terms of the basis vectors:
 
 $$\frac{1}{\sqrt{2}}(\mathsf{e}_7\mathrm{k}+\mathsf{e}_8\mathrm{i}+\mathsf{e}_9\mathrm{j})=$$
-$$\frac{1}{2}[(\mathrm{ij} -\mathrm{ji})\mathrm{k}+(\mathrm{jk} - \mathrm{kj})\mathrm{i}+(\mathrm{ki} -\mathrm{ik})\mathrm{j}]$$
+$$-\frac{1}{2}[(\mathrm{ji} -\mathrm{ij})\mathrm{k}+(\mathrm{kj} - \mathrm{jk})\mathrm{i}+(\mathrm{ik} -\mathrm{ki})\mathrm{j}]$$
 
-The third-order tensor above in square brackets is known as the _Levi-Civita tensor_, represented as $\mathcal{E}$. We use caligraphic typeface for representing third-order tensors in an index-free manner.
+The third-order tensor above in square brackets is known as the _Levi-Civita tensor_, or sometimes the _permutation tensor_, represented as $\mathcal{E}$. We use caligraphic typeface for representing third-order tensors in an index-free manner.
 
 To summarize:
 
-$$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{2} \mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})$$
+$$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=-\frac{1}{2} \mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})$$
 
 As an important aside: if we instead start with $\mathcal{E}$ and dot product it with two vectors $\mathrm{a}$ and $\mathrm{b}$ in sequence, we find:
 
@@ -343,15 +343,17 @@ $$=\mathrm{a}\times\mathrm{b}$$
 
 Taken together with the earlier equations, this reveals that dot-producting the antisymmetric component of a dyad $\mathsf{D}=\mathrm{vw}$ with a vector $\mathrm{u}$ is equivalent to:
 
-$$\mathsf{D}_{\mathrm{anti}}\cdot\mathrm{u}=\frac{1}{2}(\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}))\cdot\mathrm{u}=\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$
+$$\mathsf{D}_{\mathrm{anti}}\cdot\mathrm{u}=-\frac{1}{2}(\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}))\cdot\mathrm{u}=-\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$
 
-This operation _rotates_ the vector $\mathrm{u}$ by 90 degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$. The scaling is isolated to the component of $\mathrm{u}$ which lies in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$.
+This operation _rotates_ the vector $\mathrm{u}$ by $-90$ degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$. The scaling is isolated to the component of $\mathrm{u}$ which lies in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$.
+
+A note on orientation: there is a sign discrepancy between our defintion of $\mathcal{E}$ and what is traditionally presented. This ultimately is in service of the "inside-outward" contraction convention that this work respects. With our sign convention, the equation $(\mathcal{E}\cdot\mathrm{a})\cdot\mathrm{b}=\mathrm{a}\times\mathrm{b}$ holds, otherwise we'd either incur a minus sign or have to swap the order of $\mathrm{a}$ and $\mathrm{b}$ across the equals sign.
 
 ### Deviatoric scaling and eigenspaces
 
 So far, we've decomposed the outer product $\mathrm{vw}$ into two geometrically meaningful components,
 
-$$\mathsf{D}=\mathrm{vw}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} + \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})+...$$
+$$\mathsf{D}=\mathrm{vw}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} - \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})+\cdots$$
  
 namely, an isotropic scaling component and an antisymmetric rotation component. 
 
@@ -515,7 +517,7 @@ $$\mathrm{E}_2=\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracke
 
 Bringing it all together, we can now fully expand the dyad into the isotropic scaling, antisymmetric rotational, and deviatoric symmetric components:
 
-$$\begin{aligned}\mathsf{D}&=\mathrm{vw}\\ &=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} + \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})\\ &\quad -\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\times\mathrm{w}\rrbracket ^2 \\ &\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}+\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket ^2 \\ &\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}-\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket ^2\end{aligned}$$
+$$\begin{aligned}\mathsf{D}&=\mathrm{vw}\\ &=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} - \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})\\ &\quad -\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\times\mathrm{w}\rrbracket ^2 \\ &\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}+\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket ^2 \\ &\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}-\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket ^2\end{aligned}$$
 
 ### Special case of collinear vectors
 
@@ -551,11 +553,11 @@ although keeping the isotropic and deviatoric parts separated is still instructi
 
 For the case where $\mathrm{v}$ and $\mathrm{w}$ are orthogonal, all terms that include $\mathrm{v}\cdot\mathrm{w}$ go to zero, and the expansion specializes to:
 
-$$\mathsf{D}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$
+$$\mathsf{D}=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$
 
 Note that the isotropic term in particular has disappeared entrely. Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:
 
-$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$
+$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(-\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$
 
 Collectively the three terms serve to map (project and scale) any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is always true for the dyad $\mathrm{vw}$, the final result is always parallel to v, since
 
@@ -571,7 +573,7 @@ $$\mathrm{e}_3=\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracke
 
 in terms of which the decomposition becomes the rather compact:
 
-$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\mathcal{E}\cdot\mathrm{e}_1 + \mathrm{e}_2^2-\mathrm{e}_3^2\right).$$
+$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(-\mathcal{E}\cdot\mathrm{e}_1 + \mathrm{e}_2^2-\mathrm{e}_3^2\right).$$
 
 ### Matrix multiplication
 
@@ -622,19 +624,19 @@ Recall the concept of trace arose earlier in the context of the _traceless_ symm
 
 Earlier we saw that the antisymmetric part of the dyad $\mathsf{D}=\mathrm{vw}$ can be written
 
-$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$
+$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$
 
 By substituting the equivalent expression involving the double dot product, this takes the form:
 
-$$\mathsf{D}_\mathrm{anti}=\frac{1}{2}\mathcal{E}\cdot(\mathcal{E}:\mathrm{v}\mathrm{w})=\left(\frac{\mathcal{E}\cdot\mathcal{E}}{2}\right):\mathrm{v}\mathrm{w}=\mathfrak{A}:\mathrm{v}\mathrm{w},$$
+$$\mathsf{D}_\mathrm{anti}=-\frac{1}{2}\mathcal{E}\cdot(\mathcal{E}:\mathrm{v}\mathrm{w})=\left(-\frac{\mathcal{E}\cdot\mathcal{E}}{2}\right):\mathrm{v}\mathrm{w}=\mathfrak{A}:\mathrm{v}\mathrm{w},$$
 
 where we have defined a four-index tensor
 
-$$\mathfrak{A}=\frac{1}{2}\mathcal{E}\cdot\mathcal{E}.$$
+$$\mathfrak{A}=-\frac{1}{2}\mathcal{E}\cdot\mathcal{E}.$$
 
 This is known as the _antisymmetrizer_ tensor. We use Fraktur typeface to represent four-index tensors in the index-free manner. Just to make the implied contraction policy extra clear, in Einstein notation this is:
 
-$$\mathfrak{A}\_{ijkl}=\frac{1}{2}\mathcal{E}\_{ijm}\mathcal{E}\_{mkl}.$$
+$$\mathfrak{A}\_{ijkl}=-\frac{1}{2}\mathcal{E}\_{ijm}\mathcal{E}\_{mkl}.$$
 
 The antisymmetrizer tensor gives the antisymmetric part of _any_ general dyadic $\mathsf{A}$, not just pure dyads:
 
@@ -680,11 +682,11 @@ One can show that $\mathfrak{A}$ has 12 terms, $\mathfrak{S}$ has 15 terms, $\ma
 
 Previously we showed that a dyad expands out into three distinct, pure operations with physical interpretation: isotropic scaling, asymmetric rotation, and deviatoric scaling. The double dot product along with four-index tensors are a convenient way of specializing or filtering the original dyad operator into one or more of these pure operations. We already noted this for the antisymmetric operation:
 
-$$\mathsf{D}_\mathrm{anti}=\mathfrak{A}:\mathsf{D}=\mathfrak{A}:\mathrm{vw}=\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$
+$$\mathsf{D}_\mathrm{anti}=\mathfrak{A}:\mathsf{D}=\mathfrak{A}:\mathrm{vw}=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$
 
 Expanding upon the earlier interpretation that $\mathsf{D}$ is an operator which can operate on the vector $\mathrm{u}$, this operation being written as $\mathsf{D}\cdot\mathrm{u}$, then we can similarly write
 
-$$(\mathfrak{A}:\mathsf{D})\cdot\mathrm{u}=\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$
+$$(\mathfrak{A}:\mathsf{D})\cdot\mathrm{u}=-\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$
 
 where $(\mathfrak{A}:\mathsf{D})$ is the effective operator formed by altering the original operator $\mathsf{D}$.
 
@@ -841,7 +843,7 @@ The earlier form of Д we proposed above, based on the Sarrus rule, is a special
 Now that we have a suitable form for Д, we can evaluate the terms contributing to the determinant in their coordinate-free index-free form. Distributing out the six-dot operator:
 
 $$\begin{aligned}\text{det}(\mathsf{M})&=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
-&=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3})\end{aligned}$$
+&=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3})\end{aligned}$$
 
 Let's look at each term:
 
@@ -855,7 +857,7 @@ $$Ш:\hspace{0.2em}:\mathsf{M}^2=\underbrace{(ab}\_{\text{free}}\underbrace{cabc
 
 $$M\_{ki}M\_{jk}=(\mathsf{M}^\mathsf{T})\_{ik}(\mathsf{M}^\mathsf{T})\_{kj}=(\mathsf{M}^\mathsf{T}\cdot \mathsf{M}^\mathsf{T})\_{ij}=[(\mathsf{M}\cdot\mathsf{M})^\mathsf{T}]\_{ij}.$$
 
-<p style="margin-left: 2.5em">Now, because the sequence $ab$ on the left/free indices of Ш are <em>not</em> reflected with the $ab$ sequence inside of $caba$ on the right/contracted side, it means we have an extra transpose operation, serving to undo the above one, and the net result is:
+<p style="margin-left: 2.5em">Now, because the sequence $ab$ on the left/free indices of Ш are <em>not</em> reflected with the $ab$ sequence inside of $cabc$ on the right/contracted side, it means we have an extra transpose operation, serving to undo the above one, and the net result is:
 
 $$Ш:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$$
 
@@ -912,7 +914,7 @@ $$Д=\frac{1}{6}(\mathsf{i}^3+Л-Я).$$
 
 Our original mention of the determinant $\text{det}(\mathsf{M})$ was as a measure of the volume-scaling effect of a dyadic $\mathsf{M}$ when applied to a 3D unit volume element spanned by orthonomal basis vectors:
 
-$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\qquad \to \qquad \mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^2=\text{det}(\mathsf{M})$$
+$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\qquad \to \qquad \mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{det}(\mathsf{M})$$
 
 Instead of _volume_ change, we can ask a similar question about _length_ change, <em>i.e.</em>: by what factor does $\mathsf{M}$ change the length of a unit vector? The problem with this question is that it depends on the direction of the unit vector. We can account for this by looking at the _average_ length change over the set of orthonormal basis vectors. Here "average" means per spatial dimension. For each basis vector, first transform it and then compute the length (component) along its original direction, then average these results to get the average change in length effected by $\mathsf{M}$:
 
@@ -928,9 +930,9 @@ We found earlier that the determinant can be expressed in terms of traces &mdash
 
 Having given this treatment to volumes and lengths, it naturally follows that we should consider how $\mathsf{M}$ transforms _areas_. Recall the connection between vector cross products and the area spanned by the vectors in the cross product. Each unit basis vector is also expressable as a unit area element: $\mathrm{i}$ goes with the unit area $\mathrm{j}\times\mathrm{k}$ describes, $\mathrm{j}$ with $\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}$ with $\mathrm{i}\times \mathrm{j}$. The average change in the areas, like we did above for lengths, is
 
-$$\frac{1}{3}([(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathsf{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathsf{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathsf{j})]\cdot\mathrm{k}
+$$\frac{1}{3}([(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathsf{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathsf{j})]\cdot\mathrm{k}
 ]).$$
 
 Inspecting one of these terms:
 
-$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathsf{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathsf{k})\mathrm{i}$$
+$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathsf{k})\mathrm{i}$$
