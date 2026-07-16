@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-07-11T08:53:59.023785"
+modified: "2026-07-15T21:35:54.619719"
 title: "Tensors"
 ---
 
@@ -725,7 +725,7 @@ Provided none of the three vectors are collinear, they span a volume $V$ given b
 
 $$V=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$$
 
-where we have introducted the triple dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the double and single dot products. In Einstein notation:
+where we have introducted the triple-dot product "$\hspace{0.2em}\vdots\hspace{0.2em}$", which conveys the same inside-outward index contraction policy that we saw for the single-dot, double-dot, and four-dot products. In Einstein notation:
 
 $$V=\mathcal{E}\_{ijk}v\_k w\_j u\_i$$
 
@@ -875,3 +875,36 @@ Putting it all together,
 
 $$\begin{aligned}\text{det}(\mathsf{M})&=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
 &=\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$
+
+### Commutator and anticommutator tensors
+
+In the previous section we remarked that, similar to how Ж gives matrix multiplication:
+
+$$Ж:\hspace{0.2em}:\mathsf{MN}=\mathsf{M}\cdot\mathsf{N},$$
+
+one gets _reverse_ matrix multiplication from Ш:
+
+$$Ш:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{N}\cdot\mathsf{M}.$$
+
+Matrix multiplication is not _commutative_: the order of the factors matters, <em>i.e.</em>, $\mathsf{M}\cdot\mathsf{N}$ is not generally equal to $\mathsf{N}\cdot\mathsf{M}$.
+
+We have encountered other non-commutative operations before, such as the vector cross product and the outer product of two vectors. In the case of the outer product of two vectors $\mathrm{v}$ and $\mathrm{w}$, recall that the antisymmetrizer $\mathfrak{A}$ directly gives the difference between the two outer product orderings $\mathrm{vw}$ and $\mathrm{wv}$:
+
+$$\mathfrak{A}:\mathrm{vw}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})$$
+
+Analogous to what the antisymmetrizer does for vector outer product, we define for matrix multiplication the _commutator_ tensor $И=Ж-Ш$:
+
+$$И:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}-\mathsf{N}\cdot\mathsf{M}.$$
+
+Similarly, the _anticommutator_ tensor $Л=Ж+Ш$:
+
+$$Л:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}+\mathsf{N}\cdot\mathsf{M}.$$
+
+Notice how, per the previous section, the $2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$ term in the determinant is cleanly attributable to Л. By extension, the $3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M})$ term in the determinant comes from the combination of Б, $\mathfrak{I}\mathsf{i}$, and $\mathsf{i}\mathfrak{I}$, and if we define
+
+$$Я=Б+\mathfrak{I}\mathsf{i}+\mathsf{i}\mathfrak{I},$$
+
+then the determinant operator condenses considerably to
+
+$$Д=\frac{1}{6}(\mathsf{i}^3+Л-Я).$$
+

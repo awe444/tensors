@@ -626,6 +626,22 @@ c &amp; f &amp; i
 <p>Putting it all together,</p>
 <p>$$\begin{aligned}\text{det}(\mathsf{M})&amp;=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
 &amp;=\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$</p>
+<h3 id="commutator-and-anticommutator-tensors">Commutator and anticommutator tensors</h3>
+<p>In the previous section we remarked that, similar to how Ж gives matrix multiplication:</p>
+<p>$$Ж:\hspace{0.2em}:\mathsf{MN}=\mathsf{M}\cdot\mathsf{N},$$</p>
+<p>one gets <em>reverse</em> matrix multiplication from Ш:</p>
+<p>$$Ш:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{N}\cdot\mathsf{M}.$$</p>
+<p>Matrix multiplication is not <em>commutative</em>: the order of the factors matters, <em>i.e.</em>, $\mathsf{M}\cdot\mathsf{N}$ is not generally equal to $\mathsf{N}\cdot\mathsf{M}$.</p>
+<p>We have encountered other non-commutative operations before, such as the vector cross product and the outer product of two vectors. In the case of the outer product of two vectors $\mathrm{v}$ and $\mathrm{w}$, recall that the antisymmetrizer $\mathfrak{A}$ directly gives the difference between the two outer product orderings $\mathrm{vw}$ and $\mathrm{wv}$:</p>
+<p>$$\mathfrak{A}:\mathrm{vw}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})$$</p>
+<p>Analogous to what the antisymmetrizer does for vector outer product, we define for matrix multiplication the <em>commutator</em> tensor $И=Ж-Ш$:</p>
+<p>$$И:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}-\mathsf{N}\cdot\mathsf{M}.$$</p>
+<p>Similarly, the <em>anticommutator</em> tensor $Л=Ж+Ш$:</p>
+<p>$$Л:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}+\mathsf{N}\cdot\mathsf{M}.$$</p>
+<p>Notice how, per the previous section, the $2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$ term in the determinant is cleanly attributable to Л. By extension, the $3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M})$ term in the determinant comes from the combination of Б, $\mathfrak{I}\mathsf{i}$, and $\mathsf{i}\mathfrak{I}$, and if we define</p>
+<p>$$Я=Б+\mathfrak{I}\mathsf{i}+\mathsf{i}\mathfrak{I},$$</p>
+<p>then the determinant operator condenses considerably to</p>
+<p>$$Д=\frac{1}{6}(\mathsf{i}^3+Л-Я).$$</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 
