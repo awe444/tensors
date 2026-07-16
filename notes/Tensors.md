@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-07-15T21:35:54.619719"
+modified: "2026-07-15T23:22:35.503906"
 title: "Tensors"
 ---
 
@@ -696,7 +696,7 @@ $$\mathsf{D}_{\mathrm{iso}}=\left(\frac{\mathsf{i}^2}{3}\right):\mathsf{D}$$
 
 $$\mathsf{D}_{\mathrm{dev}}=\left(\mathfrak{S}-\frac{\mathsf{i}^2}{3}\right):\mathsf{D}=\mathfrak{D}:\mathsf{D}$$
 
-Here we used the above-noted $\mathrm{trace}(\mathsf{D})=\mathsf{i}:\mathsf{D}$, and for the specific case of $\mathsf{D}=\mathrm{vw}$, we have $\mathrm{trace}(\mathsf{D})=\mathrm{v}\cdot\mathrm{w}$. We also defined another four-index tensor
+We've also defined another four-index tensor
 
 $$\mathfrak{D}=\mathfrak{S}-\frac{\mathsf{i}^2}{3}$$
 
@@ -908,3 +908,25 @@ then the determinant operator condenses considerably to
 
 $$Д=\frac{1}{6}(\mathsf{i}^3+Л-Я).$$
 
+### Determinant is to volume and trace is to length as _cotrace_ is to area
+
+Our original mention of the determinant $\text{det}(\mathsf{M})$ was as a measure of the volume-scaling effect of a dyadic $\mathsf{M}$ when applied to a 3D unit volume element spanned by orthonomal basis vectors:
+
+$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\qquad \to \qquad \mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^2=\text{det}(\mathsf{M})$$
+
+Instead of _volume_ change, we can ask a similar question about _length_ change, <em>i.e.</em>: by what factor does $\mathsf{M}$ change the length of a unit vector? The problem with this question is that it depends on the direction of the unit vector. We can account for this by looking at the _average_ length change over the set of orthonormal basis vectors. Here "average" means per spatial dimension. For each basis vector, first transform it and then compute the length (component) along its original direction, then average these results to get the average change in length effected by $\mathsf{M}$:
+
+$$\frac{1}{3}[(\mathsf{M}\cdot\mathrm{i})\cdot\mathrm{i}+(\mathsf{M}\cdot\mathrm{j})\cdot\mathrm{j}+(\mathsf{M}\cdot\mathrm{k})\cdot\mathrm{k}].$$
+
+But observe that this expression is equivalent to:
+
+$$\frac{1}{3}[(\mathsf{M}:\mathrm{ii})+(\mathsf{M}:\mathrm{jj})+(\mathsf{M}:\mathrm{kk})]=\frac{1}{3}(\mathsf{i}:\mathsf{M})=\frac{1}{3}\text{trace}(\mathsf{M}).$$
+
+In other words: the trace of dyadic is proportional (by a factor 3) to the dyadic's average length-changing effect.
+
+We found earlier that the determinant can be expressed in terms of traces &mdash; terms like $\text{trace}(\mathsf{M})^3$ &mdash; and this makes sense because it is effectively saying that volume changes in a space can be described in terms of length changes in the same space.
+
+Having given this treatment to volumes and lengths, it naturally follows that we should consider how $\mathsf{M}$ transforms _areas_. Recall the connection between vector cross products and the area spanned by the vectors in the cross product. Each unit basis vector is also expressable as a unit area element: $\mathrm{i}$ goes with the unit area $\mathrm{j}\times\mathrm{k}$ describes, $\mathrm{j}$ with $\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}$ with $\mathrm{i}\times \mathrm{j}$. The average change in the areas, like we did above for lengths, is
+
+$$\frac{1}{3}{[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathsf{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathsf{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathsf{j})]\cdot\mathrm{k}
+]}.$$
