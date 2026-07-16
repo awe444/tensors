@@ -1,6 +1,6 @@
 ---
 created: "2025-12-17T15:24:01.287251"
-modified: "2026-07-15T23:22:35.503906"
+modified: "2026-07-15T23:33:12.907925"
 title: "Tensors"
 ---
 
@@ -928,5 +928,9 @@ We found earlier that the determinant can be expressed in terms of traces &mdash
 
 Having given this treatment to volumes and lengths, it naturally follows that we should consider how $\mathsf{M}$ transforms _areas_. Recall the connection between vector cross products and the area spanned by the vectors in the cross product. Each unit basis vector is also expressable as a unit area element: $\mathrm{i}$ goes with the unit area $\mathrm{j}\times\mathrm{k}$ describes, $\mathrm{j}$ with $\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}$ with $\mathrm{i}\times \mathrm{j}$. The average change in the areas, like we did above for lengths, is
 
-$$\frac{1}{3}{[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathsf{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathsf{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathsf{j})]\cdot\mathrm{k}
-]}.$$
+$$\frac{1}{3}([(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathsf{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathsf{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathsf{j})]\cdot\mathrm{k}
+]).$$
+
+Inspecting one of these terms:
+
+$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathsf{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathsf{k})\mathrm{i}$$
