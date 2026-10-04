@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <style>
   body {
     background-color: #000000;
@@ -93,7 +94,7 @@ blockquote{
 <p>The &quot;one number&quot; definition is meant to contrast scalars with the higher-order objects we'll discuss next. Scalars can vary with space (scalar <em>fields</em>) and/or time, and the measurement we ascribe to them can depend on scale. Temperature for example is a macroscopic quantity that starts to lose meaning at sufficiently microscopic scales. When we later discuss differential calculus of scalars, approximation to idealized <em>continuous</em> scalar fields will prove convenient.</p>
 <h3 id="vectors">Vectors</h3>
 <p>A <em>vector</em> is a quantity that has direction and magnitude (<em>i.e.</em>, length). We write vectors as roman-face symbols like $\mathrm{r}$ for position, $\mathrm{v}$ for velocity, and $\mathrm{E}$ for an electric field. We can visualize vectors as arrows in our three dimensions.</p>
-<p>The magnitude of a vector does not depend on, or is <em>invariant</em> to, the way we frame the space in which that the vector resides, <em>i.e.</em>, the choice of the spatial coordinates. A vector's magnitude is a scalar and we can write it like</p>
+<p>The magnitude of a vector does not depend on, or is <em>invariant</em> to, the way we frame the space in which the vector resides, <em>i.e.</em>, the choice of the spatial coordinates. A vector's magnitude is a scalar and we can write it like</p>
 <p>$$|\mathrm{v}|=v$$</p>
 <p>which says the velocity vector $\mathrm{v}$ has a magnitude equal to a scalar $v$ known as the <em>speed</em>.</p>
 <p>The purely directional part of a vector is the <em>normalized</em> (length of 1) unit vector we denote with double brackets:</p>
@@ -113,7 +114,7 @@ blockquote{
 <h3 id="dyads">Dyads</h3>
 <p>Considering two vectors $\mathrm{v}$ and $\mathrm{w}$ as a pair, they define an <em>outer product</em>
 $$\mathsf{D}=\mathrm{v}\mathrm{w}$$
-where $\mathsf{D}$ is referred to as a <em>second-order tensor</em>, in this case specifically a <em>dyad</em>. We use san-serif typeface to represent second-order tensors in an index-free manner.</p>
+where $\mathsf{D}$ is referred to as a <em>second-order tensor</em>, in this case specifically a <em>dyad</em>. We use sans-serif typeface to represent second-order tensors in an index-free manner.</p>
 <p>For now, we'll hold off on discussing what this dyad object actually represents and how we can or should interpret it from a physical standpoint. Instead, for the moment we'll examine the mathematical structure it has, using the same coordinate system scaffolding that applies to vectors.</p>
 <h3 id="dyad-coordinate-bases">Dyad coordinate bases</h3>
 <p>To understand how the dyad $$\mathsf{D}=\mathrm{v}\mathrm{w}$$ is structured, let's look at it in the Cartesian space:</p>
@@ -199,7 +200,7 @@ $$\frac{1}{6}(v_x w_x+v_y w_y-2v_z w_z)(\mathrm{ii}+\mathrm{jj}-2\mathrm{kk}).$$
 <p>Vectors too can act as operators. The vector $\mathrm{v}$ can operate on the vector $\mathrm{w}$ to produce a scalar product, the value of which is defined as the product of the two vector magnitudes with an additional factor being the cosine of the angle $\alpha$ between the two vectors:</p>
 <p>$$\mathrm{w}\to \mathrm{v}\cdot\mathrm{w}=|\mathrm{v}||\mathrm{w}| \cos \alpha$$</p>
 <p>Note that the result of this &quot;dot product&quot; or &quot;inner product&quot; is coordinate independent.</p>
-<p>Geometrically, the dot product between two vectors is one of vector's <em>projection</em> onto the other vector multiplied by the length of that other vector. The result is the same regardless of which vector we project onto the other.</p>
+<p>Geometrically, the dot product between two vectors is one vector's <em>projection</em> onto the other vector multiplied by the length of that other vector. The result is the same regardless of which vector we project onto the other.</p>
 <p>Instead of a physical vector, we can use a basis vector as the operator in the dot product. Due to the orthonormal nature of these basis vectors, they have the following dot products when operating amongst themselves:</p>
 <p>$$\mathrm{i}\cdot\mathrm{i}=\mathrm{j}\cdot\mathrm{j}=\mathrm{k}\cdot\mathrm{k}=1$$
 $$\mathrm{i}\cdot\mathrm{j}=\mathrm{j}\cdot\mathrm{i}=\mathrm{i}\cdot\mathrm{k}=\mathrm{k}\cdot\mathrm{i}=\mathrm{j}\cdot\mathrm{k}=\mathrm{k}\cdot\mathrm{j}=0$$</p>
@@ -211,16 +212,16 @@ $$\mathrm{i}\cdot\mathrm{j}=\mathrm{j}\cdot\mathrm{i}=\mathrm{i}\cdot\mathrm{k}=
 <p>The outer product we used to introduce dyads is another example of using a vector as an operator on another vector, in that case producing a dyad.</p>
 <p>There are more ways vectors can behave as operators on other vectors, as we'll see later.</p>
 <h3 id="dyads-as-operators">Dyads as operators</h3>
-<p>Earlier we remarked how, in general, a dyad can be representated as a <em>matrix</em>. In linear algebra, we learn that a fundamental use of matrices is to <em>transform</em> vectors. The vector $\mathrm{x}$ can be transformed into the vector $\mathrm{y}$ using the matrix $\mathsf{A}$:</p>
+<p>Earlier we remarked how, in general, a dyad can be represented as a <em>matrix</em>. In linear algebra, we learn that a fundamental use of matrices is to <em>transform</em> vectors. The vector $\mathrm{x}$ can be transformed into the vector $\mathrm{y}$ using the matrix $\mathsf{A}$:</p>
 <p>$$\mathrm{y}=\mathsf{A}\cdot \mathrm{x}$$</p>
 <p>The details of how one calculates the product of $\mathsf{A}$ and $\mathrm{x}$ is generally presented as &quot;matrix multiplication&quot;, an operation between arrays of coordinate-dependent components. The matrix would be a $3\times 3$ square array, while the vectors $\mathrm{x}$ and $\mathrm{y}$ would be &quot;column&quot; arrays of shape $3\times 1$.</p>
 <p>If we instead represent $\mathsf{A}$ and $\mathrm{x}$ in terms of the basis vectors $\mathrm{i},\mathrm{j},\mathrm{k}$, and take the dot product operator to have the same meaning as before, the single dot product distributes out to a large number of dot products of basis elements, some of which survive and some of which vanish:</p>
 <p>$$\mathsf{A}\cdot \mathrm{x}=$$
 $$(A_1\mathrm{ii}+A_2\mathrm{ij}+...+A_9\mathrm{kk})\cdot(x_1\mathrm{i}+x_2\mathrm{j}+x_3\mathrm{k})=$$
 $$A_1 x_1\mathrm{i}(\mathrm{i}\cdot\mathrm{i})+A_2 x_1\mathrm{i}(\mathrm{j}\cdot\mathrm{i})+...+A_9 x_3\mathrm{k}(\mathrm{k}\cdot\mathrm{k})=$$
-$$(A_1 x_1+A_4 x_2+A_7 x_3)\mathrm{i}+$$
-$$(A_2x_1+A_5 x_2+A_8 x_3)\mathrm{j}+$$
-$$(A_3 x_1+A_6x_2+A_9 x_3)\mathrm{k}.$$</p>
+$$(A_1 x_1+A_2 x_2+A_3 x_3)\mathrm{i}+$$
+$$(A_4x_1+A_5 x_2+A_6 x_3)\mathrm{j}+$$
+$$(A_7 x_1+A_8x_2+A_9 x_3)\mathrm{k}.$$</p>
 <p>The result is a vector, equivalent to that given by &quot;matrix multiplication&quot;, but here derived by applying the dot product distributed out onto all of the basis components.</p>
 <p>But again, the above result applies to the highly specific context of using a particular coordinate basis.</p>
 <h3 id="geometric-interpretation-of-dyad-operators">Geometric interpretation of dyad operators</h3>
@@ -235,7 +236,7 @@ $$(A_3 x_1+A_6x_2+A_9 x_3)\mathrm{k}.$$</p>
 <p>Isotropic scaling: the vector gets scaled by a value irrespective of its direction</p>
 </li>
 <li>
-<p>Asymmetric rotation: the vector changes its direction about an axis of rotation, with scaling in the plane perpendicular to that axis as it rotates</p>
+<p>Antisymmetric rotation: the vector changes its direction about an axis of rotation, with scaling in the plane perpendicular to that axis as it rotates</p>
 </li>
 <li>
 <p>Deviatoric scaling: relative to an orthonormal frame of three directions, vector components in up to two axes can scale independently and the third component scales in a compensating fashion</p>
@@ -252,7 +253,7 @@ $$\frac{1}{3}(v_x w_x+v_y w_y+v_z w_z)(\mathrm{ii}+\mathrm{jj}+\mathrm{kk})=\fra
 <p>$$\mathsf{i}=\mathrm{ii}+\mathrm{jj}+\mathrm{kk}$$</p>
 <p>which has the special property of mapping any vector onto itself:</p>
 <p>$$\mathsf{i}\cdot\mathrm{v}=\mathrm{v}$$</p>
-<p>The identity dyadic is often represented with an uppercase &quot;I&quot;, but we've chosen lowercase here to help differentiate it with the moment of interia dyadic discussed later.</p>
+<p>The identity dyadic is often represented with an uppercase &quot;I&quot;, but we've chosen lowercase here to help differentiate it with the moment of inertia dyadic discussed later.</p>
 <p>This is also a good place to introduce the shorthand notation $\mathrm{v}^2=\mathrm{vv}$ which denotes the outer product of a vector with itself. Using this notation the identity dyadic is written:</p>
 <p>$$\mathsf{i}=\mathrm{i}^2+\mathrm{j}^2+\mathrm{k}^2$$</p>
 <p><em>Isotropic</em> means &quot;the same in all directions&quot;. This so-called <em>isotropic component</em> of the dyad $\mathsf{D}=\mathrm{vw}$ represents an operator that (via dot producting) scales a vector $\mathrm{u}$ by the constant value $\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})$ irrespective of its direction:</p>
@@ -261,7 +262,7 @@ $$\frac{1}{3}(v_x w_x+v_y w_y+v_z w_z)(\mathrm{ii}+\mathrm{jj}+\mathrm{kk})=\fra
 <p>Besides the dot product and outer product, another way a vector $\mathrm{v}$ can operate on a vector $\mathrm{w}$ is the <em>cross product</em>. In Cartesian coordinates, the cross product is represented as:</p>
 <p>$$\mathrm{v}\times\mathrm{w}=$$
 $$(v_y w_z - v_z w_y)\mathrm{i}+(v_z w_x -v_x w_z)\mathrm{j}+(v_x w_y -v_y w_x)\mathrm{k}$$</p>
-<p>which can be derived from the outer products of the Cartesian basis vectors:</p>
+<p>which can be derived from the cross products of the Cartesian basis vectors:</p>
 <p>$$\mathrm{i}\times\mathrm{i}=\mathrm{j}\times\mathrm{j}=\mathrm{k}\times\mathrm{k}=0$$
 $$\mathrm{i}\times\mathrm{j}=\mathrm{k}\quad\mathrm{j}\times\mathrm{i}=-\mathrm{k}$$
 $$\mathrm{j}\times\mathrm{k}=\mathrm{i}\quad\mathrm{k}\times\mathrm{j}=-\mathrm{i}$$
@@ -271,15 +272,15 @@ $$\mathrm{k}\times\mathrm{i}=\mathrm{j}\quad\mathrm{i}\times\mathrm{k}=-\mathrm{
 <p>where $\alpha$ is the angle between $\mathrm{v}$ and $\mathrm{w}$.</p>
 <p>As it turns out, $|\mathrm{v}||\mathrm{w}| \sin \alpha$ is the <em>area</em> of the 2-dimensional parallelogram bounded by the vectors $\mathrm{v}$ and $\mathrm{w}$. That being said, the vector product does <em>not</em> contain all the detailed shape information of that parallelogram — that detailed shape information requires knowledge of <em>six</em> elements, whereas the vector product has only three components (as do all vectors in three dimensions). Possible six-element sets include:</p>
 <ul>
-<li>the three components of each the two input vectors taken together,</li>
+<li>the three components of each of the two input vectors taken together,</li>
 <li>the cross-product's three components plus the three dot products $\mathrm{v}\cdot \mathrm{v}$, $\mathrm{v}\cdot\mathrm{w}$ and $\mathrm{w}\cdot\mathrm{w}$,</li>
 </ul>
 <p>and there are more possible combinations.</p>
 <p>In any event, the cross product can be interpreted geometrically as an oriented area element residing in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$, the shape of that area not being encoded. In fact, <em>any</em> vector can be interpreted in this manner, i.e., a directed area element instead of the usual directed line element.</p>
-<h3 id="asymmetric-rotation">Asymmetric rotation</h3>
+<h3 id="antisymmetric-rotation">Antisymmetric rotation</h3>
 <p>Now, the astute reader will have noticed that the components of $\mathrm{v}\times\mathrm{w}$ are the same as the $D_7,D_8,D_9$ dyad components we derived earlier. Specifically, one can see that:</p>
 <p>$$D_7\mathsf{e}_7+D_8\mathsf{e}_8+D_9\mathsf{e}_9=\frac{1}{\sqrt{2}}(\mathsf{e}_7\mathrm{k}+\mathsf{e}_8\mathrm{i}+\mathsf{e}_9\mathrm{j})\cdot(\mathrm{v}\times\mathrm{w})$$</p>
-<p>This quantity is referred to as the <em>asymmetric component</em> of the dyad $\mathsf{D}=\mathrm{vw}$. Indeed, we had already associated $D_7,D_8,D_9$ with the asymmetric part of the dyad in our initial discussion of the $D_i\mathsf{e}_i$ basis decomposition.</p>
+<p>This quantity is referred to as the <em>antisymmetric component</em> of the dyad $\mathsf{D}=\mathrm{vw}$. Indeed, we had already associated $D_7,D_8,D_9$ with the antisymmetric part of the dyad in our initial discussion of the $D_i\mathsf{e}_i$ basis decomposition.</p>
 <p>The terms $\mathsf{e}_7\mathrm{k}$, $\mathsf{e}_8\mathrm{i}$, and $\mathsf{e}_9\mathrm{j}$ (and their sum) are our first encounter with <em>third-order tensors</em>, meaning tensors that have three indices. We also refer to these as <em>triadics</em> (sums of triads), analogous to dyadics (sums of dyads). If we expand it out in terms of the basis vectors:</p>
 <p>$$\frac{1}{\sqrt{2}}(\mathsf{e}_7\mathrm{k}+\mathsf{e}_8\mathrm{i}+\mathsf{e}_9\mathrm{j})=$$
 $$-\frac{1}{2}[(\mathrm{ji} -\mathrm{ij})\mathrm{k}+(\mathrm{kj} - \mathrm{jk})\mathrm{i}+(\mathrm{ik} -\mathrm{ki})\mathrm{j}]$$</p>
@@ -292,8 +293,8 @@ $$(a_y b_z - a_z b_y)\mathrm{i}+(a_z b_x -a_x b_z)\mathrm{j}+(a_x b_y -a_y b_x)\
 $$=\mathrm{a}\times\mathrm{b}$$</p>
 <p>Taken together with the earlier equations, this reveals that dot-producting the antisymmetric component of a dyad $\mathsf{D}=\mathrm{vw}$ with a vector $\mathrm{u}$ is equivalent to:</p>
 <p>$$\mathsf{D}_{\mathrm{anti}}\cdot\mathrm{u}=-\frac{1}{2}(\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}))\cdot\mathrm{u}=-\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$</p>
-<p>This operation <em>rotates</em> the vector $\mathrm{u}$ by $-90$ degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $|\mathrm{v}\times\mathrm{w}|$ and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$. The scaling is isolated to the component of $\mathrm{u}$ which lies in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$.</p>
-<p>A note on orientation: there is a sign discrepancy between our defintion of $\mathcal{E}$ and what is traditionally presented. This ultimately is in service of the &quot;inside-outward&quot; contraction convention that this work respects. With our sign convention, the equation $(\mathcal{E}\cdot\mathrm{a})\cdot\mathrm{b}=\mathrm{a}\times\mathrm{b}$ holds, otherwise we'd either incur a minus sign or have to swap the order of $\mathrm{a}$ and $\mathrm{b}$ across the equals sign.</p>
+<p>This operation <em>rotates</em> the vector $\mathrm{u}$ by $-90$ degrees about the axis directed along $\mathrm{v}\times\mathrm{w}$, according to the right-hand rule, and scales it by factors $\frac{1}{2}$, $|\mathrm{v}\times\mathrm{w}|$, and the sine of the angle between $\mathrm{v}\times\mathrm{w}$ and $\mathrm{u}$. The scaling is isolated to the component of $\mathrm{u}$ which lies in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$.</p>
+<p>A note on orientation: there is a sign discrepancy between our definition of $\mathcal{E}$ and what is traditionally presented. This ultimately is in service of the &quot;inside-outward&quot; contraction convention that this work respects. With our sign convention, the equation $(\mathcal{E}\cdot\mathrm{a})\cdot\mathrm{b}=\mathrm{a}\times\mathrm{b}$ holds, otherwise we'd either incur a minus sign or have to swap the order of $\mathrm{a}$ and $\mathrm{b}$ across the equals sign.</p>
 <h3 id="deviatoric-scaling-and-eigenspaces">Deviatoric scaling and eigenspaces</h3>
 <p>So far, we've decomposed the outer product $\mathrm{vw}$ into two geometrically meaningful components,</p>
 <p>$$\mathsf{D}=\mathrm{vw}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} - \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})+\cdots$$</p>
@@ -415,7 +416,7 @@ $$</p>
 <p>$$\lambda'_1=\lambda'_2=-\frac{1}{3}(\mathrm{v}\cdot \mathrm{w})$$</p>
 <p>The third eigenvector in this special case, $\mathrm{E}'_3$, is orthogonal to the first two eigenvectors and therefore collinear or antiparallel with $\mathrm v$ and $\mathrm w$. The normalization makes it straightforward to just use</p>
 <p>$$\mathrm{E}'_3=\llbracket \mathrm{v} \rrbracket$$</p>
-<p>and the eigenvalue is constrainted by the tracelessness property to be</p>
+<p>and the eigenvalue is constrained by the tracelessness property to be</p>
 <p>$$\lambda'_3=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})$$</p>
 <p>We don't actually have to define the $\mathrm{E}'_1$ and $\mathrm{E}'_2$ eigenvectors explicitly, because we can project onto the plane in which they reside via the operator</p>
 <p>$$\mathsf{i}-\llbracket \mathrm{v} \rrbracket^2$$</p>
@@ -427,7 +428,7 @@ $$</p>
 <h3 id="special-case-of-orthogonal-vectors">Special case of orthogonal vectors</h3>
 <p>For the case where $\mathrm{v}$ and $\mathrm{w}$ are orthogonal, all terms that include $\mathrm{v}\cdot\mathrm{w}$ go to zero, and the expansion specializes to:</p>
 <p>$$\mathsf{D}=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$</p>
-<p>Note that the isotropic term in particular has disappeared entrely. Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:</p>
+<p>Note that the isotropic term in particular has disappeared entirely. Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:</p>
 <p>$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(-\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$</p>
 <p>Collectively the three terms serve to map (project and scale) any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is always true for the dyad $\mathrm{vw}$, the final result is always parallel to v, since</p>
 <p>$$\mathsf{D}\cdot \mathrm{u}=\mathrm{vw}\cdot\mathrm{u}=\mathrm{v}(\mathrm{w}\cdot\mathrm{u}),$$</p>
@@ -458,7 +459,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>A few more interesting relationships produced by the double dot product are:</p>
 <p>$$\mathcal{E}:\mathsf{i}=\mathsf{i}:\mathcal{E}=0$$</p>
 <p>$$\mathcal{E}:\mathcal{E}=-2\mathsf{i}$$</p>
-<p>Lastly, the <em>trace</em> of a matrix $\mathsf{A}$, a notable subject in linear algebra, is also expressable with the double dot product:</p>
+<p>Lastly, the <em>trace</em> of a matrix $\mathsf{A}$, a notable subject in linear algebra, is also expressible with the double dot product:</p>
 <p>$$\mathrm{trace}(\mathsf{A})=\mathsf{i}:\mathsf{A}.$$</p>
 <p>Recall the concept of trace arose earlier in the context of the <em>traceless</em> symmetric deviatoric operator.</p>
 <h3 id="antisymmetrizer-and-related-four-index-tensors">Antisymmetrizer and related four-index tensors</h3>
@@ -486,12 +487,12 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>which is the <em>transposer</em> tensor.</p>
 <p>Among these four-index tensors, we've thus far only expressed $\mathfrak{A}$ in terms of lower-index tensors (namely, in terms of the three-index $\mathcal{E}$). But all of them can be written in terms of unit-basis-vector outer products in the following manner:</p>
 <p>$$\mathfrak{A}=\frac{1}{2}[\mathrm{ij}(\mathrm{ji}-\mathrm{ij})+\mathrm{jk}(\mathrm{kj}-\mathrm{jk})+\mathrm{ki}(\mathrm{ik}-\mathrm{ki})+\cdots]$$</p>
-<p>$$\mathfrak{S}=\mathrm{iiii}+\mathrm{jjjj}+\mathrm{kkkk}+\frac{1}{2}[\mathrm{ij}(\mathrm{ji}+\mathrm{ij})+\cdots)]$$</p>
+<p>$$\mathfrak{S}=\mathrm{iiii}+\mathrm{jjjj}+\mathrm{kkkk}+\frac{1}{2}[\mathrm{ij}(\mathrm{ji}+\mathrm{ij})+\cdots]$$</p>
 <p>$$\mathfrak{I}=\mathrm{iiii}+\mathrm{ijji}+\mathrm{ikki}+\cdots$$</p>
 <p>$$\mathfrak{T}=\mathrm{iiii}+\mathrm{ijij}+\mathrm{ikik}+\cdots$$</p>
 <p>One can show that $\mathfrak{A}$ has 12 terms, $\mathfrak{S}$ has 15 terms, $\mathfrak{I}$ and $\mathfrak{T}$ have 9 terms.</p>
 <h3 id="dyad-operations-revisited-with-four-index-tensors">Dyad operations revisited with four-index tensors</h3>
-<p>Previously we showed that a dyad expands out into three distinct, pure operations with physical interpretation: isotropic scaling, asymmetric rotation, and deviatoric scaling. The double dot product along with four-index tensors are a convenient way of specializing or filtering the original dyad operator into one or more of these pure operations. We already noted this for the antisymmetric operation:</p>
+<p>Previously we showed that a dyad expands out into three distinct, pure operations with physical interpretation: isotropic scaling, antisymmetric rotation, and deviatoric scaling. The double dot product along with four-index tensors are a convenient way of specializing or filtering the original dyad operator into one or more of these pure operations. We already noted this for the antisymmetric operation:</p>
 <p>$$\mathsf{D}_\mathrm{anti}=\mathfrak{A}:\mathsf{D}=\mathfrak{A}:\mathrm{vw}=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times\mathrm{w}).$$</p>
 <p>Expanding upon the earlier interpretation that $\mathsf{D}$ is an operator which can operate on the vector $\mathrm{u}$, this operation being written as $\mathsf{D}\cdot\mathrm{u}$, then we can similarly write</p>
 <p>$$(\mathfrak{A}:\mathsf{D})\cdot\mathrm{u}=-\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$$</p>
@@ -507,14 +508,14 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>The outer product of two dyadics, $\mathsf{M}$ and $\mathsf{N}$, is written $\mathsf{MN}$. This outer product is a four-index tensor. Defining the four-dot product &quot;$:\hspace{0.2em}:$&quot; as the inside-outward contraction on four indices, there is an interesting relationship between the four-tensor $\mathfrak{I}$, the double dot product, and the matrix multiplication product ($\mathsf{M}\cdot\mathsf{N}$):</p>
 <p>$$\mathfrak{I}:\hspace{0.2em}:\mathsf{MN}=\mathsf{i}:(\mathsf{M}\cdot\mathsf{N})=\mathsf{M}:\mathsf{N}=\mathrm{trace}(\mathsf{M}\cdot\mathsf{N})=M_{ij}N_{ji}.$$</p>
 <p>The fact that the unit basis terms in $\mathfrak{I}$ have the same $abba$ pattern seen in the contracted indices of $M_{ij}N_{ji}$ is an intuitive confirmation of this relationship.</p>
-<p>Note this is similar to the earlier-observed relationship between $\mathsf{i}$ and the vector inner product $\mathsf{v}\cdot\mathsf{w}$:</p>
+<p>Note this is similar to the earlier-observed relationship between $\mathsf{i}$ and the vector inner product $\mathrm{v}\cdot\mathrm{w}$:</p>
 <p>$$\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$$</p>
 <h3 id="determinant-geometric-concept">Determinant: geometric concept</h3>
 <p>Consider the triad $\mathcal{V}$ composed of the triple outer product of the three vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$:</p>
 <p>$$\mathcal{V}=\mathrm{vwu}$$</p>
-<p>Provided none of the three vectors are collinear, they span a volume $V$ given by:</p>
+<p>Provided the three vectors are not coplanar, they span a volume $V$ given by:</p>
 <p>$$V=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$$</p>
-<p>where we have introducted the triple-dot product &quot;$\hspace{0.2em}\vdots\hspace{0.2em}$&quot;, which conveys the same inside-outward index contraction policy that we saw for the single-dot, double-dot, and four-dot products. In Einstein notation:</p>
+<p>where we have introduced the triple-dot product &quot;$\hspace{0.2em}\vdots\hspace{0.2em}$&quot;, which conveys the same inside-outward index contraction policy that we saw for the single-dot, double-dot, and four-dot products. In Einstein notation:</p>
 <p>$$V=\mathcal{E}_{ijk}v_k w_j u_i$$</p>
 <p>which shows the characteristic reflected ordering of contracted indices on either side of the operator.</p>
 <p>For an orthonormal basis, such as the usual $\mathrm{i,j,k}$, the volume is unity:</p>
@@ -527,7 +528,7 @@ $$\mathcal{E}:\mathrm{vw}=\mathrm{v}\times\mathrm{w}$$</p>
 <p>$$\text{Д}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{Д}_{ijklmn}M_{nm}M_{lk}M_{ji}$$</p>
 <p>again having the reflected ordering of contracted indices on either side of the dot operator.</p>
 <h3 id="matrix-multiplication-from-a-six-tensor">Matrix multiplication from a six tensor</h3>
-<p>Whenever a operator tensor operates on an input tensor to produce an output tensor, the following relationship must hold: The number of indices on the output tensor is equal to the number of indices on the input tensor plus the number of indices on the operator tensor, minus twice the number of contraction dots involved in the operation.</p>
+<p>Whenever an operator tensor operates on an input tensor to produce an output tensor, the following relationship must hold: The number of indices on the output tensor is equal to the number of indices on the input tensor plus the number of indices on the operator tensor, minus twice the number of contraction dots involved in the operation.</p>
 <p>From this, we can surmise that there ought to exist a six tensor, Ж, which, when operating via four-dot product on the outer product of two dyadics, $\mathsf{MN}$, produces their two-index matrix product, $\mathsf{M}\cdot \mathsf{N}$:</p>
 <p>$$Ж:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}.$$</p>
 <p>This somewhat resembles a relation we saw earlier,</p>
@@ -565,7 +566,7 @@ c &amp; f &amp; i
 </li>
 </ol>
 <p>$$\text{Ш}=\mathrm{ijkijk}+\mathrm{jikjik}+\mathrm{kijkij}+\mathrm{kjikji}+\mathrm{ikjikj}+\mathrm{jkijki}+\cdots$$</p>
-<p style="margin-left: 2.5em">Later we will discover that, just as Ж gives matrix multiplication, Ш in fact gives <em>reversed</em> matrix multiplication.
+<p style="margin-left: 2.5em">Later we will discover that, just as Ж gives matrix multiplication, Ш in fact gives <em>reversed</em> matrix multiplication.</p>
 <ol start="3">
 <li>
 <p>The third term, $\mathrm{kiijjk}$, is one of the 27 terms found in the six tensor Ж we explored in the previous section which gives matrix multiplication.</p>
@@ -587,13 +588,13 @@ c &amp; f &amp; i
 </li>
 </ol>
 <p>Given the above observations, we might expect to be able to write Д as some linear combination of $\mathsf{i}^3$, Ш, Ж, Б, $\mathfrak{I}\mathsf{i}$, and $\mathsf{i}\mathfrak{I}$.</p>
-<p>Though an exhaustive enumeration and comparison of the terms, many of which cancel out or stack up as multiples, we ultimately find:</p>
+<p>Through an exhaustive enumeration and comparison of the terms, many of which cancel out or stack up as multiples, we ultimately find:</p>
 <p>$$Д=\frac{1}{6}(\mathsf{i}^3+Ш+Ж-Б-\mathfrak{I}\mathsf{i}-\mathsf{i}\mathfrak{I})$$</p>
 <p>The earlier form of Д we proposed above, based on the Sarrus rule, is a special case of this result obtained by combining terms that are equivalent through the dyad reordering.</p>
 <h3 id="contributing-terms-in-the-determinant">Contributing terms in the determinant</h3>
 <p>Now that we have a suitable form for Д, we can evaluate the terms contributing to the determinant in their coordinate-free index-free form. Distributing out the six-dot operator:</p>
 <p>$$\begin{aligned}\text{det}(\mathsf{M})&amp;=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
-&amp;=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3})\end{aligned}$$</p>
+&amp;=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3)\end{aligned}$$</p>
 <p>Let's look at each term:</p>
 <ol>
 <li>
@@ -606,10 +607,12 @@ c &amp; f &amp; i
 <p>$$Ш:\hspace{0.2em}:\mathsf{M}^2=\underbrace{(ab}_{\text{free}}\underbrace{cabc)}_{\text{contracted}}:\hspace{0.2em}:\mathsf{M}^2$$</p>
 <p style="margin-left: 2.5em">Unlike matrix multiplication, which is a contraction on the <em>inner</em> indices of $\mathsf{M}^2$, the $cabc$ pattern is a contraction on the <em>outer</em> indices of $\mathsf{M}^2$. Using Einstein notation we can see that outer-index contraction is equivalent to inner index contraction of the transposes, but from linear algebra we know that this in turn is equal to the transpose of the product of the original (untransposed) matrices:
 <p>$$M_{ki}M_{jk}=(\mathsf{M}^\mathsf{T})_{ik}(\mathsf{M}^\mathsf{T})_{kj}=(\mathsf{M}^\mathsf{T}\cdot \mathsf{M}^\mathsf{T})_{ij}=[(\mathsf{M}\cdot\mathsf{M})^\mathsf{T}]_{ij}.$$</p>
+</p>
 <p style="margin-left: 2.5em">Now, because the sequence $ab$ on the left/free indices of Ш are <em>not</em> reflected with the $ab$ sequence inside of $cabc$ on the right/contracted side, it means we have an extra transpose operation, serving to undo the above one, and the net result is:
 <p>$$Ш:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$$</p>
-<p style="margin-left: 2.5em">This is the same result that we'd obtain from the matrix multiplication operator, $Ж:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$, but only because the two input dyadics were the same. If we'd instead looked at $Ш:\hspace{0.2em}:\mathsf{M}\mathsf{N}$, we'd find it evaluates to $\mathsf{N}\cdot\mathsf{M}$ &mdash; <em>reversed</em> matrix multiplication!
-<p style="margin-left: 2.5em">The remaining two contraction dots first produce another chained matrix product ($\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M}$), then finally result in taking the trace of the whole thing, making this term $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.
+</p>
+<p style="margin-left: 2.5em">This is the same result that we'd obtain from the matrix multiplication operator, $Ж:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$, but only because the two input dyadics were the same. If we'd instead looked at $Ш:\hspace{0.2em}:\mathsf{M}\mathsf{N}$, we'd find it evaluates to $\mathsf{N}\cdot\mathsf{M}$ &mdash; <em>reversed</em> matrix multiplication!</p>
+<p style="margin-left: 2.5em">The remaining two contraction dots first produce another chained matrix product ($\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M}$), then finally result in taking the trace of the whole thing, making this term $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.</p>
 <ol start="3">
 <li>
 <p>$Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3$ — Here, as with the Ш term, the first four of the six contraction dots result in the matrix product $\mathsf{M}\cdot\mathsf{M}$, and the term overall is again $\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})$.</p>
@@ -633,7 +636,7 @@ c &amp; f &amp; i
 <p>one gets <em>reverse</em> matrix multiplication from Ш:</p>
 <p>$$Ш:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{N}\cdot\mathsf{M}.$$</p>
 <p>Matrix multiplication is not <em>commutative</em>: the order of the factors matters, <em>i.e.</em>, $\mathsf{M}\cdot\mathsf{N}$ is not generally equal to $\mathsf{N}\cdot\mathsf{M}$.</p>
-<p>We have encountered other non-commutative operations before, such as the vector cross product and the outer product of two vectors. In the case of the outer product of two vectors $\mathrm{v}$ and $\mathrm{w}$, recall that the antisymmetrizer $\mathfrak{A}$ directly gives the difference between the two outer product orderings $\mathrm{vw}$ and $\mathrm{wv}$:</p>
+<p>We have encountered other non-commutative operations before, such as the vector cross product and the outer product of two vectors. In the case of the outer product of two vectors $\mathrm{v}$ and $\mathrm{w}$, recall that the antisymmetrizer $\mathfrak{A}$ directly gives half the difference between the two outer product orderings $\mathrm{vw}$ and $\mathrm{wv}$:</p>
 <p>$$\mathfrak{A}:\mathrm{vw}=\frac{1}{2}(\mathrm{vw}-\mathrm{wv})$$</p>
 <p>Analogous to what the antisymmetrizer does for vector outer product, we define for matrix multiplication the <em>commutator</em> tensor $И=Ж-Ш$:</p>
 <p>$$И:\hspace{0.2em}:\mathsf{M}\mathsf{N}=\mathsf{M}\cdot\mathsf{N}-\mathsf{N}\cdot\mathsf{M}.$$</p>
@@ -644,19 +647,19 @@ c &amp; f &amp; i
 <p>then the determinant operator condenses considerably to</p>
 <p>$$Д=\frac{1}{6}(\mathsf{i}^3+Л-Я).$$</p>
 <h3 id="determinant-is-to-volume-and-trace-is-to-length-as-_cotrace_-is-to-area">Determinant is to volume and trace is to length as <em>cotrace</em> is to area</h3>
-<p>Our original mention of the determinant $\text{det}(\mathsf{M})$ was as a measure of the volume-scaling effect of a dyadic $\mathsf{M}$ when applied to a 3D unit volume element spanned by orthonomal basis vectors:</p>
+<p>Our original mention of the determinant $\text{det}(\mathsf{M})$ was as a measure of the volume-scaling effect of a dyadic $\mathsf{M}$ when applied to a 3D unit volume element spanned by orthonormal basis vectors:</p>
 <p>$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\qquad \to \qquad \mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{det}(\mathsf{M})$$</p>
 <p>Instead of <em>volume</em> change, we can ask a similar question about <em>length</em> change, <em>i.e.</em>: by what factor does $\mathsf{M}$ change the length of a unit vector? The problem with this question is that it depends on the direction of the unit vector. We can account for this by looking at the <em>average</em> length change over the set of orthonormal basis vectors. Here &quot;average&quot; means per spatial dimension. For each basis vector, first transform it and then compute the length (component) along its original direction, then average these results to get the average change in length effected by $\mathsf{M}$:</p>
 <p>$$\frac{1}{3}[(\mathsf{M}\cdot\mathrm{i})\cdot\mathrm{i}+(\mathsf{M}\cdot\mathrm{j})\cdot\mathrm{j}+(\mathsf{M}\cdot\mathrm{k})\cdot\mathrm{k}].$$</p>
 <p>But observe that this expression is equivalent to:</p>
 <p>$$\frac{1}{3}[(\mathsf{M}:\mathrm{ii})+(\mathsf{M}:\mathrm{jj})+(\mathsf{M}:\mathrm{kk})]=\frac{1}{3}(\mathsf{i}:\mathsf{M})=\frac{1}{3}\text{trace}(\mathsf{M}).$$</p>
-<p>In other words: the trace of dyadic is proportional (by a factor 3) to the dyadic's average length-changing effect.</p>
+<p>In other words: the trace of a dyadic is proportional (by a factor 3) to the dyadic's average length-changing effect.</p>
 <p>We found earlier that the determinant can be expressed in terms of traces — terms like $\text{trace}(\mathsf{M})^3$ — and this makes sense because it is effectively saying that volume changes in a space can be described in terms of length changes in the same space.</p>
-<p>Having given this treatment to volumes and lengths, it naturally follows that we should consider how $\mathsf{M}$ transforms <em>areas</em>. Recall the connection between vector cross products and the area spanned by the vectors in the cross product. Each unit basis vector is also expressable as a unit area element: $\mathrm{i}$ goes with the unit area $\mathrm{j}\times\mathrm{k}$ describes, $\mathrm{j}$ with $\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}$ with $\mathrm{i}\times \mathrm{j}$. The average change in the areas, like we did above for lengths, is</p>
-<p>$$\frac{1}{3}([(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathsf{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathsf{j})]\cdot\mathrm{k}
-]).$$</p>
+<p>Having given this treatment to volumes and lengths, it naturally follows that we should consider how $\mathsf{M}$ transforms <em>areas</em>. Recall the connection between vector cross products and the area spanned by the vectors in the cross product. Each unit basis vector is also expressible as a unit area element: $\mathrm{i}$ goes with the unit area $\mathrm{j}\times\mathrm{k}$ describes, $\mathrm{j}$ with $\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}$ with $\mathrm{i}\times \mathrm{j}$. The average change in the areas, like we did above for lengths, is</p>
+<p>$$\frac{1}{3}([(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}
+).$$</p>
 <p>Inspecting one of these terms:</p>
-<p>$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathsf{k})\mathrm{i}$$</p>
+<p>$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})\mathrm{i}$$</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 
