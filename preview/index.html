@@ -355,7 +355,7 @@ $$=\lambda_1\mathrm{E}_1(\mathrm{E}_1\cdot\mathrm{u})+\lambda_2\mathrm{E}_2(\mat
 <p>$$\mathsf{i}=\mathrm{E}_1^2+\mathrm{E}_2^2+\mathrm{E}_3^2$$</p>
 <p>The tracelessness property,</p>
 <p>$$\lambda_1+\lambda_2+\lambda_3=0$$</p>
-<p>is important because, geometrically, it means that the deviatoric operator can scale only up to two dimensions independently, the third dimension must be scaled in such a way to preserve the tracelessness. If we were to apply the deviatoric to a set of three or more vectors defining a <em>volume</em>, we'd find that the operator is <em>volume-preserving</em>. There is more to come on vector-derived volumes later in this text.</p>
+<p>is important because, geometrically, it means that the deviatoric operator can scale only up to two dimensions independently, the third dimension must be scaled in such a way to preserve the tracelessness. This property is closely tied to how the operator affects <em>volumes</em>, though not in the most direct way one might guess: applying the deviatoric to three vectors that define a volume does <em>not</em> leave that volume unchanged (it scales it by the product $\lambda_1\lambda_2\lambda_3$, which tracelessness does not constrain). The precise connection is developed later in this text, once we have constructed the determinant.</p>
 <p>Unlike coordinate basis vectors, which are an arbitrarily defined external frame for our three dimensions, the eigenvectors are an orthonormal frame <em>intrinsic</em> to the dyad $\mathsf{D}$. The eigenspace is just as intrinsic to the dyad as a magnitude is to a vector.</p>
 <p>We <em>could</em> technically compute the eigenspace for the $3\times 3$ matrix specified above, in terms of the $D_i$ components, using a particular algorithm for this purpose from linear algebra. However, that general closed form solution is very complicated and would not be easy to interpret or work with. Instead, we can reason what the eigenspace is from some key observations.</p>
 <p>To begin, recall that the symmetric part of the dyad is</p>
@@ -646,6 +646,24 @@ c &amp; f &amp; i
 <p>$$Я=Б+\mathfrak{I}\mathsf{i}+\mathsf{i}\mathfrak{I},$$</p>
 <p>then the determinant operator condenses considerably to</p>
 <p>$$Д=\frac{1}{6}(\mathsf{i}^3+Л-Я).$$</p>
+<h3 id="small-departures-from-the-identity">Small departures from the identity</h3>
+<p>Back in our discussion of the deviatoric component, we noted that its tracelessness is tied to how it affects volumes, and deferred the precise statement. With the determinant in hand, we can now make it.</p>
+<p>The determinant $\text{det}(\mathsf{M})$ measures the volume change when $\mathsf{M}$ is applied as the entire operator. In many physical settings, however, the operator of interest is a small departure from the identity,</p>
+<p>$$\mathsf{i}+\epsilon\mathsf{M},$$</p>
+<p>where $\epsilon$ is a small scalar. Such an operator maps a vector $\mathrm{u}$ to $\mathrm{u}+\epsilon\mathsf{M}\cdot\mathrm{u}$, <em>i.e.</em>, it leaves the vector mostly alone and adds a small correction.</p>
+<p>To evaluate its determinant using the trace formula from earlier, we need three traces. Using $\mathsf{i}\cdot\mathsf{M}=\mathsf{M}\cdot\mathsf{i}=\mathsf{M}$ and $\text{trace}(\mathsf{i})=3$:</p>
+<p>$$\begin{aligned}\text{trace}(\mathsf{i}+\epsilon\mathsf{M})&=3+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})\\
+\text{trace}((\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M}))&=3+2\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\epsilon^2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M})\\
+\text{trace}((\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M}))&=3+3\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+3\epsilon^2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M})+\epsilon^3\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})\end{aligned}$$</p>
+<p>Substituting these into the determinant formula and collecting powers of $\epsilon$, a good deal cancels, leaving</p>
+<p>$$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=1+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\frac{\epsilon^2}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right)+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{M}).$$</p>
+<p>This result is exact, not an approximation. The coefficient of $\epsilon^3$ is the trace form of $\text{det}(\mathsf{M})$ itself.</p>
+<p>Consider the first-order term. For small $\epsilon$, the volume changes by the fraction $\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})$. Recall that a general dyadic separates into isotropic, antisymmetric, and deviatoric parts, and that the latter two are traceless. So to first order, only the isotropic part changes the volume; the deviatoric part (and likewise the antisymmetric part) does not.</p>
+<p><em>This</em> is the precise sense in which the deviatoric is volume-preserving: as a small departure from the identity, and to first order in $\epsilon$ &mdash; not as an operator applied on its own.</p>
+<p>Even then, the preservation holds only to first order. For a purely deviatoric $\mathsf{D}$, with $\text{trace}(\mathsf{D})=0$, the expansion reduces to</p>
+<p>$$\text{det}(\mathsf{i}+\epsilon\mathsf{D})=1-\frac{\epsilon^2}{2}\hspace{0.2em}\mathsf{D}:\mathsf{D}+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{D}),$$</p>
+<p>where $\mathsf{D}:\mathsf{D}=\text{trace}(\mathsf{D}\cdot\mathsf{D})=\lambda_1^2+\lambda_2^2+\lambda_3^2$ in terms of the eigenvalues. This is never negative, so at second order a small deviatoric deformation always slightly <em>reduces</em> the volume.</p>
+<p>That leaves the coefficient of $\epsilon^2$ in the general expansion. It has a geometric meaning of its own, which is the subject of the next section.</p>
 <h3 id="determinant-is-to-volume-and-trace-is-to-length-as-_cotrace_-is-to-area">Determinant is to volume and trace is to length as <em>cotrace</em> is to area</h3>
 <p>Our original mention of the determinant $\text{det}(\mathsf{M})$ was as a measure of the volume-scaling effect of a dyadic $\mathsf{M}$ when applied to a 3D unit volume element spanned by orthonormal basis vectors:</p>
 <p>$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\qquad \to \qquad \mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{det}(\mathsf{M})$$</p>
@@ -660,6 +678,29 @@ c &amp; f &amp; i
 ).$$</p>
 <p>Inspecting one of these terms:</p>
 <p>$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})\mathrm{i}$$</p>
+<p>which is a volume spanned by two transformed basis vectors and one untransformed basis vector. The other two terms have the same form.</p>
+<p>Volumes of exactly this mixed kind appear when we revisit the small departure from the identity, $\mathsf{i}+\epsilon\mathsf{M}$, this time geometrically. Applying it to each basis vector and taking the volume of the result:</p>
+<p>$$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathrm{i}+\epsilon\mathsf{M}\cdot\mathrm{i})(\mathrm{j}+\epsilon\mathsf{M}\cdot\mathrm{j})(\mathrm{k}+\epsilon\mathsf{M}\cdot\mathrm{k})$$</p>
+<p>Distributing out the outer products and grouping by powers of $\epsilon$:</p>
+<p>$$\begin{aligned}\text{det}(\mathsf{i}+\epsilon\mathsf{M})&=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}\mathrm{j}\mathrm{k}\\
+&+\epsilon\hspace{0.2em}[\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}\mathrm{k}+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}(\mathsf{M}\cdot\mathrm{j})\mathrm{k}+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}\mathrm{j}(\mathsf{M}\cdot\mathrm{k})]\\
+&+\epsilon^2\hspace{0.2em}[\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}(\mathsf{M}\cdot\mathrm{k})+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})\mathrm{k}]\\
+&+\epsilon^3\hspace{0.2em}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})\end{aligned}$$</p>
+<p>Each line has a geometric reading. To see it, we use the fact that the volume $\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$ is unchanged when its three vectors are cyclically permuted, since the volume does not depend on which pair of vectors we take as its base.</p>
+<p>The zeroth-order line is the original unit volume. In the first-order line, each volume has <em>one</em> transformed vector; for example $\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}\mathrm{k}=(\mathsf{M}\cdot\mathrm{i})\cdot(\mathrm{j}\times\mathrm{k})=(\mathsf{M}\cdot\mathrm{i})\cdot\mathrm{i}$. The three together sum to $\text{trace}(\mathsf{M})$, which is three times the average length change. In the second-order line, each volume has <em>two</em> transformed vectors; after cyclic permutation these are exactly the three area terms above, so they sum to three times the average area change. The third-order line has all three vectors transformed, and is $\text{det}(\mathsf{M})$.</p>
+<p>Now compare with the algebraic expansion from the previous section. The two must agree at every power of $\epsilon$, and at second order this gives us the sum of the area terms in terms of traces:</p>
+<p>$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right).$$</p>
+<p>We call this quantity the <em>cotrace</em> of $\mathsf{M}$:</p>
+<p>$$\text{cotrace}(\mathsf{M})=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right),$$</p>
+<p>so that the average area change effected by $\mathsf{M}$ is $\frac{1}{3}\text{cotrace}(\mathsf{M})$, just as the average length change is $\frac{1}{3}\text{trace}(\mathsf{M})$. (In linear algebra this same quantity arises as the trace of the <em>cofactor matrix</em> of $\mathsf{M}$.)</p>
+<p>Like the trace and the determinant, the cotrace has a coordinate-free operator form. By the same reasoning we applied to $\mathsf{i}^3$ in the determinant, $\mathsf{i}^2:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})^2$, and we saw earlier that $\mathfrak{I}:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})$. Therefore</p>
+<p>$$\text{cotrace}(\mathsf{M})=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}):\hspace{0.2em}:\mathsf{M}^2.$$</p>
+<p>The expansion for a small departure from the identity can now be written in its final form,</p>
+<p>$$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=1+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\epsilon^2\hspace{0.2em}\text{cotrace}(\mathsf{M})+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{M}),$$</p>
+<p>in which the successive coefficients measure the effect of $\mathsf{M}$ on lengths, areas, and volumes. The three operators that produce them follow a common pattern, with one copy of $\mathsf{M}$ for each dimension of the thing being measured:</p>
+<p>$$\begin{aligned}\text{trace}(\mathsf{M})&=\mathsf{i}:\mathsf{M}\\
+\text{cotrace}(\mathsf{M})&=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}):\hspace{0.2em}:\mathsf{M}^2\\
+\text{det}(\mathsf{M})&=\frac{1}{6}(\mathsf{i}^3+Л-Я)\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\end{aligned}$$</p>
 <script src="./mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true}, ".language-mermaid");</script>
 
