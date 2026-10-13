@@ -143,29 +143,29 @@ $$</p>
 <p>and so on for the others.</p>
 <p>Given a general matrix</p>
 <p>$$\mathsf{A}=\begin{pmatrix}
-a &amp; b &amp; c\\
-d &amp; e &amp; f\\
-g &amp; h &amp; i
-\end{pmatrix},$$</p>
-<p>its <em>transpose</em> is defined as the matrix whose elements are &quot;reflected&quot; about the diagonal:</p>
-<p>$$\mathsf{A}^\mathsf{T}=\begin{pmatrix}
 a &amp; d &amp; g\\
 b &amp; e &amp; h\\
 c &amp; f &amp; i
+\end{pmatrix},$$</p>
+<p>its <em>transpose</em> is defined as the matrix whose elements are &quot;reflected&quot; about the diagonal:</p>
+<p>$$\mathsf{A}^\mathsf{T}=\begin{pmatrix}
+a &amp; b &amp; c\\
+d &amp; e &amp; f\\
+g &amp; h &amp; i
 \end{pmatrix}.$$</p>
 <p>The <em>symmetric part</em> of the matrix is:</p>
 <p>$$\mathsf{A}_{\mathrm{symm}}=\frac{1}{2}(\mathsf{A}+\mathsf{A}^\mathsf{T})$$
 $$=\begin{pmatrix}
-a &amp; \frac{1}{2}(b+d) &amp; \frac{1}{2}(c+g)\\
-\frac{1}{2}(d+b) &amp; e &amp; \frac{1}{2}(f+h)\\
-\frac{1}{2}(g+c)&amp; \frac{1}{2}(h+f) &amp; i
+a &amp; \frac{1}{2}(d+b) &amp; \frac{1}{2}(g+c)\\
+\frac{1}{2}(b+d) &amp; e &amp; \frac{1}{2}(h+f)\\
+\frac{1}{2}(c+g)&amp; \frac{1}{2}(f+h) &amp; i
 \end{pmatrix}$$</p>
 <p>which has 6 unique components, while the <em>antisymmetric part</em> is:</p>
 <p>$$\mathsf{A}_{\mathrm{anti}}=\frac{1}{2}(\mathsf{A}-\mathsf{A}^\mathsf{T})$$
 $$=\begin{pmatrix}
-0 &amp; \frac{1}{2}(b-d) &amp; \frac{1}{2}(c-g)\\
-\frac{1}{2}(d-b) &amp; 0 &amp; \frac{1}{2}(f-h)\\
-\frac{1}{2}(g-c)&amp; \frac{1}{2}(h-f) &amp; 0
+0 &amp; \frac{1}{2}(d-b) &amp; \frac{1}{2}(g-c)\\
+\frac{1}{2}(b-d) &amp; 0 &amp; \frac{1}{2}(h-f)\\
+\frac{1}{2}(c-g)&amp; \frac{1}{2}(f-h) &amp; 0
 \end{pmatrix}$$</p>
 <p>which has 3 unique components, not counting the sign differences on other side of the diagonal.</p>
 <p>Lastly, note that $\mathsf{A}$ is the sum of the symmetric and antisymmetric parts (which is why we're calling them &quot;parts&quot; in the first place).</p>
@@ -217,11 +217,11 @@ $$\mathrm{i}\cdot\mathrm{j}=\mathrm{j}\cdot\mathrm{i}=\mathrm{i}\cdot\mathrm{k}=
 <p>The details of how one calculates the product of $\mathsf{A}$ and $\mathrm{x}$ is generally presented as &quot;matrix multiplication&quot;, an operation between arrays of coordinate-dependent components. The matrix would be a $3\times 3$ square array, while the vectors $\mathrm{x}$ and $\mathrm{y}$ would be &quot;column&quot; arrays of shape $3\times 1$.</p>
 <p>If we instead represent $\mathsf{A}$ and $\mathrm{x}$ in terms of the basis vectors $\mathrm{i},\mathrm{j},\mathrm{k}$, and take the dot product operator to have the same meaning as before, the single dot product distributes out to a large number of dot products of basis elements, some of which survive and some of which vanish:</p>
 <p>$$\mathsf{A}\cdot \mathrm{x}=$$
-$$(A_1\mathrm{ii}+A_2\mathrm{ij}+...+A_9\mathrm{kk})\cdot(x_1\mathrm{i}+x_2\mathrm{j}+x_3\mathrm{k})=$$
-$$A_1 x_1\mathrm{i}(\mathrm{i}\cdot\mathrm{i})+A_2 x_1\mathrm{i}(\mathrm{j}\cdot\mathrm{i})+...+A_9 x_3\mathrm{k}(\mathrm{k}\cdot\mathrm{k})=$$
-$$(A_1 x_1+A_2 x_2+A_3 x_3)\mathrm{i}+$$
-$$(A_4x_1+A_5 x_2+A_6 x_3)\mathrm{j}+$$
-$$(A_7 x_1+A_8x_2+A_9 x_3)\mathrm{k}.$$</p>
+$$(A_{11}\mathrm{ii}+A_{12}\mathrm{ij}+...+A_{33}\mathrm{kk})\cdot(x_1\mathrm{i}+x_2\mathrm{j}+x_3\mathrm{k})=$$
+$$A_{11} x_1\mathrm{i}(\mathrm{i}\cdot\mathrm{i})+A_{12} x_1\mathrm{i}(\mathrm{j}\cdot\mathrm{i})+...+A_{33} x_3\mathrm{k}(\mathrm{k}\cdot\mathrm{k})=$$
+$$(A_{11} x_1+A_{12} x_2+A_{13} x_3)\mathrm{i}+$$
+$$(A_{21} x_1+A_{22} x_2+A_{23} x_3)\mathrm{j}+$$
+$$(A_{31} x_1+A_{32} x_2+A_{33} x_3)\mathrm{k}.$$</p>
 <p>The result is a vector, equivalent to that given by &quot;matrix multiplication&quot;, but here derived by applying the dot product distributed out onto all of the basis components.</p>
 <p>But again, the above result applies to the highly specific context of using a particular coordinate basis.</p>
 <h3 id="geometric-interpretation-of-dyad-operators">Geometric interpretation of dyad operators</h3>
@@ -372,7 +372,7 @@ $$=\lambda_1\mathrm{E}_1(\mathrm{E}_1\cdot\mathrm{u})+\lambda_2\mathrm{E}_2(\mat
 $$</p>
 <p>This says that $\mathsf{D}_\mathrm{dev}$ as an operator scales $\mathrm{E}_1$ by the constant $-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})$. Therefore, $\mathrm{E}_1$ is <em>by definition</em> an eigenvector of the deviatoric component of $\mathsf{D}$. Since this was based on the assumption that $\mathrm{E}_1$ is orthogonal to both $\mathrm{v}$ and $\mathrm{w}$, a natural choice (with normalization) is their cross product:</p>
 <p>$$\mathrm{E}_1=\llbracket \mathrm{v}\times\mathrm{w} \rrbracket,$$</p>
-<p>(though this doesn't work in the special case of $\mathrm v$ and $\mathrm w$ being collinear or antiparallel-- we'll address that later). We've also determined that the associated eigenvalue is</p>
+<p>(though this doesn't work in the special case of $\mathrm v$ and $\mathrm w$ being collinear &mdash; we'll address that later). We've also determined that the associated eigenvalue is</p>
 <p>$$\lambda_1=-\frac{1}{3}(\mathrm{v}\cdot\mathrm{w}).$$</p>
 <p>The other two eigenvectors must be orthogonal to $\mathrm{E}_1$ and therefore reside in the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. This means they must be linear combinations of $\mathrm{v}$ and $\mathrm{w}$, i.e.,</p>
 <p>$$
@@ -411,16 +411,16 @@ $$</p>
 <p>Bringing it all together, we can now fully expand the dyad into the isotropic scaling, antisymmetric rotational, and deviatoric symmetric components:</p>
 <p>$$\begin{aligned}\mathsf{D}&amp;=\mathrm{vw}\\ &amp;=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i} - \frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})\\ &amp;\quad -\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\times\mathrm{w}\rrbracket ^2 \\ &amp;\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}+\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket ^2 \\ &amp;\quad+\left(\frac{\mathrm{v}\cdot\mathrm{w}}{6}-\frac{|\mathrm{v}||\mathrm{w}|}{2}\right)\llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket ^2\end{aligned}$$</p>
 <h3 id="special-case-of-collinear-vectors">Special case of collinear vectors</h3>
-<p>Recall that when we were deriving the eigenvectors of the deviatoric symmetric part, we made an assumption that $\mathrm v$ and $\mathrm w$ have a defined cross-product, which is only true if they are neither collinear (pointing in the same direction) nor antiparallel (pointing in opposite directions). In the special cases of them being collinear or antiparallel, the deviatoric's eigenspace has a different structure and this will affect how we write the decomposition.</p>
-<p>If they are collinear or antiparallel, then we can actually find <em>two</em> eigenvectors $\mathrm{E}'_1$ and $\mathrm{E}'_2$ which are orthogonal to both $\mathrm v$ and $\mathrm w$, using the same reasoning that led us to characterize $\mathrm{E}_1$ previously. As with our original $\mathrm{E}_1$, these two eigenvectors must have an eigenvalue of</p>
+<p>Recall that when we were deriving the eigenvectors of the deviatoric symmetric part, we made an assumption that $\mathrm v$ and $\mathrm w$ have a defined cross-product, which is only true if they are not collinear (pointing in either the same direction or opposite directions). In the special case of them being collinear, the deviatoric's eigenspace has a different structure and this will affect how we write the decomposition.</p>
+<p>If they are collinear, then we can actually find <em>two</em> eigenvectors $\mathrm{E}'_1$ and $\mathrm{E}'_2$ which are orthogonal to both $\mathrm v$ and $\mathrm w$, using the same reasoning that led us to characterize $\mathrm{E}_1$ previously. As with our original $\mathrm{E}_1$, these two eigenvectors must have an eigenvalue of</p>
 <p>$$\lambda'_1=\lambda'_2=-\frac{1}{3}(\mathrm{v}\cdot \mathrm{w})$$</p>
-<p>The third eigenvector in this special case, $\mathrm{E}'_3$, is orthogonal to the first two eigenvectors and therefore collinear or antiparallel with $\mathrm v$ and $\mathrm w$. The normalization makes it straightforward to just use</p>
+<p>The third eigenvector in this special case, $\mathrm{E}'_3$, is orthogonal to the first two eigenvectors and therefore collinear with $\mathrm v$ and $\mathrm w$. The normalization makes it straightforward to just use</p>
 <p>$$\mathrm{E}'_3=\llbracket \mathrm{v} \rrbracket$$</p>
 <p>and the eigenvalue is constrained by the tracelessness property to be</p>
 <p>$$\lambda'_3=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})$$</p>
 <p>We don't actually have to define the $\mathrm{E}'_1$ and $\mathrm{E}'_2$ eigenvectors explicitly, because we can project onto the plane in which they reside via the operator</p>
 <p>$$\mathsf{i}-\llbracket \mathrm{v} \rrbracket^2$$</p>
-<p>and then scale by their common eigenvalue. Putting it all together, the deviatoric symmetric part for the case of collinear or antiparallel $\mathrm v$ and $\mathrm w$ is</p>
+<p>and then scale by their common eigenvalue. Putting it all together, the deviatoric symmetric part for the case of collinear $\mathrm v$ and $\mathrm w$ is</p>
 <p>$$\mathsf{D}_\mathrm{dev}=\frac{2}{3}(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v} \rrbracket^2-\frac{1}{3}(\mathrm{v}\cdot \mathrm{w})(\mathsf{i}-\llbracket \mathrm{v} \rrbracket^2)$$</p>
 <p>However, notice that when we add in $\mathsf{D}_\mathrm{iso}=\frac{1}{3}(\mathrm{v}\cdot\mathrm{w})\mathsf{i}$ (also note the antisymmetric part is zero in this special case), we reduce to</p>
 <p>$$\mathsf{D}=\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\llbracket \mathrm{v}\rrbracket^2,$$</p>
