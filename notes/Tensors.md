@@ -932,7 +932,7 @@ Substituting these into the determinant formula and collecting powers of $\epsil
 
 $$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=1+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\frac{\epsilon^2}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right)+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{M}).$$
 
-This result is exact, not an approximation. The coefficient of $\epsilon^3$ is the trace form of $\text{det}(\mathsf{M})$ itself.
+This result is exact, not an approximation. In particular, the terms that multiply $\epsilon^3$ are $\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))$, which is precisely our earlier expression for the determinant of $\mathsf{M}$, so we have written them simply as $\text{det}(\mathsf{M})$.
 
 Consider the first-order term. For small $\epsilon$, the volume changes by the fraction $\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})$. Recall that a general dyadic separates into isotropic, antisymmetric, and deviatoric parts, and that the latter two are traceless. So to first order, only the isotropic part changes the volume; the deviatoric part (and likewise the antisymmetric part) does not.
 
@@ -1000,15 +1000,19 @@ $$\text{cotrace}(\mathsf{M})=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{t
 
 so that the average area change effected by $\mathsf{M}$ is $\frac{1}{3}\text{cotrace}(\mathsf{M})$, just as the average length change is $\frac{1}{3}\text{trace}(\mathsf{M})$. (In linear algebra this same quantity arises as the trace of the _cofactor matrix_ of $\mathsf{M}$.)
 
-Like the trace and the determinant, the cotrace has a coordinate-free operator form. By the same reasoning we applied to $\mathsf{i}^3$ in the determinant, $\mathsf{i}^2:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})^2$, and we saw earlier that $\mathfrak{I}:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})$. Therefore
+Like the trace and the determinant, the cotrace has a coordinate-free operator form. By the same reasoning we applied to $\mathsf{i}^3$ in the determinant, $\mathsf{i}^2:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})^2$, and we saw earlier that $\mathfrak{I}:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})$. Therefore, if we define the four-index tensor
 
-$$\text{cotrace}(\mathsf{M})=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}):\hspace{0.2em}:\mathsf{M}^2.$$
+$$\mathfrak{M}=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}),$$
+
+then the cotrace is produced by a single operator, just as the determinant is produced by Д:
+
+$$\text{cotrace}(\mathsf{M})=\mathfrak{M}:\hspace{0.2em}:\mathsf{M}^2.$$
 
 The expansion for a small departure from the identity can now be written in its final form,
 
 $$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=1+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\epsilon^2\hspace{0.2em}\text{cotrace}(\mathsf{M})+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{M}),$$
 
-in which the successive coefficients measure the effect of $\mathsf{M}$ on lengths, areas, and volumes. The three operators that produce them follow a common pattern, with one copy of $\mathsf{M}$ for each dimension of the thing being measured:
+in which the successive coefficients measure the effect of $\mathsf{M}$ on lengths, areas, and volumes. The three operators that produce them, $\mathsf{i}$, $\mathfrak{M}$, and Д, follow a common pattern, with one copy of $\mathsf{M}$ for each dimension of the thing being measured. Written out in full:
 
 $$\begin{aligned}\text{trace}(\mathsf{M})&=\mathsf{i}:\mathsf{M}\\
 \text{cotrace}(\mathsf{M})&=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}):\hspace{0.2em}:\mathsf{M}^2\\
