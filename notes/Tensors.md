@@ -40,11 +40,11 @@ or in the more compact shorthand:
 
 $$\mathrm{r}=x_i\mathrm{e}_i$$
 
-or the even more compact shorthand:
+in which summation over the repeated index $i$ is implied. This convention was established by Albert Einstein in 1916 and is therefore known as "Einstein notation". An even more compact shorthand is:
 
 $$\mathrm{r}=x_i$$
 
-The single index $i$ is understood in this more compact notation to run over our three spatial dimensions and include three scalar components each multiplied by a unit basis vector. This last notational format was established by Albert Einstein in 1916 and is therefore known as "Einstein notation".
+The single index $i$ is understood in this more compact notation to run over our three spatial dimensions and include three scalar components each multiplied by a unit basis vector.
 
 Irrespective of how we use indices in the notation &mdash; or indeed, whether we choose to use indices at all &mdash; a vector can still be thought of as having an intrinsic direction that exists independent of whatever coordinates we choose to measure it against. A primary motivation of this work is to arrive at, and appreciate, index-free coordinate-free notations. It's also undeniable that simply writing $\mathrm{r}$ is by far the _most_ compact representation out of all of the above (so compact that we really have to pay attention to the roman typeface as the sole notational indication that it's a vector)!
 
