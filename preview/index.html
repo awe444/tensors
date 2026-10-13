@@ -427,9 +427,11 @@ $$</p>
 <p>although keeping the isotropic and deviatoric parts separated is still instructive.</p>
 <h3 id="special-case-of-orthogonal-vectors">Special case of orthogonal vectors</h3>
 <p>For the case where $\mathrm{v}$ and $\mathrm{w}$ are orthogonal, all terms that include $\mathrm{v}\cdot\mathrm{w}$ go to zero, and the expansion specializes to:</p>
-<p>$$\mathsf{D}=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w}) + \frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$</p>
+<p>$$\begin{aligned}\mathsf{D}&amp;=-\frac{1}{2}\mathcal{E}\cdot(\mathrm{v}\times \mathrm{w})\\
+&amp;\quad+\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).\end{aligned}$$</p>
 <p>Note that the isotropic term in particular has disappeared entirely. Furthermore, since for the orthogonal case we have $|\mathrm{v}\times \mathrm{w}|=|\mathrm{v}||\mathrm{w}|$, we can pull out the scaling factor:</p>
-<p>$$\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\left(-\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket + \llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\right).$$</p>
+<p>$$\begin{aligned}\mathsf{D}=\frac{|\mathrm{v}||\mathrm{w}|}{2}\Big(&amp;{-}\mathcal{E}\cdot\llbracket\mathrm{v}\times \mathrm{w}\rrbracket\\
+&amp;+\llbracket |\mathrm{w}|\mathrm{v}+|\mathrm{v}|\mathrm{w}\rrbracket^2 - \llbracket |\mathrm{w}|\mathrm{v}-|\mathrm{v}|\mathrm{w}\rrbracket^2\Big).\end{aligned}$$</p>
 <p>Collectively the three terms serve to map (project and scale) any vector that this operates on into the plane spanned by $\mathrm{v}$ and $\mathrm{w}$. Indeed, as is always true for the dyad $\mathrm{vw}$, the final result is always parallel to v, since</p>
 <p>$$\mathsf{D}\cdot \mathrm{u}=\mathrm{vw}\cdot\mathrm{u}=\mathrm{v}(\mathrm{w}\cdot\mathrm{u}),$$</p>
 <p>even though the above decomposition obscures this.</p>
@@ -594,7 +596,8 @@ c &amp; f &amp; i
 <h3 id="contributing-terms-in-the-determinant">Contributing terms in the determinant</h3>
 <p>Now that we have a suitable form for Д, we can evaluate the terms contributing to the determinant in their coordinate-free index-free form. Distributing out the six-dot operator:</p>
 <p>$$\begin{aligned}\text{det}(\mathsf{M})&amp;=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
-&amp;=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3)\end{aligned}$$</p>
+&amp;=\frac{1}{6}(\mathsf{i}^3\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ш\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3+Ж\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
+&amp;\qquad-Б\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathfrak{I}\mathsf{i}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3-\mathsf{i}\mathfrak{I}\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3)\end{aligned}$$</p>
 <p>Let's look at each term:</p>
 <ol>
 <li>
@@ -629,7 +632,8 @@ c &amp; f &amp; i
 </ol>
 <p>Putting it all together,</p>
 <p>$$\begin{aligned}\text{det}(\mathsf{M})&amp;=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\\
-&amp;=\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$</p>
+&amp;=\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})\\
+&amp;\qquad-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))\end{aligned}$$</p>
 <h3 id="commutator-and-anticommutator-tensors">Commutator and anticommutator tensors</h3>
 <p>In the previous section we remarked that, similar to how Ж gives matrix multiplication:</p>
 <p>$$Ж:\hspace{0.2em}:\mathsf{MN}=\mathsf{M}\cdot\mathsf{N},$$</p>
@@ -652,11 +656,17 @@ c &amp; f &amp; i
 <p>$$\mathsf{i}+\epsilon\mathsf{M},$$</p>
 <p>where $\epsilon$ is a small scalar. Such an operator maps a vector $\mathrm{u}$ to $\mathrm{u}+\epsilon\mathsf{M}\cdot\mathrm{u}$, <em>i.e.</em>, it leaves the vector mostly alone and adds a small correction.</p>
 <p>To evaluate its determinant using the trace formula from earlier, we need three traces. Using $\mathsf{i}\cdot\mathsf{M}=\mathsf{M}\cdot\mathsf{i}=\mathsf{M}$ and $\text{trace}(\mathsf{i})=3$:</p>
-<p>$$\begin{aligned}\text{trace}(\mathsf{i}+\epsilon\mathsf{M})&=3+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})\\
-\text{trace}((\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M}))&=3+2\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\epsilon^2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M})\\
-\text{trace}((\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M}))&=3+3\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+3\epsilon^2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M})+\epsilon^3\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})\end{aligned}$$</p>
+<p>$$\begin{aligned}&amp;\text{trace}(\mathsf{i}+\epsilon\mathsf{M})\\
+&amp;\quad=3+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})\\[6pt]
+&amp;\text{trace}((\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M}))\\
+&amp;\quad=3+2\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\epsilon^2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M})\\[6pt]
+&amp;\text{trace}((\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M})\cdot(\mathsf{i}+\epsilon\mathsf{M}))\\
+&amp;\quad=3+3\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+3\epsilon^2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M})\\
+&amp;\qquad+\epsilon^3\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})\end{aligned}$$</p>
 <p>Substituting these into the determinant formula and collecting powers of $\epsilon$, a good deal cancels, leaving</p>
-<p>$$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=1+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})+\frac{\epsilon^2}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right)+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{M}).$$</p>
+<p>$$\begin{aligned}\text{det}(\mathsf{i}+\epsilon\mathsf{M})=1&amp;+\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})\\
+&amp;+\frac{\epsilon^2}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right)\\
+&amp;+\epsilon^3\hspace{0.2em}\text{det}(\mathsf{M}).\end{aligned}$$</p>
 <p>This result is exact, not an approximation. In particular, the terms that multiply $\epsilon^3$ are $\frac{1}{6}(\text{trace}(\mathsf{M})^3+2\hspace{0.2em}\text{trace}(\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M})-3\hspace{0.2em}\text{trace}(\mathsf{M})\text{trace}(\mathsf{M}\cdot\mathsf{M}))$, which is precisely our earlier expression for the determinant of $\mathsf{M}$, so we have written them simply as $\text{det}(\mathsf{M})$.</p>
 <p>Consider the first-order term. For small $\epsilon$, the volume changes by the fraction $\epsilon\hspace{0.2em}\text{trace}(\mathsf{M})$. Recall that a general dyadic separates into isotropic, antisymmetric, and deviatoric parts, and that the latter two are traceless. So to first order, only the isotropic part changes the volume; the deviatoric part (and likewise the antisymmetric part) does not.</p>
 <p><em>This</em> is the precise sense in which the deviatoric is volume-preserving: as a small departure from the identity, and to first order in $\epsilon$ &mdash; not as an operator applied on its own.</p>
@@ -666,7 +676,9 @@ c &amp; f &amp; i
 <p>That leaves the coefficient of $\epsilon^2$ in the general expansion. It has a geometric meaning of its own, which is the subject of the next section.</p>
 <h3 id="determinant-is-to-volume-and-trace-is-to-length-as-_cotrace_-is-to-area">Determinant is to volume and trace is to length as <em>cotrace</em> is to area</h3>
 <p>Our original mention of the determinant $\text{det}(\mathsf{M})$ was as a measure of the volume-scaling effect of a dyadic $\mathsf{M}$ when applied to a 3D unit volume element spanned by orthonormal basis vectors:</p>
-<p>$$\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\qquad \to \qquad \mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{det}(\mathsf{M})$$</p>
+<p>$$\begin{gathered}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{ijk}=1\\
+\downarrow\\
+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=\text{det}(\mathsf{M})\end{gathered}$$</p>
 <p>Instead of <em>volume</em> change, we can ask a similar question about <em>length</em> change, <em>i.e.</em>: by what factor does $\mathsf{M}$ change the length of a unit vector? The problem with this question is that it depends on the direction of the unit vector. We can account for this by looking at the <em>average</em> length change over the set of orthonormal basis vectors. Here &quot;average&quot; means per spatial dimension. For each basis vector, first transform it and then compute the length (component) along its original direction, then average these results to get the average change in length effected by $\mathsf{M}$:</p>
 <p>$$\frac{1}{3}[(\mathsf{M}\cdot\mathrm{i})\cdot\mathrm{i}+(\mathsf{M}\cdot\mathrm{j})\cdot\mathrm{j}+(\mathsf{M}\cdot\mathrm{k})\cdot\mathrm{k}].$$</p>
 <p>But observe that this expression is equivalent to:</p>
@@ -674,22 +686,26 @@ c &amp; f &amp; i
 <p>In other words: the trace of a dyadic is proportional (by a factor 3) to the dyadic's average length-changing effect.</p>
 <p>We found earlier that the determinant can be expressed in terms of traces — terms like $\text{trace}(\mathsf{M})^3$ — and this makes sense because it is effectively saying that volume changes in a space can be described in terms of length changes in the same space.</p>
 <p>Having given this treatment to volumes and lengths, it naturally follows that we should consider how $\mathsf{M}$ transforms <em>areas</em>. Recall the connection between vector cross products and the area spanned by the vectors in the cross product. Each unit basis vector is also expressible as a unit area element: $\mathrm{i}$ goes with the unit area $\mathrm{j}\times\mathrm{k}$ describes, $\mathrm{j}$ with $\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}$ with $\mathrm{i}\times \mathrm{j}$. The average change in the areas, like we did above for lengths, is</p>
-<p>$$\frac{1}{3}([(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}
-).$$</p>
+<p>$$\begin{aligned}\frac{1}{3}\big(&amp;[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}\\
++&amp;[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}\\
++&amp;[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}\big).\end{aligned}$$</p>
 <p>Inspecting one of these terms:</p>
 <p>$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})\mathrm{i}$$</p>
 <p>which is a volume spanned by two transformed basis vectors and one untransformed basis vector. The other two terms have the same form.</p>
 <p>Volumes of exactly this mixed kind appear when we revisit the small departure from the identity, $\mathsf{i}+\epsilon\mathsf{M}$, this time geometrically. Applying it to each basis vector and taking the volume of the result:</p>
 <p>$$\text{det}(\mathsf{i}+\epsilon\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathrm{i}+\epsilon\mathsf{M}\cdot\mathrm{i})(\mathrm{j}+\epsilon\mathsf{M}\cdot\mathrm{j})(\mathrm{k}+\epsilon\mathsf{M}\cdot\mathrm{k})$$</p>
 <p>Distributing out the outer products and grouping by powers of $\epsilon$:</p>
-<p>$$\begin{aligned}\text{det}(\mathsf{i}+\epsilon\mathsf{M})&=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}\mathrm{j}\mathrm{k}\\
-&+\epsilon\hspace{0.2em}[\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}\mathrm{k}+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}(\mathsf{M}\cdot\mathrm{j})\mathrm{k}+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}\mathrm{j}(\mathsf{M}\cdot\mathrm{k})]\\
-&+\epsilon^2\hspace{0.2em}[\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}(\mathsf{M}\cdot\mathrm{k})+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})\mathrm{k}]\\
-&+\epsilon^3\hspace{0.2em}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})\end{aligned}$$</p>
+<p>$$\begin{aligned}&amp;\text{det}(\mathsf{i}+\epsilon\mathsf{M})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}\mathrm{j}\mathrm{k}\\
+&amp;\quad+\epsilon\hspace{0.2em}[\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}\mathrm{k}+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}(\mathsf{M}\cdot\mathrm{j})\mathrm{k}+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}\mathrm{j}(\mathsf{M}\cdot\mathrm{k})]\\
+&amp;\quad+\epsilon^2\hspace{0.2em}[\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{i}(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}(\mathsf{M}\cdot\mathrm{k})\\
+&amp;\qquad\qquad+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})\mathrm{k}]\\
+&amp;\quad+\epsilon^3\hspace{0.2em}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})\end{aligned}$$</p>
 <p>Each line has a geometric reading. To see it, we use the fact that the volume $\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{vwu}=(\mathrm{v}\times\mathrm{w})\cdot\mathrm{u}$ is unchanged when its three vectors are cyclically permuted, since the volume does not depend on which pair of vectors we take as its base.</p>
 <p>The zeroth-order line is the original unit volume. In the first-order line, each volume has <em>one</em> transformed vector; for example $\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})\mathrm{j}\mathrm{k}=(\mathsf{M}\cdot\mathrm{i})\cdot(\mathrm{j}\times\mathrm{k})=(\mathsf{M}\cdot\mathrm{i})\cdot\mathrm{i}$. The three together sum to $\text{trace}(\mathsf{M})$, which is three times the average length change. In the second-order line, each volume has <em>two</em> transformed vectors; after cyclic permutation these are exactly the three area terms above, so they sum to three times the average area change. The third-order line has all three vectors transformed, and is $\text{det}(\mathsf{M})$.</p>
 <p>Now compare with the algebraic expansion from the previous section. The two must agree at every power of $\epsilon$, and at second order this gives us the sum of the area terms in terms of traces:</p>
-<p>$$[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right).$$</p>
+<p>$$\begin{aligned}&amp;[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}\\
+&amp;\quad+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}\\
+&amp;\quad=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right).\end{aligned}$$</p>
 <p>We call this quantity the <em>cotrace</em> of $\mathsf{M}$:</p>
 <p>$$\text{cotrace}(\mathsf{M})=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right),$$</p>
 <p>so that the average area change effected by $\mathsf{M}$ is $\frac{1}{3}\text{cotrace}(\mathsf{M})$, just as the average length change is $\frac{1}{3}\text{trace}(\mathsf{M})$. (In linear algebra this same quantity arises as the trace of the <em>cofactor matrix</em> of $\mathsf{M}$.)</p>
