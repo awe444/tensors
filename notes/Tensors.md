@@ -1033,3 +1033,67 @@ in which the successive coefficients measure the effect of $\mathsf{M}$ on lengt
 $$\begin{aligned}\text{trace}(\mathsf{M})&=\mathsf{i}:\mathsf{M}\\
 \text{cotrace}(\mathsf{M})&=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}):\hspace{0.2em}:\mathsf{M}^2\\
 \text{det}(\mathsf{M})&=\frac{1}{6}(\mathsf{i}^3+Л-Я)\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\end{aligned}$$
+
+### Spherical coordinates
+
+Since introducing the dyad, our vectors $\mathrm{v}$, $\mathrm{w}$, and $\mathrm{u}$ have been generic stand-ins, chosen to reveal the structure of the tensors that operate on them. We now begin shifting back toward _physical_ tensors, and the first of these is the one we started with, the position vector:
+
+$$\mathrm{r}=x\mathrm{i}+y\mathrm{j}+z\mathrm{k}$$
+
+When we first met $\mathrm{r}$, we remarked that its direction can be measured by two angles $\phi,\theta$ in a spherical coordinate system, and that the values obtained depend on how that coordinate system is oriented. The operators we have built since then let us state all of this precisely. The orientation is supplied by two of the Cartesian basis vectors: $\mathrm{k}$ serves as the _polar axis_, and $\mathrm{i}$ as the reference direction from which we measure rotation about that axis. We take $\phi$ to be the _polar angle_ (measured from $\mathrm{k}$) and $\theta$ to be the _azimuthal angle_ (measured about $\mathrm{k}$); be aware that many physics texts swap the roles of these two symbols.
+
+The first spherical coordinate is the magnitude of $\mathrm{r}$, which requires no orientation at all. It follows from the relation $\mathsf{i}:\mathrm{vw}=\mathrm{v}\cdot\mathrm{w}$ with both vectors set to $\mathrm{r}$:
+
+$$r=|\mathrm{r}|=\sqrt{\mathsf{i}:\mathrm{r}^2}=\sqrt{x^2+y^2+z^2}$$
+
+The polar angle $\phi$ is the angle between $\mathrm{k}$ and $\mathrm{r}$. From the geometric definition of the dot product, $\mathrm{k}\cdot\mathrm{r}=|\mathrm{k}||\mathrm{r}|\cos\phi=r\cos\phi$, so that
+
+$$\phi=\cos^{-1}(\mathrm{k}\cdot\llbracket\mathrm{r}\rrbracket)=\cos^{-1}\frac{z}{r}$$
+
+Note that it is the unit vector $\llbracket\mathrm{r}\rrbracket$, not $\mathrm{r}$ itself, that appears here: an angle is a property of direction alone. The polar angle runs from $0$ (along $\mathrm{k}$) to $\pi$ (opposite to $\mathrm{k}$).
+
+For the rotation about the polar axis, we first construct a vector. To keep with our convention of roman typeface for vectors, we write it as an upright $\text{θ}$, to be distinguished from the italic scalar angle $\theta$:
+
+$$\text{θ}=\mathrm{k}\times\mathrm{r}=(\mathcal{E}\cdot\mathrm{k})\cdot\mathrm{r}=x\mathrm{j}-y\mathrm{i}$$
+
+The operator here, $\mathcal{E}\cdot\mathrm{k}$, is a purely antisymmetric dyadic, and it acts just as we described for antisymmetric rotation: it discards the component of $\mathrm{r}$ along the axis $\mathrm{k}$ and rotates what remains by $+90$ degrees about that axis. The result is perpendicular to both $\mathrm{k}$ and $\mathrm{r}$, and points in the direction that the tip of $\mathrm{r}$ moves when $\mathrm{r}$ is swung around the polar axis, that is, the direction of increasing $\theta$.
+
+Its magnitude is the length of the part of $\mathrm{r}$ that was not discarded:
+
+$$|\text{θ}|=\sqrt{(\mathsf{i}-\mathrm{k}^2):\mathrm{r}^2}=\sqrt{r^2-z^2}=r\sin\phi=\sqrt{x^2+y^2}$$
+
+The dyadic $\mathsf{i}-\mathrm{k}^2$ is the same kind of projector we used in the special case of collinear vectors: it projects onto the plane perpendicular to $\mathrm{k}$. Double-dotting it with $\mathrm{r}^2$ gives the squared length of that projection, $\mathrm{r}\cdot\mathrm{r}-(\mathrm{k}\cdot\mathrm{r})^2$. The appearance of $r\sin\phi$ is simply the cross product magnitude $|\mathrm{k}||\mathrm{r}|\sin\phi$. Geometrically, $|\text{θ}|$ is the distance of the point at $\mathrm{r}$ from the polar axis.
+
+The azimuthal angle $\theta$ is measured within that perpendicular plane, starting from $\mathrm{i}$ and increasing toward $\mathrm{j}$. The two basis vectors pick out the relevant components of $\mathrm{r}$:
+
+$$\theta=\tan^{-1}\frac{\mathrm{j}\cdot\mathrm{r}}{\mathrm{i}\cdot\mathrm{r}}=\tan^{-1}\frac{y}{x}$$
+
+with the understanding that the signs of the numerator and denominator are considered separately, so that $\theta$ lands in the correct quadrant and covers the full range from $0$ to $2\pi$.
+
+The third direction must be orthogonal to both $\mathrm{r}$ and $\text{θ}$, and a cross product provides it. Again writing the vector upright:
+
+$$\begin{aligned}\text{φ}&=\llbracket\text{θ}\rrbracket\times\mathrm{r}\\
+&=-2\hspace{0.2em}\frac{(\mathfrak{A}\cdot\mathrm{k}):\mathrm{r}^2}{\sqrt{(\mathsf{i}-\mathrm{k}^2):\mathrm{r}^2}}\\
+&=\frac{z(x\mathrm{i}+y\mathrm{j})}{\sqrt{x^2+y^2}}-\mathrm{k}\sqrt{x^2+y^2}\end{aligned}$$
+
+The middle expression comes from writing $\llbracket\text{θ}\rrbracket\times\mathrm{r}=(\mathrm{k}\times\mathrm{r})\times\mathrm{r}/|\text{θ}|$. The denominator is the magnitude $|\text{θ}|$ we just found. For the numerator, recall that the antisymmetric part of a dyad $\mathrm{vw}$ acts on a vector $\mathrm{u}$ as $(\mathfrak{A}:\mathrm{vw})\cdot\mathrm{u}=-\frac{1}{2}(\mathrm{v}\times\mathrm{w})\times\mathrm{u}$. Setting $\mathrm{v}=\mathrm{k}$ and $\mathrm{w}=\mathrm{u}=\mathrm{r}$ gives $(\mathrm{k}\times\mathrm{r})\times\mathrm{r}=-2(\mathfrak{A}:\mathrm{kr})\cdot\mathrm{r}$, and by the inside-outward contraction rule the three dots can be regrouped as $(\mathfrak{A}\cdot\mathrm{k}):\mathrm{r}^2$. In this form the whole construction is expressed with a single operator, $\mathfrak{A}\cdot\mathrm{k}$, acting on the dyad $\mathrm{r}^2$.
+
+Because $\llbracket\text{θ}\rrbracket$ is a unit vector perpendicular to $\mathrm{r}$, the cross product rotates $\mathrm{r}$ by $90$ degrees about $\llbracket\text{θ}\rrbracket$ without any change of length:
+
+$$|\text{φ}|=r$$
+
+The vector $\text{φ}$ points in the direction that the tip of $\mathrm{r}$ moves when $\mathrm{r}$ is tilted away from the polar axis, that is, the direction of increasing $\phi$. Its Cartesian form shows this: when $z$ is positive, the horizontal part points outward from the polar axis while the $\mathrm{k}$ component is always negative.
+
+The three vectors $\mathrm{r}$, $\text{φ}$, and $\text{θ}$ are mutually orthogonal, and their normalized versions form a right-handed orthonormal frame, with $\llbracket\mathrm{r}\rrbracket\times\llbracket\text{φ}\rrbracket=\llbracket\text{θ}\rrbracket$. Like any orthonormal frame, it constructs the identity:
+
+$$\mathsf{i}=\llbracket\mathrm{r}\rrbracket^2+\llbracket\text{φ}\rrbracket^2+\llbracket\text{θ}\rrbracket^2$$
+
+Unlike $\mathrm{i},\mathrm{j},\mathrm{k}$, however, this frame is not fixed: it turns as $\mathrm{r}$ moves. The unnormalized magnitudes are also meaningful. A small change in $\phi$ moves the tip of $\mathrm{r}$ a distance of $|\text{φ}|=r$ per unit angle, while a small change in $\theta$ moves it a distance of $|\text{θ}|=r\sin\phi$ per unit angle. This will matter when we come to differential calculus.
+
+There is one degenerate case. If $\mathrm{r}$ is collinear with the polar axis $\mathrm{k}$, then $\text{θ}=\mathrm{k}\times\mathrm{r}=0$, the unit vector $\llbracket\text{θ}\rrbracket$ is undefined, and so are $\text{φ}$ and the azimuthal angle $\theta$. This is the same loss of a defined cross product that we encountered in the special case of collinear vectors.
+
+Finally, we can invert the relationships and recover the Cartesian components from the spherical coordinates. The component along the polar axis is $\mathrm{k}\cdot\mathrm{r}=r\cos\phi$, and the projection onto the perpendicular plane, of length $r\sin\phi$, makes the angle $\theta$ with $\mathrm{i}$:
+
+$$\begin{aligned}x&=r\sin\phi\cos\theta\\
+y&=r\sin\phi\sin\theta\\
+z&=r\cos\phi\end{aligned}$$
