@@ -1097,3 +1097,35 @@ Finally, we can invert the relationships and recover the Cartesian components fr
 $$\begin{aligned}x&=r\sin\phi\cos\theta\\
 y&=r\sin\phi\sin\theta\\
 z&=r\cos\phi\end{aligned}$$
+
+### Differential of position
+
+So far we have treated $\mathrm{r}$ as a fixed vector and asked how to describe it. Physics, however, is mostly about how things change, and the most basic change is a small displacement of position. If the point at $\mathrm{r}$ moves to a nearby point at $\mathrm{r}+d\mathrm{r}$, the _differential_ $d\mathrm{r}$ is itself a vector: an infinitesimally short arrow from the old position to the new one. Like any vector, it exists independently of the coordinates we use to describe it, but its expression depends very much on that choice.
+
+In Cartesian coordinates the expression is simple. The basis vectors $\mathrm{i},\mathrm{j},\mathrm{k}$ are the same everywhere in space, so they do not change when the point moves, and only the components $x,y,z$ change:
+
+$$d\mathrm{r}=\mathrm{i}\hspace{0.1em}dx+\mathrm{j}\hspace{0.1em}dy+\mathrm{k}\hspace{0.1em}dz$$
+
+In spherical coordinates the picture is different, because, as we noted in the previous section, the frame $\llbracket\mathrm{r}\rrbracket,\llbracket\text{φ}\rrbracket,\llbracket\text{θ}\rrbracket$ turns as $\mathrm{r}$ moves. Writing $\mathrm{r}=r\llbracket\mathrm{r}\rrbracket$, a change in $r$ alone stretches $\mathrm{r}$ along its own direction, while a change in either angle turns the direction $\llbracket\mathrm{r}\rrbracket$ without changing the length. We already found how far the tip of $\mathrm{r}$ moves for each kind of change: a distance $dr$ along $\llbracket\mathrm{r}\rrbracket$ when $r$ changes, a distance $r\hspace{0.1em}d\phi$ along $\llbracket\text{φ}\rrbracket$ when $\phi$ changes, and a distance $r\sin\phi\hspace{0.1em}d\theta$ along $\llbracket\text{θ}\rrbracket$ when $\theta$ changes. Adding these three contributions:
+
+$$d\mathrm{r}=\llbracket\mathrm{r}\rrbracket\hspace{0.1em}dr+r\llbracket\text{φ}\rrbracket\hspace{0.1em}d\phi+r\sin\phi\llbracket\text{θ}\rrbracket\hspace{0.1em}d\theta$$
+
+The factors $1$, $r$, and $r\sin\phi$ that multiply the three unit vectors convert a change in each coordinate into a distance; they are often called _scale factors_. They are needed because $r$ is a length while $\phi$ and $\theta$ are angles. Since the three unit vectors are orthonormal, the squared length of the displacement is just the sum of the squares of the three distances:
+
+$$|d\mathrm{r}|^2=d\mathrm{r}\cdot d\mathrm{r}=dr^2+r^2d\phi^2+r^2\sin^2\phi\hspace{0.1em}d\theta^2$$
+
+Recalling that $|\text{φ}|=r$ and $|\text{θ}|=r\sin\phi$, the angular terms are simply the unnormalized vectors $\text{φ}$ and $\text{θ}$ themselves, which we can write out using their definitions:
+
+$$\begin{aligned}d\mathrm{r}&=\llbracket\mathrm{r}\rrbracket\hspace{0.1em}dr+\text{φ}\hspace{0.1em}d\phi+\text{θ}\hspace{0.1em}d\theta\\
+&=\llbracket\mathrm{r}\rrbracket\hspace{0.1em}dr+(\llbracket\text{θ}\rrbracket\times\mathrm{r})\hspace{0.1em}d\phi+(\mathrm{k}\times\mathrm{r})\hspace{0.1em}d\theta\end{aligned}$$
+
+Each term is now built from $\mathrm{r}$ itself, which suggests looking at $d\mathrm{r}$ as the result of _operating_ on $\mathrm{r}$. Using $\llbracket\mathrm{r}\rrbracket=\mathsf{i}\cdot\mathrm{r}/r$, $\mathrm{k}\times\mathrm{r}=(\mathcal{E}\cdot\mathrm{k})\cdot\mathrm{r}$, and the antisymmetrizer form of $\text{φ}$ from the previous section, this becomes
+
+$$\begin{aligned}d\mathrm{r}&=\left(\frac{dr}{r}\mathsf{i}+d\theta\hspace{0.1em}(\mathcal{E}\cdot\mathrm{k})\right)\cdot\mathrm{r}\\
+&\quad-\frac{2\hspace{0.1em}d\phi}{r\sin\phi}(\mathfrak{A}\cdot\mathrm{k}):\mathrm{r}^2\end{aligned}$$
+
+This form makes contact with the pure dyad operations we identified at the start. The radial term is an _isotropic scaling_ of $\mathrm{r}$ by the factor $dr/r$, the fractional change in length. The azimuthal term is an _antisymmetric rotation_: the antisymmetric dyadic $\mathcal{E}\cdot\mathrm{k}$, scaled by $d\theta$, turns $\mathrm{r}$ about the fixed polar axis $\mathrm{k}$. The polar term is also a rotation, this time about the axis $\llbracket\text{θ}\rrbracket$, but that axis depends on $\mathrm{r}$. To express it using only the fixed vector $\mathrm{k}$, the operator $\mathfrak{A}\cdot\mathrm{k}$ has to act on the dyad $\mathrm{r}^2$ rather than on $\mathrm{r}$ alone, so the term is quadratic in $\mathrm{r}$, and it is divided by $|\text{θ}|=r\sin\phi$ to restore the correct length.
+
+Notably, there is no deviatoric part. Any small change of position can be made by stretching $\mathrm{r}$ and turning it, so isotropic scaling and rotation are all that a displacement of a single vector requires. The deviatoric operation, which stretches different directions by different amounts, becomes important when we consider how a whole neighborhood of points deforms, and we will meet it again there.
+
+The factor $1/\sin\phi$ is a reminder of the degenerate case from the previous section. On the polar axis, where $\sin\phi=0$, the direction $\llbracket\text{θ}\rrbracket$ is undefined, the coordinate $\theta$ loses its meaning, and the spherical form of $d\mathrm{r}$ breaks down, even though the displacement $d\mathrm{r}$ itself is perfectly well defined there, as the Cartesian form shows.
