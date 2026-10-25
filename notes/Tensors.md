@@ -1014,7 +1014,7 @@ We call this quantity the _cotrace_ of $\mathsf{M}$:
 
 $$\text{cotrace}(\mathsf{M})=\frac{1}{2}\left(\text{trace}(\mathsf{M})^2-\text{trace}(\mathsf{M}\cdot\mathsf{M})\right),$$
 
-so that the average area change effected by $\mathsf{M}$ is $\frac{1}{3}\text{cotrace}(\mathsf{M})$, just as the average length change is $\frac{1}{3}\text{trace}(\mathsf{M})$. (In linear algebra this same quantity arises as the trace of the _cofactor matrix_ of $\mathsf{M}$.)
+so that the average area change effected by $\mathsf{M}$ is $\frac{1}{3}\text{cotrace}(\mathsf{M})$, just as the average length change is $\frac{1}{3}\text{trace}(\mathsf{M})$. (In linear algebra this same quantity arises as the trace of the _cofactor matrix_ of $\mathsf{M}$, which we construct in the next section.)
 
 Like the trace and the determinant, the cotrace has a coordinate-free operator form. By the same reasoning we applied to $\mathsf{i}^3$ in the determinant, $\mathsf{i}^2:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})^2$, and we saw earlier that $\mathfrak{I}:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})$. Therefore, if we define the four-index tensor
 
@@ -1033,6 +1033,179 @@ in which the successive coefficients measure the effect of $\mathsf{M}$ on lengt
 $$\begin{aligned}\text{trace}(\mathsf{M})&=\mathsf{i}:\mathsf{M}\\
 \text{cotrace}(\mathsf{M})&=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I}):\hspace{0.2em}:\mathsf{M}^2\\
 \text{det}(\mathsf{M})&=\frac{1}{6}(\mathsf{i}^3+Л-Я)\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3\end{aligned}$$
+
+### Cofactor: how areas transform
+
+The trace measures the _average_ effect of $\mathsf{M}$ on lengths, but $\mathsf{M}$ itself tells us everything about how lengths change: any line element $\mathrm{a}$ becomes $\mathsf{M}\cdot\mathrm{a}$. Likewise, the cotrace measures the average effect of $\mathsf{M}$ on areas, and we can ask for an operator that tells us everything about how area elements change.
+
+Recall that the cross product $\mathrm{a}\times\mathrm{b}$ is the oriented area element of the parallelogram spanned by $\mathrm{a}$ and $\mathrm{b}$. When $\mathsf{M}$ transforms both vectors, that parallelogram is carried to the one spanned by $\mathsf{M}\cdot\mathrm{a}$ and $\mathsf{M}\cdot\mathrm{b}$, whose area element is $(\mathsf{M}\cdot\mathrm{a})\times(\mathsf{M}\cdot\mathrm{b})$. We want a dyadic $\mathsf{C}$ that produces the new area element directly from the old one:
+
+$$\mathsf{C}\cdot(\mathrm{a}\times\mathrm{b})=(\mathsf{M}\cdot\mathrm{a})\times(\mathsf{M}\cdot\mathrm{b})$$
+
+It is not obvious that such a dyadic exists, since the right side depends on $\mathrm{a}$ and $\mathrm{b}$ individually, not just on their cross product. To construct it we fall back on the basis, as we did when we first defined the determinant. The unit area elements $\mathrm{i}=\mathrm{j}\times\mathrm{k}$, $\mathrm{j}=\mathrm{k}\times\mathrm{i}$, and $\mathrm{k}=\mathrm{i}\times\mathrm{j}$ are carried by $\mathsf{M}$ to the three cross products that appeared in the cotrace. Gathering them into a dyadic:
+
+$$\begin{aligned}\mathsf{C}&=[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\mathrm{i}\\
+&\quad+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\mathrm{j}\\
+&\quad+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\mathrm{k}\end{aligned}$$
+
+By construction $\mathsf{C}\cdot\mathrm{i}=(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})$, and likewise for $\mathrm{j}$ and $\mathrm{k}$, so $\mathsf{C}$ carries each unit area element to its transformed version. To see that it does the same for any $\mathrm{a}$ and $\mathrm{b}$, expand both in the basis and distribute the cross product. Of the nine resulting terms, the three that cross a transformed basis vector with itself vanish, and the remaining six pair up because swapping the order of a cross product flips its sign:
+
+$$\begin{aligned}(\mathsf{M}\cdot\mathrm{a})\times(\mathsf{M}\cdot\mathrm{b})&=(a_y b_z-a_z b_y)(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})\\
+&\quad+(a_z b_x-a_x b_z)(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})\\
+&\quad+(a_x b_y-a_y b_x)(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})\end{aligned}$$
+
+The three scalar coefficients are exactly the components of $\mathrm{a}\times\mathrm{b}$, so the right side is $\mathsf{C}\cdot(\mathrm{a}\times\mathrm{b})$, as required.
+
+The dyadic $\mathsf{C}$ is the _cofactor_ of $\mathsf{M}$, written $\text{cof}(\mathsf{M})$. In the matrix representation, the columns of $\mathsf{M}$ are $\mathsf{M}\cdot\mathrm{i}$, $\mathsf{M}\cdot\mathrm{j}$, and $\mathsf{M}\cdot\mathrm{k}$, so the columns of $\text{cof}(\mathsf{M})$ are cross products of pairs of columns of $\mathsf{M}$. Their components are the $2\times2$ sub-determinants from which linear algebra builds its cofactor matrix.
+
+Taking the trace picks out the component of each transformed unit area element along its original direction:
+
+$$\begin{aligned}\text{trace}(\text{cof}(\mathsf{M}))&=\mathrm{i}\cdot\text{cof}(\mathsf{M})\cdot\mathrm{i}+\mathrm{j}\cdot\text{cof}(\mathsf{M})\cdot\mathrm{j}+\mathrm{k}\cdot\text{cof}(\mathsf{M})\cdot\mathrm{k}\\
+&=[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot\mathrm{i}+[(\mathsf{M}\cdot\mathrm{k})\times(\mathsf{M}\cdot\mathrm{i})]\cdot\mathrm{j}\\
+&\quad+[(\mathsf{M}\cdot\mathrm{i})\times(\mathsf{M}\cdot\mathrm{j})]\cdot\mathrm{k}\end{aligned}$$
+
+This is the sum of area terms from the previous section, so $\mathsf{i}:\text{cof}(\mathsf{M})=\text{cotrace}(\mathsf{M})$. The cotrace stands in the same relation to the cofactor as the trace does to $\mathsf{M}$ itself.
+
+As an example, consider a dyadic that stretches the three coordinate directions by the factors $\alpha$, $\beta$, and $\gamma$:
+
+$$\mathsf{M}=\alpha\hspace{0.1em}\mathrm{i}^2+\beta\hspace{0.1em}\mathrm{j}^2+\gamma\hspace{0.1em}\mathrm{k}^2$$
+
+A unit square in the plane perpendicular to $\mathrm{i}$ has its sides stretched by $\beta$ and $\gamma$, so its area grows by $\beta\gamma$, and similarly for the other two planes:
+
+$$\text{cof}(\mathsf{M})=\beta\gamma\hspace{0.1em}\mathrm{i}^2+\gamma\alpha\hspace{0.1em}\mathrm{j}^2+\alpha\beta\hspace{0.1em}\mathrm{k}^2$$
+
+The trace, cotrace, and determinant of this $\mathsf{M}$ are $\alpha+\beta+\gamma$, $\alpha\beta+\beta\gamma+\gamma\alpha$, and $\alpha\beta\gamma$: sums over the ways of choosing one, two, or three of the stretch factors, matching lengths, areas, and volumes.
+
+At the other extreme, consider the single dyad $\mathrm{vw}$ that we spent so long decomposing. It maps every vector onto a multiple of $\mathrm{v}$, so every parallelogram is flattened onto a line, and $(\mathrm{vw}\cdot\mathrm{a})\times(\mathrm{vw}\cdot\mathrm{b})=(\mathrm{w}\cdot\mathrm{a})(\mathrm{w}\cdot\mathrm{b})\hspace{0.1em}\mathrm{v}\times\mathrm{v}=0$. Hence $\text{cof}(\mathrm{vw})=0$, consistent with $\text{cotrace}(\mathrm{vw})=\frac{1}{2}((\mathrm{v}\cdot\mathrm{w})^2-(\mathrm{v}\cdot\mathrm{w})^2)=0$.
+
+### Adjugate and inverse
+
+The cofactor acts on an area element from the left, in the sense that it is written to the left of it. It is often more convenient to have it act from the right, which we can arrange with a transpose. For any dyad $\mathrm{pq}$ and vector $\mathrm{x}$, the inside-outward rule gives $\mathrm{pq}\cdot\mathrm{x}=\mathrm{p}(\mathrm{q}\cdot\mathrm{x})=\mathrm{x}\cdot\mathrm{qp}$, and since a dyadic is a sum of dyads, $\mathsf{A}\cdot\mathrm{x}=\mathrm{x}\cdot\mathsf{A}^\mathsf{T}$ for any dyadic $\mathsf{A}$. The transpose of the cofactor is called the _adjugate_:
+
+$$\text{adj}(\mathsf{M})=\text{cof}(\mathsf{M})^\mathsf{T}=\mathfrak{T}:\text{cof}(\mathsf{M})$$
+
+and in terms of it the rule for area elements reads
+
+$$(\mathrm{a}\times\mathrm{b})\cdot\text{adj}(\mathsf{M})=(\mathsf{M}\cdot\mathrm{a})\times(\mathsf{M}\cdot\mathrm{b})$$
+
+We now have a complete account of how $\mathsf{M}$ transforms lengths, areas, and volumes:
+
+$$\begin{aligned}\mathrm{a}&\to\mathsf{M}\cdot\mathrm{a}\\
+\mathrm{a}\times\mathrm{b}&\to(\mathrm{a}\times\mathrm{b})\cdot\text{adj}(\mathsf{M})\\
+\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{abc}&\to\text{det}(\mathsf{M})\hspace{0.2em}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{abc}\end{aligned}$$
+
+The last line extends our definition of the determinant, which used only $\mathrm{i}$, $\mathrm{j}$, and $\mathrm{k}$, to any three vectors. The argument is the same one we just made for areas: expanding $\mathrm{a}$, $\mathrm{b}$, and $\mathrm{c}$ in the basis and distributing, every term in which a basis vector repeats spans no volume, and the six that remain are each $\pm\hspace{0.1em}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})$, with coefficients that add up to $\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}\mathrm{abc}$.
+
+The point of moving the adjugate to the right is that it now sits next to $\mathsf{M}$ when we compute a volume as base area times height. The parallelogram spanned by $\mathrm{a}$ and $\mathrm{b}$ forms the base, and the transformed volume is
+
+$$[(\mathsf{M}\cdot\mathrm{a})\times(\mathsf{M}\cdot\mathrm{b})]\cdot(\mathsf{M}\cdot\mathrm{c})=(\mathrm{a}\times\mathrm{b})\cdot\text{adj}(\mathsf{M})\cdot\mathsf{M}\cdot\mathrm{c}$$
+
+But this volume is also $\text{det}(\mathsf{M})\hspace{0.2em}(\mathrm{a}\times\mathrm{b})\cdot\mathrm{c}$. Any vector $\mathrm{x}$ can be written as a cross product $\mathrm{a}\times\mathrm{b}$, so $\mathrm{x}\cdot\text{adj}(\mathsf{M})\cdot\mathsf{M}\cdot\mathrm{c}=\mathrm{x}\cdot(\text{det}(\mathsf{M})\hspace{0.2em}\mathsf{i})\cdot\mathrm{c}$ for every $\mathrm{x}$ and $\mathrm{c}$, which can only hold if
+
+$$\text{adj}(\mathsf{M})\cdot\mathsf{M}=\text{det}(\mathsf{M})\hspace{0.2em}\mathsf{i}$$
+
+If $\text{det}(\mathsf{M})\ne0$ we can divide through, and the dyadic
+
+$$\mathsf{M}^{-1}=\frac{\text{adj}(\mathsf{M})}{\text{det}(\mathsf{M})}$$
+
+satisfies $\mathsf{M}^{-1}\cdot\mathsf{M}=\mathsf{i}$. This is the _inverse_ of $\mathsf{M}$: it undoes whatever $\mathsf{M}$ does. (We will see in the next section that it also satisfies $\mathsf{M}\cdot\mathsf{M}^{-1}=\mathsf{i}$.) For the stretching example above, $\mathsf{M}^{-1}=\mathrm{i}^2/\alpha+\mathrm{j}^2/\beta+\mathrm{k}^2/\gamma$, which plainly undoes the stretch.
+
+If $\text{det}(\mathsf{M})=0$, then $\mathsf{M}$ flattens volumes, distinct vectors get mapped to the same result, and no inverse can exist. The adjugate survives, however, and records what is left of the areas. The dyad $\mathrm{vw}$ flattens everything onto a line and has $\text{adj}(\mathrm{vw})=0$, but a dyadic such as $\mathrm{i}^2+\mathrm{j}^2$, which flattens space onto the plane perpendicular to $\mathrm{k}$, has $\text{adj}(\mathrm{i}^2+\mathrm{j}^2)=\mathrm{k}^2$: area elements in that plane, which point along $\mathrm{k}$, are kept, and all others are lost.
+
+Since $\text{adj}(\mathsf{M})=\text{det}(\mathsf{M})\hspace{0.1em}\mathsf{M}^{-1}$, the area rule can also be written $(\mathsf{M}\cdot\mathrm{a})\times(\mathsf{M}\cdot\mathrm{b})=\text{det}(\mathsf{M})\hspace{0.2em}(\mathrm{a}\times\mathrm{b})\cdot\mathsf{M}^{-1}$. In general, area elements are transformed by $\mathsf{M}^{-1}$ (from the right), not by $\mathsf{M}$, apart from the scalar volume factor. This will matter when we come to the deformation of a neighborhood of points, where the surface elements bounding a small region do not deform the same way as the line elements inside it.
+
+### Adjugate operator and the Cayley-Hamilton theorem
+
+So far the cofactor and adjugate have been defined through the basis vectors, just as the determinant first was. Since we already have the coordinate-free operator Д for the determinant, we would like an operator form for the adjugate as well. The key is to look at how the determinant responds to a small change in $\mathsf{M}$.
+
+Replace $\mathsf{M}$ by $\mathsf{M}+\epsilon\mathsf{N}$, for small $\epsilon$ and any dyadic $\mathsf{N}$. Geometrically, the transformed unit volume becomes
+
+$$\text{det}(\mathsf{M}+\epsilon\mathsf{N})=\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}\cdot\mathrm{i}+\epsilon\mathsf{N}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j}+\epsilon\mathsf{N}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k}+\epsilon\mathsf{N}\cdot\mathrm{k})$$
+
+The first-order part consists of three volumes, each with one vector transformed by $\mathsf{N}$ and the other two by $\mathsf{M}$. Cyclically permuting the first of these and using the area rule,
+
+$$\begin{aligned}\mathcal{E}\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{N}\cdot\mathrm{i})(\mathsf{M}\cdot\mathrm{j})(\mathsf{M}\cdot\mathrm{k})&=[(\mathsf{M}\cdot\mathrm{j})\times(\mathsf{M}\cdot\mathrm{k})]\cdot(\mathsf{N}\cdot\mathrm{i})\\
+&=\mathrm{i}\cdot\text{adj}(\mathsf{M})\cdot\mathsf{N}\cdot\mathrm{i}\end{aligned}$$
+
+and likewise for the other two. Summing over the three basis vectors gives a trace, so
+
+$$\text{det}(\mathsf{M}+\epsilon\mathsf{N})=\text{det}(\mathsf{M})+\epsilon\hspace{0.2em}\text{adj}(\mathsf{M}):\mathsf{N}+\cdots$$
+
+where the omitted terms are of order $\epsilon^2$ and $\epsilon^3$. The adjugate is precisely the measure of how sensitive the determinant is to a change in $\mathsf{M}$. This is known as _Jacobi's formula_.
+
+Now compute the same thing with the operator, $\text{det}(\mathsf{M}+\epsilon\mathsf{N})=Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{M}+\epsilon\mathsf{N})^3$. Distributing the outer product, the first-order part is
+
+$$\epsilon\hspace{0.2em}Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{N}\mathsf{M}\mathsf{M}+\mathsf{M}\mathsf{N}\mathsf{M}+\mathsf{M}\mathsf{M}\mathsf{N})$$
+
+To simplify this we need to know how Д treats three _different_ dyadics. Repeating the term-by-term evaluation of the determinant with $\mathsf{A}\mathsf{B}\mathsf{C}$ in place of $\mathsf{M}^3$ gives
+
+$$\begin{aligned}6\hspace{0.2em}Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{A}\mathsf{B}\mathsf{C}&=\text{trace}(\mathsf{A})\text{trace}(\mathsf{B})\text{trace}(\mathsf{C})\\
+&\quad+\text{trace}(\mathsf{A}\cdot\mathsf{B}\cdot\mathsf{C})+\text{trace}(\mathsf{B}\cdot\mathsf{A}\cdot\mathsf{C})\\
+&\quad-\text{trace}(\mathsf{B})\text{trace}(\mathsf{A}\cdot\mathsf{C})-\text{trace}(\mathsf{A})\text{trace}(\mathsf{B}\cdot\mathsf{C})\\
+&\quad-\text{trace}(\mathsf{C})\text{trace}(\mathsf{A}\cdot\mathsf{B})\end{aligned}$$
+
+The trace of a product is unchanged by cyclically reordering its factors (in Einstein notation, $A\_{ij}B\_{jk}C\_{ki}$ is the same sum however we rotate the three factors), so $\text{trace}(\mathsf{B}\cdot\mathsf{A}\cdot\mathsf{C})=\text{trace}(\mathsf{A}\cdot\mathsf{C}\cdot\mathsf{B})$, and the two triple-product terms cover both cyclic orderings of $\mathsf{A}$, $\mathsf{B}$, $\mathsf{C}$. Swapping any two of the three dyadics then just exchanges terms with one another, so the whole expression does not depend on the order in which $\mathsf{A}$, $\mathsf{B}$, and $\mathsf{C}$ are supplied. In particular, the three first-order terms above are all equal, and
+
+$$\begin{aligned}&\epsilon\hspace{0.2em}Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}(\mathsf{N}\mathsf{M}\mathsf{M}+\mathsf{M}\mathsf{N}\mathsf{M}+\mathsf{M}\mathsf{M}\mathsf{N})\\
+&\quad=3\epsilon\hspace{0.2em}Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}\mathsf{M}\mathsf{N}=3\epsilon\hspace{0.2em}(Д:\hspace{0.2em}:\mathsf{M}^2):\mathsf{N}\end{aligned}$$
+
+where in the last step the inside-outward rule lets the first four dots act on $\mathsf{M}\mathsf{M}$ and the remaining two on $\mathsf{N}$. The two first-order results agree for every $\mathsf{N}$; choosing $\mathsf{N}$ to be each of the nine basis dyads in turn picks out each component, and therefore
+
+$$\text{adj}(\mathsf{M})=3\hspace{0.2em}Д:\hspace{0.2em}:\mathsf{M}^2$$
+
+The factor of $3$ is there for the same reason that the derivative of $x^3$ is $3x^2$: the determinant contains three copies of $\mathsf{M}$, and a small change can enter through any one of them. As a check, contracting with one more copy of $\mathsf{M}$ gives $\text{adj}(\mathsf{M}):\mathsf{M}=3\hspace{0.2em}Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3=3\hspace{0.2em}\text{det}(\mathsf{M})$, which agrees with the trace of $\text{adj}(\mathsf{M})\cdot\mathsf{M}=\text{det}(\mathsf{M})\hspace{0.2em}\mathsf{i}$.
+
+To evaluate $Д:\hspace{0.2em}:\mathsf{M}^2$ explicitly, we go through the six terms of Д once more, this time stopping after four dots, so that two indices remain free:
+
+1. $\mathsf{i}^3:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})^2\hspace{0.1em}\mathsf{i}$ &mdash; two of the $\mathsf{i}$ instances each take the trace of a copy of $\mathsf{M}$, and the third is left over.
+
+2. $Ш:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$ &mdash; as we found earlier.
+
+3. $Ж:\hspace{0.2em}:\mathsf{M}^2=\mathsf{M}\cdot\mathsf{M}$ &mdash; by the definition of Ж.
+
+4. $Б:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})\hspace{0.1em}\mathsf{M}$ &mdash; the inner $cc$ slots of the $abccba$ pattern take the trace of one copy, and the remaining $ba$ slots, reflected against the free $ab$, return the other copy unchanged, just as $\mathfrak{I}:\mathsf{M}=\mathsf{M}$.
+
+5. $\mathfrak{I}\mathsf{i}:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M})\hspace{0.1em}\mathsf{M}$ &mdash; the $\mathsf{i}$ takes the trace of one copy, and $\mathfrak{I}$ returns the other.
+
+6. $\mathsf{i}\mathfrak{I}:\hspace{0.2em}:\mathsf{M}^2=\text{trace}(\mathsf{M}\cdot\mathsf{M})\hspace{0.1em}\mathsf{i}$ &mdash; $\mathfrak{I}$ contracts both copies, and the $\mathsf{i}$ is left over.
+
+Combining these with the coefficients in Д, and recognizing the cotrace in the terms proportional to $\mathsf{i}$:
+
+$$\begin{aligned}\text{adj}(\mathsf{M})&=\frac{1}{2}\big(\text{trace}(\mathsf{M})^2\hspace{0.1em}\mathsf{i}+2\hspace{0.1em}\mathsf{M}\cdot\mathsf{M}\\
+&\qquad-2\hspace{0.1em}\text{trace}(\mathsf{M})\hspace{0.1em}\mathsf{M}-\text{trace}(\mathsf{M}\cdot\mathsf{M})\hspace{0.1em}\mathsf{i}\big)\\
+&=\mathsf{M}\cdot\mathsf{M}-\text{trace}(\mathsf{M})\hspace{0.1em}\mathsf{M}+\text{cotrace}(\mathsf{M})\hspace{0.1em}\mathsf{i}\end{aligned}$$
+
+For the stretching example, the $\mathrm{i}^2$ component is $\alpha^2-(\alpha+\beta+\gamma)\alpha+(\alpha\beta+\beta\gamma+\gamma\alpha)=\beta\gamma$, as we found geometrically. For the dyad $\mathrm{vw}$, using $\mathrm{vw}\cdot\mathrm{vw}=(\mathrm{v}\cdot\mathrm{w})\hspace{0.1em}\mathrm{vw}$, the first two terms cancel and the cotrace is zero, so $\text{adj}(\mathrm{vw})=0$, again as expected.
+
+Taking the trace of both sides gives $\text{trace}(\text{adj}(\mathsf{M}))=\text{trace}(\mathsf{M}\cdot\mathsf{M})-\text{trace}(\mathsf{M})^2+3\hspace{0.1em}\text{cotrace}(\mathsf{M})=\text{cotrace}(\mathsf{M})$, confirming what we found in the cofactor section (a dyadic and its transpose have the same trace). This also holds at the level of the operators. Contracting the two free indices of each term of Д with $\mathsf{i}$ merges the first two letters of its pattern; for example $abcabc$ becomes $aacaac$, leaving the $abba$ pattern of $\mathfrak{I}$ on the remaining four indices. Doing this for all six terms gives $\mathsf{i}:\mathsf{i}^3=3\hspace{0.1em}\mathsf{i}^2$, $\mathsf{i}:Ш=\mathsf{i}:Ж=\mathfrak{I}$, $\mathsf{i}:Б=\mathsf{i}:\mathfrak{I}\mathsf{i}=\mathsf{i}^2$, and $\mathsf{i}:\mathsf{i}\mathfrak{I}=3\hspace{0.1em}\mathfrak{I}$, so that
+
+$$3\hspace{0.2em}\mathsf{i}:Д=\frac{1}{2}(\mathsf{i}^2-\mathfrak{I})=\mathfrak{M}$$
+
+The cotrace operator is the trace of the adjugate operator.
+
+The formula for the adjugate is built entirely from $\mathsf{M}\cdot\mathsf{M}$, $\mathsf{M}$, and $\mathsf{i}$, each of which gives the same result whether we multiply it by $\mathsf{M}$ on the left or the right. So $\mathsf{M}\cdot\text{adj}(\mathsf{M})=\text{adj}(\mathsf{M})\cdot\mathsf{M}$, and the inverse works from both sides: $\mathsf{M}\cdot\mathsf{M}^{-1}=\mathsf{M}^{-1}\cdot\mathsf{M}=\mathsf{i}$. Written entirely in terms of Д,
+
+$$\mathsf{M}^{-1}=\frac{3\hspace{0.2em}Д:\hspace{0.2em}:\mathsf{M}^2}{Д\hspace{0.2em}\vdots\hspace{0.2em}\vdots\hspace{0.2em}\mathsf{M}^3}$$
+
+A single six-index operator supplies both the numerator and the denominator. The inverse is the sensitivity of the volume to a change in $\mathsf{M}$, divided by the volume itself, so that the fractional change in volume is $\mathsf{M}^{-1}:\epsilon\mathsf{N}$ to first order. With $\mathsf{M}=\mathsf{i}$ this reduces to $\epsilon\hspace{0.2em}\text{trace}(\mathsf{N})$, as we found for small departures from the identity.
+
+Finally, substituting the formula for the adjugate into $\mathsf{M}\cdot\text{adj}(\mathsf{M})=\text{det}(\mathsf{M})\hspace{0.1em}\mathsf{i}$ gives
+
+$$\mathsf{M}\cdot\mathsf{M}\cdot\mathsf{M}-\text{trace}(\mathsf{M})\hspace{0.1em}\mathsf{M}\cdot\mathsf{M}+\text{cotrace}(\mathsf{M})\hspace{0.1em}\mathsf{M}-\text{det}(\mathsf{M})\hspace{0.1em}\mathsf{i}=0$$
+
+This is the _Cayley-Hamilton theorem_: every dyadic satisfies a cubic equation whose coefficients are its trace, cotrace, and determinant, the same three quantities that appear in $\text{det}(\mathsf{i}+\epsilon\mathsf{M})$. Applied to an eigenvector $\mathrm{E}$ with eigenvalue $\lambda$, each $\mathsf{M}$ becomes a factor of $\lambda$, and the eigenvalue must satisfy
+
+$$\lambda^3-\text{trace}(\mathsf{M})\hspace{0.1em}\lambda^2+\text{cotrace}(\mathsf{M})\hspace{0.1em}\lambda-\text{det}(\mathsf{M})=0$$
+
+For a symmetric dyadic, written in its eigenframe as $\lambda_1\mathrm{E}_1^2+\lambda_2\mathrm{E}_2^2+\lambda_3\mathrm{E}_3^2$, this is the stretching example with the eigenvectors in place of $\mathrm{i}$, $\mathrm{j}$, $\mathrm{k}$. The trace, cotrace, and determinant are then $\lambda_1+\lambda_2+\lambda_3$, $\lambda_1\lambda_2+\lambda_2\lambda_3+\lambda_3\lambda_1$, and $\lambda_1\lambda_2\lambda_3$: the length, area, and volume factors of the eigenframe.
+
+The same reasoning that led to Jacobi's formula applies to each of our three measures. A small change $\epsilon\mathsf{N}$ removes one copy of $\mathsf{M}$ from the operator and multiplies by the number of copies:
+
+$$\begin{aligned}\text{trace}(\mathsf{M}+\epsilon\mathsf{N})&=\text{trace}(\mathsf{M})+\epsilon\hspace{0.2em}\mathsf{i}:\mathsf{N}\\
+\text{cotrace}(\mathsf{M}+\epsilon\mathsf{N})&=\text{cotrace}(\mathsf{M})+\epsilon\hspace{0.2em}(2\hspace{0.1em}\mathfrak{M}:\mathsf{M}):\mathsf{N}+\cdots\\
+\text{det}(\mathsf{M}+\epsilon\mathsf{N})&=\text{det}(\mathsf{M})+\epsilon\hspace{0.2em}(3\hspace{0.1em}Д:\hspace{0.2em}:\mathsf{M}^2):\mathsf{N}+\cdots\end{aligned}$$
+
+The sensitivity of the trace is $\mathsf{i}$, that of the cotrace is $2\hspace{0.1em}\mathfrak{M}:\mathsf{M}=\text{trace}(\mathsf{M})\hspace{0.1em}\mathsf{i}-\mathsf{M}$, and that of the determinant is the adjugate.
 
 ### Spherical coordinates
 
